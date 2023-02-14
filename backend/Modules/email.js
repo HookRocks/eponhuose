@@ -29,5 +29,5 @@ const sendEmail = (target, subject, contents) => {
 };
 
 
-sendEmail("rgrang816@west-mec.org","test")
+sendEmail("rgrang816@west-mec.org","test","<div style='background-color:black'>test</div>")
 module.exports = { sendEmail };
