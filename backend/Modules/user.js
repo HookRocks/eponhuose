@@ -1,7 +1,23 @@
 const connectDB=require("../connect")
 const user = require("../models/user")
 require('dotenv').config()
-const {addToEvent}=require("./event")
+const {addToEvent,getParticipants}=require("./event")
+
+
+
+
+
+const getUserList=async(req,res)=>{
+    await connectDB(process.env.MONGO_URI)
+    const userList=await getParticipants()
+    return await user.find({_id:{$in:userList}})
+}
+
+const getParticipantData=async(participantList)=>{
+    await connectDB(process.env.MONGO_URI);
+    const userList=await user.find({_id:{$in:participantList}})
+}
+
 
 const getUserByEmail=async (userEmail)=>{
     await connectDB(process.env.MONGO_URI)
@@ -23,4 +39,4 @@ const userJoin=async(userName,userEmail)=>{
 }
 
 
-module.exports={getUserByEmail,userJoin}
+module.exports={getUserByEmail,userJoin,getUserList}
