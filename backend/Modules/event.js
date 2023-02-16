@@ -7,7 +7,10 @@ const getEvent=async()=>{
     await connectDB(process.env.MONGO_URI)
     return await event.findOne({})
 }
-
+//returns the array of ids for participants in an event
+const getParticipants=async()=>{
+    return (await getEvent()).participants
+}
 
 //creates event to store relevant data for the host to be sent later
 const createEvent= async(host,email,startDate,eventName,endDate)=>{
@@ -30,6 +33,9 @@ const endEvent= async()=>{
 //adds user to event participants if not already in it
 const addToEvent= async(userID)=>{
     const eventData=await getEvent();
+    
+    if(!eventData) return {success:false,msg:"no active event to join"}
+
     if(!eventData.participants.includes(userID)){
         eventData.participants.push(userID)
         event.findByIdAndUpdate(eventData._id,{participants:eventData.participants})
@@ -39,4 +45,4 @@ const addToEvent= async(userID)=>{
 }
 
 
-module.exports={addToEvent,endEvent,createEvent,getEvent}
+module.exports={addToEvent,endEvent,createEvent,getEvent,getParticipants}

@@ -17,7 +17,7 @@ const sendEmail = (target, subject, contents) => {
     from: 'rgrang816@west-mec.org',
     to: target,
     subject: subject,
-    html: contents,
+    html: baseEmail.replace('swapOut',contents),
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
@@ -28,6 +28,27 @@ const sendEmail = (target, subject, contents) => {
   });
 };
 
+const baseEmail=`
+<html>
+<head>
+  <style>
+    #body {
+      text-decoration:none;
+      list-style-type:none;
+    }
+    li{
+      text-decoration:none;
+      list-style-type:none;
+      display:inline-block;
+    }
+  </style>
+</head>
+<body>
+  <ul id='body'>
+    swapOut
+  </ul>
+</body>
+</html>`
 
-sendEmail("rgrang816@west-mec.org","test","<div style='background-color:black'>test</div>")
+
 module.exports = { sendEmail };
