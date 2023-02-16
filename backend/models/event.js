@@ -1,5 +1,4 @@
-
-require('mongoose')
+const mongoose=require('mongoose')
 
 const eventModel=new mongoose.Schema({
     host:{
@@ -21,6 +20,9 @@ const eventModel=new mongoose.Schema({
     },
     participants:{
         type:Array
+    },
+    eventRoom:{
+        type:Number
     }
 })
 module.exports = mongoose.model("events", eventModel);

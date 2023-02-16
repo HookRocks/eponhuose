@@ -1,4 +1,4 @@
-require('mongoose')
+const mongoose=require('mongoose')
 
 const userModel=new mongoose.Schema({
  name:{
@@ -8,6 +8,9 @@ const userModel=new mongoose.Schema({
  email:{
     type:String,
     required:true
+ },
+ image:{
+   type:String
  }
 })
 

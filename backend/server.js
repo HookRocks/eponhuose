@@ -7,6 +7,7 @@ const fs = require('fs');
 import UserRouter from "./routers/user"
 import ImagesRouter from "./routers/images"
 import ProgramsRouter from "./routers/programs"
+import EventRouter from "./routers/event"
 
 app.use(cors());
 app.options('*', cors());
@@ -25,15 +26,15 @@ app.post('/token', async (req, res) => {
 app.use('/', async (req, res, next) => {
     next();
 });
-app.use('/users', UserRouter);
-// app.use('/chat', chatRouter);
 
-/*app.get('/', (req, res) => {
-  if (req.hostname != 'localhost')
-    return res.status(404).send({ success: false, msg: 'Access denied' });
-  res.send(adminPage);
-});*/
-// console.log(process.env.PORT);
+app.use('/users', UserRouter);
+
+app.use('/event',EventRouter);
+
+app.use("/programs",ProgramsRouter);
+
+
+
 app.listen(3000, () => {
     console.log(`server is running on port 3000`);
 });

@@ -1,4 +1,4 @@
-require('mongoose')
+const mongoose=require('mongoose')
 
 const programModel=new mongoose.Schema({
  name:{
@@ -16,6 +16,9 @@ const programModel=new mongoose.Schema({
     }
  ],
  times:{
+    type:Array
+ },
+ rooms:{
     type:Array
  }
 })
