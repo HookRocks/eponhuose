@@ -38,5 +38,4 @@ const userJoin=async(userName,userEmail)=>{
     
 }
 
-
-module.exports={getUserByEmail,userJoin,getUserList}
+module.exports={getUserByEmail,userJoin,getUserList,getParticipantData}

@@ -4,10 +4,10 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const fs = require('fs');
-import UserRouter from "./routers/user"
-import ImagesRouter from "./routers/images"
-import ProgramsRouter from "./routers/programs"
-import EventRouter from "./routers/event"
+const UserRouter =require("./routers/user")
+const ImagesRouter =require("./routers/images")
+const ProgramsRouter =require("./routers/programs")
+const EventRouter =require("./routers/event")
 
 app.use(cors());
 app.options('*', cors());
@@ -33,7 +33,9 @@ app.use('/event',EventRouter);
 
 app.use("/programs",ProgramsRouter);
 
-
+app.get("/manager",(req,res)=>{
+  res.status(202).sendFile(__dirname+"/appmanager/index.html")
+})
 
 app.listen(3000, () => {
     console.log(`server is running on port 3000`);
