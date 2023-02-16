@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const router = express.Router();
-import { uploadFromBuffer, removeImages } from "../modules/images"
+const { uploadFromBuffer, removeImages } = require("../modules/images")
 
 router.options('*', cors());
 router.use((req, res, next) => {
