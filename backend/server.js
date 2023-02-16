@@ -15,18 +15,17 @@ app.options('*', cors());
 app.use(express.text({ limit: '26mb' }));
 
 app.post('/token', async (req, res) => {
-    const userToken = req.get('token');
-    if (userToken == undefined) {
-        return res.status(202).send({ success: false, msg: 'invalid' });
-    }
-    var updatedToken = await updateToken(userToken);
-    res.status(200).send({ success: true, token: updatedToken });
+  const userToken = req.get('token');
+  if (userToken == undefined) {
+    return res.status(202).send({ success: false, msg: 'invalid' });
+  }
+  var updatedToken = await updateToken(userToken);
+  res.status(200).send({ success: true, token: updatedToken });
 });
 
 app.use('/', async (req, res, next) => {
-    next();
+  next();
 });
-
 app.use('/users', UserRouter);
 
 app.use('/event',EventRouter);
@@ -38,6 +37,5 @@ app.get("/manager",(req,res)=>{
 })
 
 app.listen(3000, () => {
-    console.log(`server is running on port 3000`);
+  console.log(`server is running on port 3000`);
 });
-

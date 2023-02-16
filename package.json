@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "cors": "^2.8.5",
+    "nodemon": "^2.0.20",
     "dotenv": "^16.0.3",
     "mongoose": "^6.9.1",
     "nodemailer": "^6.9.1",
@@ -23,7 +24,7 @@
   "scripts": {
     "backend": "nodemon backend/server.js",
     "frontend": "react-scripts start",
-    "start": "npm-run-all --parallel backend frontend",
+    "start": "npm run backend frontend",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
