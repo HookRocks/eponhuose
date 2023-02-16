@@ -9,7 +9,7 @@ import Main from "./Pages/Main";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <Main />,
   },
 ]);
