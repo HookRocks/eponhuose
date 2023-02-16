@@ -4,9 +4,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const fs = require('fs');
-import UserRouter from "./routers/user"
-import ImagesRouter from "./routers/images"
-import ProgramsRouter from "./routers/programs"
+const UserRouter = require("./routers/user")
+const ImagesRouter = require("./routers/images")
+const ProgramsRouter = require("./routers/programs")
 
 app.use(cors());
 app.options('*', cors());
@@ -37,4 +37,3 @@ app.use('/programs', ProgramsRouter);
 app.listen(3000, () => {
   console.log(`server is running on port 3000`);
 });
-
