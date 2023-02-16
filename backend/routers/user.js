@@ -10,3 +10,6 @@ app.post("/join",async(req,res)=>{
     const output=await userJoin(userName,userEmail);
     res.send(output)
 })
+
+
+module.exports=app
