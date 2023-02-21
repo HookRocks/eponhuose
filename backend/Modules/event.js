@@ -51,8 +51,8 @@ const addToEvent = async (userID) => {
     if (!eventData) return { success: false, msg: "no active event to join" }
 
     if (!eventData.participants.includes(userID)) {
-        eventData.participants.push(userID)
-        event.findByIdAndUpdate(eventData._id, { participants: eventData.participants })
+        var participants=eventData.participants;participants.push(userID)
+        event.findByIdAndUpdate(eventData._id, { participants})
         return { success: true, msg: "added user to event" }
     }
     return { success: false, msg: "user already in event" }
