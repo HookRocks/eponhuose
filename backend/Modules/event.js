@@ -3,9 +3,9 @@ require('dotenv').config()
 const event = require('../models/event')
 
 //returns current event
-const getEvent = async () => {
+const getEvent = async (args) => {
     await connectDB(process.env.MONGO_URI)
-    return await event.findOne({})
+    return await event.findOne(args)
 }
 //returns the array of ids for participants in an event
 const getParticipants = async () => {
@@ -22,6 +22,7 @@ const createEvent = async (EventData) => {
     //     eventName: (eventName != null ? eventName : startDate),
     //     participants: []
     // }
+    await connectDB(process.env.MONGO_URI);
     try {
         const NewEvent = new event(EventData)
         await NewEvent.save()
@@ -31,10 +32,16 @@ const createEvent = async (EventData) => {
     }
 }
 
-//should only call after the event is over and has sent needed info to the host
-const endEvent = async () => {
+const updateEvent = async (filter, update) => {
     await connectDB(process.env.MONGO_URI);
-    event.deleteMany({})
+    const Returned = await event.findOneAndUpdate(filter, update)
+    return Returned
+}
+
+//should only call after the event is over and has sent needed info to the host
+const endEvent = async (args) => {
+    await connectDB(process.env.MONGO_URI);
+    event.deleteMany(args)
 }
 
 //adds user to event participants if not already in it
@@ -52,4 +59,4 @@ const addToEvent = async (userID) => {
 }
 
 
-module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants }
+module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent }

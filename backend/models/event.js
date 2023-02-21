@@ -1,28 +1,30 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 
-const eventModel=new mongoose.Schema({
-    host:{
-        type:String,
-        required:true
+const eventModel = new mongoose.Schema({
+    host: {
+        type: String,
+        required: true
     },
-    hostEmail:{
-        type:String,
-        required:true
+    hostEmail: {
+        type: String,
+        required: true
     },
-    startDate:{
-        type:Number
+    startDate: {
+        type: Number
     },
-    endDate:{
-        type:Number
+    endDate: {
+        type: Number
     },
-    eventName:{
-        type:String
+    eventName: {
+        type: String
     },
-    participants:{
-        type:Array
+    participants: {
+        type: Array,
+        required: true
     },
-    eventRoom:{
-        type:Number
+    eventRoom: {
+        type: Number,
+        required: true
     }
 })
 module.exports = mongoose.model("events", eventModel);

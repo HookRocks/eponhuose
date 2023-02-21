@@ -1,10 +1,9 @@
 const { default: mongoose } = require("mongoose")
+mongoose.set("strictQuery", false)
 
-require("mongoose")
-
-const connectDB=(uri)=>{
-    return mongoose.connect(uri).catch((err)=>console.log(err))
+const connectDB = (uri) => {
+    return mongoose.connect(uri).catch((err) => console.log(err))
 }
 
 
-module.exports=connectDB
+module.exports = connectDB
