@@ -28,15 +28,17 @@ const getUserByEmail = async (userEmail) => {
 
 
 
-const userJoin = async (userName, userEmail) => {
+const userJoin = async (Filter, userInfo) => {
+    const { userName, userEmail } = userInfo
+
     var userData = await getUserByEmail(userEmail)
     if (!userData) {
         const newUser = new user({ name: userName, email: userEmail })
         await newUser.save();
         userData = newUser
     }
-    return await addToEvent(userData._Id)
-
+    console.log(userData)
+    return await addToEvent(Filter, userData._id)
 }
 
 module.exports = { getUserByEmail, userJoin, getUserList, getParticipantData }

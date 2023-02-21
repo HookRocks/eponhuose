@@ -41,18 +41,21 @@ const updateEvent = async (filter, update) => {
 //should only call after the event is over and has sent needed info to the host
 const endEvent = async (args) => {
     await connectDB(process.env.MONGO_URI);
-    event.deleteMany(args)
+    await event.deleteMany(args);
+    return "loser"
 }
 
 //adds user to event participants if not already in it
-const addToEvent = async (userID) => {
-    const eventData = await getEvent();
+const addToEvent = async (Filter, userID) => { // add support for multiple events
+    await connectDB(process.env.MONGO_URI);
+    const eventData = await getEvent(Filter);
 
     if (!eventData) return { success: false, msg: "no active event to join" }
 
     if (!eventData.participants.includes(userID)) {
-        var participants=eventData.participants;participants.push(userID)
-        event.findByIdAndUpdate(eventData._id, { participants})
+        eventData.participants.push(userID)
+        await event.findByIdAndUpdate(eventData._id, { participants: eventData.participants })
+        console.log(eventData.participants)
         return { success: true, msg: "added user to event" }
     }
     return { success: false, msg: "user already in event" }

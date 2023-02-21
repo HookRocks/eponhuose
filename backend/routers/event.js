@@ -46,9 +46,18 @@ app.post("/finishEvent", async (req, res) => {
     const body = req.body || {}
 
     const eventData = await getEvent(body);
+    if (!eventData) {
+        console.warn("event data was not found")
+        res.status(400).send({ success: false })
+        return
+    }
+
     const participantData = await getParticipantData(eventData.participants);
     var participantFormat = participantData.map((participant) => `<li><p>${participant.name}</p><p>${participant.email}</p><p>${eventData.eventName}</p></li>`).join("")
-    sendEmail("rgrang816@west-mec.org", "testing", participantFormat);
+
+    console.log(participantFormat, participantData, eventData)
+    sendEmail("rgrang816@west-mec.org", "PILLAGE THE MINORITY", participantFormat);
+
     endEvent(body);
     console.log("ENDED EVENT:", body)
     res.status(200).send({ success: true })
