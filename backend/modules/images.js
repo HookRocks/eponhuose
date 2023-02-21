@@ -1,4 +1,4 @@
-const { cloud } = require('../models/imageModel');
+const { cloud } = require('./cloud');
 const streamifier = require('streamifier');
 const basePath = 'https://res.cloudinary.com/dztnsrrta/image/upload/';
 const imgFileRegex = /\.png|\.jpg|\.jpeg|\.jfif/;

@@ -11,6 +11,7 @@ const EventRouter = require("./routers/event")
 
 app.use(cors());
 app.options('*', cors());
+app.use(express.json());
 
 app.use(express.text({ limit: '26mb' }));
 
