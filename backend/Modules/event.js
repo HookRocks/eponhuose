@@ -26,8 +26,9 @@ const createEvent= async(host,email,startDate,eventName,endDate)=>{
 
 //should only call after the event is over and has sent needed info to the host
 const endEvent= async()=>{
+    
     await connectDB(process.env.MONGO_URI);
-    event.deleteMany({})
+    event.deleteMany({});
 }
 
 //adds user to event participants if not already in it

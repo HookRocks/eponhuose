@@ -21,7 +21,7 @@ app.post("/getEvent",async(req,res)=>{
     
     res.send({success:true,event:await getEvent()})
 })
-
+//should update the current event data with provided data
 app.post("/updateEvent",async(req,res)=>{
     
 })
