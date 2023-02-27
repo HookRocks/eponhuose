@@ -5,10 +5,10 @@ const app = express();
 const cors = require('cors');
 const fs = require('fs');
 const UserRouter = require("./routers/user")
-const ImagesRouter = require("./routers/images")
+//const ImagesRouter = require("./routers/images")
 const ProgramsRouter = require("./routers/programs")
 const EventRouter = require("./routers/event")
-
+const manageRouter= require("./routers/manager")
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
@@ -33,9 +33,8 @@ app.use('/event', EventRouter);
 
 app.use("/programs", ProgramsRouter);
 
-app.get("/manager", (req, res) => {
-  res.status(202).sendFile(__dirname + "/appmanager/index.html")
-})
+app.use("/manager",manageRouter);
+
 
 app.listen(3001, () => {
   console.log(`server is running on port 3001`);

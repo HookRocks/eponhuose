@@ -2,6 +2,12 @@ const connectDB = require("../connect")
 require('dotenv').config()
 const event = require('../models/event')
 
+//returns all events
+const getEventList = async (args) => {
+    await connectDB(process.env.MONGO_URI);
+    return await event.find(args);
+}
+
 //returns current event
 const getEvent = async (args) => {
     await connectDB(process.env.MONGO_URI)
@@ -22,6 +28,7 @@ const createEvent = async (EventData) => {
     //     eventName: (eventName != null ? eventName : startDate),
     //     participants: []
     // }
+
     await connectDB(process.env.MONGO_URI);
     try {
         const NewEvent = new event(EventData)
@@ -62,4 +69,4 @@ const addToEvent = async (Filter, userID) => { // add support for multiple event
 }
 
 
-module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent }
+module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList}

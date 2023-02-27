@@ -7,6 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    test
+    event management page
+    <script>
+        const req=async()=>{
+        var request=await fetch("http://localhost:3001/manager/listEvents",)
+        console.log(await request.json());
+        }
+        req();
+    </script>
 </body>
 </html>
