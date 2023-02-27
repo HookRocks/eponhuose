@@ -1,9 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import programInfo from '../modules/ProgramInfo.json';
 
-const EventProgramInfo=({tabbedMode, programName}) => {
+const EventProgramInfo=({tabbedMode, givenProgramName}) => {
   const [windowWidth,setWindowWidth]=useState(window.innerWidth);
-  const program = JSON.parse(programInfo)
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -27,8 +26,8 @@ const EventProgramInfo=({tabbedMode, programName}) => {
   } else {
     return (
       <div>
-        {program!=null? (<h1>{programName}</h1>):(<h1>{program}</h1>)}
-        <p>{program!=null?(<h1>h</h1>):(<h1>h</h1>)}</p>
+        {givenProgramName!=null? (<h1>{givenProgramName}</h1>):(<h1>program list</h1>)}
+        <p>{givenProgramName!=null? (<h1>{programInfo[givenProgramName].instructorName}</h1>):(<h1>h</h1>)}</p>
       </div>
     );
   }
