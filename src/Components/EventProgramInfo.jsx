@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-const EventProgramInfo=({tabbedMode}) => {
+const EventProgramInfo=({tabbedMode, programName, teacherNames, POW, currentEvent}) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -25,8 +25,8 @@ const EventProgramInfo=({tabbedMode}) => {
   } else {
     return (
       <div>
-        EventProgramInfo
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, maiores.</p>
+        {programName!=null? (<h1>{programName}</h1>):(<h1>West-MEC Northeast Campus</h1>)}
+        <p>{}</p>
       </div>
     );
   }
