@@ -1,8 +1,12 @@
 {
     "Coding": {
-        "Description": "objectively the worst class in west mec",
+        "Description": "objectively the best class in west mec",
         "Teachers": {
+<<<<<<< HEAD
             "Bernard": "chungus@gmail.com"
+=======
+            "Bernard": ""
+>>>>>>> 8ea3bf095d95a85b64d9d4266888e56617493f1b
         },
         "ClassTimes": {
             "1st Year": "8PM-5AM"
