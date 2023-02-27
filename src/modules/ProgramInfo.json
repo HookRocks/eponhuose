@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "Coding": {
         "Description": "objectively the best class in west mec",
         "Teachers": {
@@ -7,9 +8,200 @@
 =======
             "Bernard": ""
 >>>>>>> 8ea3bf095d95a85b64d9d4266888e56617493f1b
+=======
+  "programs": [
+    {
+      "programName": "Coding",
+      "instructorName": ["Mr.Bernard"],
+      "classLocation": "Main Building 2nd Floor",
+      "classTimes": [
+        {
+					"year": "2nd Year",
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+>>>>>>> 265a9d587934086d68980b15a71529088ff82ff3
         },
-        "ClassTimes": {
-            "1st Year": "8PM-5AM"
+        {
+					"year": "1st Year",
+          "startTime": "04:00PM",
+          "endTime": "06:30PM"
         }
+      ]
+    },
+    {
+      "programName": "Air Conditioning Technology",
+      "instructorName": ["Mr.Brooke"],
+      "classLocation": "Lab 1st Floor",
+      "classTimes": [
+        {
+					"year": "1st Year",
+          "startTime": "07:30AM",
+          "endTime": "10:30AM"
+        }
+      ]
+    },
+    {
+      "programName": "HVAC",
+      "instructorName": ["Mr.Brooke"],
+      "classLocation": "Lab 1st Floor",
+      "classTimes": [
+        {
+					"year": "Afternoon Adult",
+          "startTime": "01:30PM",
+          "endTime": "05:30PM"
+        },
+        {
+					"year": "Evening Adult",
+          "startTime": "06:45PM",
+          "endTime": "09:45PM"
+        }
+      ]
+    },
+    {
+      "programName": "Automotive Technology",
+      "instructorName": ["Mr.Schumaker","Mr.Golding"],
+      "classLocation": "Lab 2nd Floor",
+      "classTimes": [
+        {
+					"year": "1st Year",
+          "startTime": "07:00AM",
+          "endTime": "09:30AM"
+        },
+        {
+					"year": "2st Year",
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+        },
+        {
+					"year": "1 Year Program",
+          "startTime": "04:00PM",
+          "endTime": "06:30PM"
+        }
+      ]
+    },
+    {
+      "programName": "Collision Repair and Refinishing",
+      "instructorName": ["Mr.Paur","Mr.Melian"],
+      "classLocation": "Lab 2nd Floor",
+      "classTimes": [
+        {
+					"year": "1st Year",
+          "startTime":"07:00AM",
+          "endTime": "09:30AM"
+        },
+        {
+					"year": "2nd Year",
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+        },
+				{
+					"year": "Adult Class",
+			    "startTime":"07:00AM",
+          "endTime": "11:00AM"
+				}
+      ]
+    },
+    {
+      "programName": "Electrical Trade Speciality",
+      "instructorName": ["Mr.Brooke"],
+      "classLocation": "Lab 1st Floor",
+      "classTimes": [
+        {
+					"year": "1st Year",
+          "startTime":"07:00AM",
+          "endTime": "09:30AM"
+        },
+        {
+					"year": "2nd Year",
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+        }
+      ]
+    },
+    {
+      "programName": "General Construction Technology",
+      "instructorName": ["Mr.Ellis"],
+      "classLocation": "Lab Basment",
+      "classTimes": [
+        {
+					"year": "1st Year",
+          "startTime":"07:00AM",
+          "endTime": "09:30AM"
+        },
+        {
+					"year": "2nd Year",
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+        }
+      ]
+    },
+    {
+      "programName": "Medical Assisting",
+      "instructorName": ["Mrs.Michaels", "Mrs.Winzeler","Mrs.Romero"],
+      "classLocation": "Main Building 2nd Floor",
+      "classTimes": [
+        {
+          "startTime":"07:00AM",
+          "endTime": "11:00AM"
+        },
+        {
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+        },
+        {
+          "startTime": "04:00PM",
+          "endTime": "06:30PM"
+        }
+      ]
+    },
+    {
+      "programName": "Medium / Heavy Diesel Technology",
+      "instructorName": ["Mr.Soja"],
+      "classLocation": "Lab 2nd Floor",
+      "classTimes": [
+        {
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+        },
+        {
+          "startTime": "04:00PM",
+          "endTime": "06:30PM"
+        }
+      ]
+    },
+    {
+      "programName": "Pharmacy Science",
+      "instructorName": ["Mrs.Stewart"],
+      "classLocation": "Main Building 1st Floor",
+      "classTimes": [
+        {
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+        },
+        {
+          "startTime": "04:00PM",
+          "endTime": "06:30PM"
+        }
+      ]
+    },
+    {
+      "programName": "Veterinary Science",
+      "instructorName": ["Mrs.Peterson", "Mrs.Adams","Mrs.Schuman"],
+      "classLocation": "Vet Building",
+      "classTimes": [
+        {
+          "startTime":"07:00AM",
+          "endTime": "11:00AM"
+        },
+        {
+          "startTime": "01:00PM",
+          "endTime": "03:30PM"
+        },
+        {
+          "startTime": "04:00PM",
+          "endTime": "06:30PM"
+        }
+      ]
     }
+  ]
 }
