@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import programInfo from '../modules/ProgramInfo.json';
+import Swal from 'sweetalert2/with-react';
 
 const EventProgramInfo=({tabbedMode, givenProgramName}) => {
   const [windowWidth,setWindowWidth]=useState(window.innerWidth);
@@ -26,12 +27,16 @@ const EventProgramInfo=({tabbedMode, givenProgramName}) => {
   } else {
     return (
       <div>
-        {givenProgramName!=null? (<h1>{givenProgramName}</h1>):(<h1>program list</h1>)}
-        <p>{givenProgramName!=null? (<h1>{programInfo[givenProgramName].instructorName.join(", ")}</h1>):(<h1>All Teachers and staff</h1>)}</p>
+        {givenProgramName!=null? (<h1>{givenProgramName}</h1>):(<b>program list</b>)}
+        <p>{givenProgramName!=null? (<h1>{programInfo[givenProgramName].instructorName.join(", ")}</h1>):(<b>All Teachers and staff</b>)}</p>
         <p>Open House Event</p>
         {
-          givenProgramName!=null?(<iframe src={programInfo[givenProgramName].POW} title='POW'></iframe>):(<h1>Please Select a Class</h1>)
+          givenProgramName!=null?(programInfo[givenProgramName].POW.map((POw, index)=>(<iframe src={POw} title='POW' className='w-full h-[36rem] sm:h-[40rem]' key={index}></iframe>))):(<h1>Please Select a Class</h1>)
         }
+        <button><a>Join Event</a></button>
+        Swal(
+        
+        )
       </div>
     );
   }
