@@ -5,17 +5,20 @@ const event = require('../models/event')
 //returns all events
 const getEventList = async (args) => {
     await connectDB(process.env.MONGO_URI);
-    return await event.find(args).sort({_id:-1});
+    
+    return await event.find(args).sort({startDate:-1});
 }
 
 //returns current event
 const getEvent = async (args) => {
     await connectDB(process.env.MONGO_URI)
-    return await event.find(args).sort({_id:-1})
+    args.startDate={$gte:Date.now()};args.endDate={$lte:Date.now()}
+
+    return await event.find(args).sort({startDate:-1})
 }
 //returns the array of ids for participants in an event
 const getParticipants = async () => {
-    return (await getEvent()).participants
+    return (await getEvent({})).participants
 }
 
 //creates event to store relevant data for the host to be sent later
