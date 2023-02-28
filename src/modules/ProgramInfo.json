@@ -1,6 +1,7 @@
 {
     "Coding":{
       "programName": "Coding",
+      "POW": ["../assets/23-24-Coding-Info-Sheet.pdf"],
       "instructorName": ["Mr.Bernard"],
       "classLocation": "Main Building 2nd Floor",
       "classTimes": [
@@ -18,6 +19,7 @@
     },
     "Air Conditioning Technology":{
       "programName": "Air Conditioning Technology",
+      "POW": ["../assets/23-24-Air-Info-Sheet.pdf"],
       "instructorName": ["Mr.Brooke"],
       "classLocation": "Lab 1st Floor",
       "classTimes": [
@@ -47,6 +49,7 @@
     },
     "Automotive Technology":{
       "programName": "Automotive Technology",
+      "POW": ["../assets/23-24-Auto-Tech-Info-Sheet.pdf"],
       "instructorName": ["Mr.Schumaker","Mr.Golding"],
       "classLocation": "Lab 2nd Floor",
       "classTimes": [
@@ -69,6 +72,7 @@
     },
     "Collision Repair and Refinishing":{
       "programName": "Collision Repair and Refinishing",
+      "POW": ["../assets/23-24-Collision Info Sheet.pdf"],
       "instructorName": ["Mr.Paur","Mr.Melian"],
       "classLocation": "Lab 2nd Floor",
       "classTimes": [
@@ -91,6 +95,7 @@
     },
     "Electrical Trade Speciality":{
       "programName": "Electrical Trade Speciality",
+      "POW":["../assets/23-24-Electrical-Info-Sheet.pdf"],
       "instructorName": ["Mr.Brooke"],
       "classLocation": "Lab 1st Floor",
       "classTimes": [
@@ -108,6 +113,7 @@
     },
     "General Construction Technology":{
       "programName": "General Construction Technology",
+      "POW":["../assets/23-24 General Construction Tech.pdf"],
       "instructorName": ["Mr.Ellis"],
       "classLocation": "Lab Basment",
       "classTimes": [
@@ -126,6 +132,7 @@
     "Medical Assisting":{
       "programName": "Medical Assisting",
       "instructorName": ["Mrs.Michaels", "Mrs.Winzeler","Mrs.Romero"],
+      "POW":["../assets/23-24-Med-Assisting-2YR-Info-Sheet.pdf","../assets/23-24-Med-Assisting-1YR-Info-Sheet.pdf"],
       "classLocation": "Main Building 2nd Floor",
       "classTimes": [
         {
@@ -144,6 +151,7 @@
     },
     "Medium / Heavy Diesel Technology":{
       "programName": "Medium / Heavy Diesel Technology",
+      "POW":["../assets/23-24-MH-Diesel-Info-Sheet.pdf"],
       "instructorName": ["Mr.Soja"],
       "classLocation": "Lab 2nd Floor",
       "classTimes": [
@@ -160,6 +168,7 @@
     "Pharmacy Science":{
       "programName": "Pharmacy Science",
       "instructorName": ["Mrs.Stewart"],
+      "POW":["../assets/23-24-Pharmacy Info Sheet.pdf"],
       "classLocation": "Main Building 1st Floor",
       "classTimes": [
         {
@@ -175,6 +184,7 @@
     "Veterinary Science":{
       "programName": "Veterinary Science",
       "instructorName": ["Mrs.Peterson", "Mrs.Adams","Mrs.Schuman"],
+      "POW":["../assets/23-24-Vet-2YR-Info-Sheet.pdf","../assets/23-24-Vet-1YR-Info-Sheet.pdf"],
       "classLocation": "Vet Building",
       "classTimes": [
         {

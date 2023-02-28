@@ -27,7 +27,11 @@ const EventProgramInfo=({tabbedMode, givenProgramName}) => {
     return (
       <div>
         {givenProgramName!=null? (<h1>{givenProgramName}</h1>):(<h1>program list</h1>)}
-        <p>{givenProgramName!=null? (<h1>{programInfo[givenProgramName].instructorName}</h1>):(<h1>h</h1>)}</p>
+        <p>{givenProgramName!=null? (<h1>{programInfo[givenProgramName].instructorName.join(", ")}</h1>):(<h1>All Teachers and staff</h1>)}</p>
+        <p>Open House Event</p>
+        {
+          givenProgramName!=null?(<iframe src={programInfo[givenProgramName].POW} title='POW'></iframe>):(<h1>Please Select a Class</h1>)
+        }
       </div>
     );
   }
