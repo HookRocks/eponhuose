@@ -12,13 +12,13 @@ const getEventList = async (args) => {
 //returns current event
 const getEvent = async (args) => {
     await connectDB(process.env.MONGO_URI)
-    args.startDate={$gte:Date.now()};args.endDate={$lte:Date.now()}
+    if(args=="current"||args=={}||args==undefined){args={};args.startDate={$gte:Date.now()};args.endDate={$lte:Date.now()}}
 
     return await event.find(args).sort({startDate:-1})
 }
 //returns the array of ids for participants in an event
 const getParticipants = async () => {
-    return (await getEvent({})).participants
+    return (await getEvent("current")).participants
 }
 
 //creates event to store relevant data for the host to be sent later
