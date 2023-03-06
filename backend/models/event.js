@@ -22,8 +22,8 @@ const eventModel = new mongoose.Schema({
         type: Array,
         required: true
     },
-    eventRoom: {
-        type: Number,
+    eventProgram: {
+        type: String,
         required: true
     }
 })

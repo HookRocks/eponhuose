@@ -8,9 +8,6 @@ const userModel=new mongoose.Schema({
  email:{
     type:String,
     required:true
- },
- image:{
-   type:String
  }
 })
 
