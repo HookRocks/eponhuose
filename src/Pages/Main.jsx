@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import EventProgramInfo from '../Components/EventProgramInfo'
 
 const Main=() => {
-  const [clicked,setClicked]=useState(false);
+  const [clicked,setClicked]=useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Main=() => {
         Map
       </div>
       <div onClick={() => setClicked(!clicked)} className={windowWidth<640?`fixed sm:static sm:block bg-green-400 w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${clicked? 'translate-y-[33rem]':'translate-y-[-8rem]'}` : `static bg-green-400 min-h-screen w-full p-4 duration-500 transform` } >
-        <EventProgramInfo className="border-2 border-black border-solid" tabbedMode={clicked? true:false}  givenProgramName="Coding" />
+        <EventProgramInfo className="border-2 border-black border-solid" tabbedMode={clicked? true:false}  givenProgramName="Medical Assisting" />
       </div>
     </div>
   )
