@@ -22,7 +22,7 @@ const Main=() => {
       <div className={windowWidth<640? `${clicked?'':'flex text-center justify-center min-w-full font-extrabold text-2xl '} bg-pink-400 `:`bg-pink-400 w-full`} onClick={() => setClicked(!clicked)}>
         Map
       </div>
-      <div onClick={() => setClicked(!clicked)} className={windowWidth<640?`fixed sm:static sm:block bg-green-400 w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${clicked? 'translate-y-[33rem]':'translate-y-[-8rem]'}` : `static bg-green-400 min-h-screen w-full p-4 duration-500 transform` } >
+      <div onClick={() => setClicked(!clicked)} className={windowWidth<640?` text-white fixed sm:static sm:block bg-black w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${clicked? 'translate-y-[33rem]':'translate-y-[-8rem]'}` : `static bg-black min-h-screen w-full p-4 duration-500 transform text-white` } >
         <EventProgramInfo className="border-2 border-black border-solid" tabbedMode={clicked? true:false}  givenProgramName="Medical Assisting" />
       </div>
     </div>
