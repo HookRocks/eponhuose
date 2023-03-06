@@ -12,7 +12,7 @@ const manageRouter= require("./routers/manager")
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
-
+app.set('trust proxy', true)
 app.use(express.text({ limit: '26mb' }));
 
 app.post('/token', async (req, res) => {
