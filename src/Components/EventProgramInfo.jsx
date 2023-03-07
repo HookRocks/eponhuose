@@ -44,7 +44,7 @@ const EventProgramInfo=({tabbedMode,givenProgramName}) => {
   });
   if(tabbedMode) {
     return (
-      <div className={'flex align-middle items-center justify-center min-h-full font-extrabold text-2xl'}>
+      <div className='flex align-middle items-center justify-center min-h-full font-extrabold text-2xl'>
         <h1 className={windowWidth<640? ``:`transform rotate-[270deg]`}>
           EventProgramInfo
         </h1>
@@ -52,7 +52,7 @@ const EventProgramInfo=({tabbedMode,givenProgramName}) => {
     );
   } else {
     return (
-      <div>
+      <div className=' h-full text-center align-center justify-center'>
         {givenProgramName!=null? (<h1>{givenProgramName}</h1>):(<b>program list</b>)}
         <p>{givenProgramName!=null? (<h1>{programInfo[givenProgramName].instructorName.join(", ")}</h1>):(<b>All Teachers and staff</b>)}</p>
         <p>Open House Event</p>
