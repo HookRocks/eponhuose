@@ -1,0 +1,23 @@
+input[type="checkbox"] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.checkbox {
+  display: inline-block;
+  height: .2rem;
+  width: .2rem;
+  background: #fff;
+  border: .2rem #ddd solid;
+  margin-right: .4rem;
+}
+
+.checkbox--active {
+  border-color: purple;
+  background: purple;
+}
