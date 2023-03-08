@@ -1,4 +1,5 @@
-import React,{useState,useEffect} from 'react'
+/* eslint-disable react-hooks/rules-of-hooks */
+import React,{useState,useContext} from 'react'
 import '../AdminPage.module.css'
 import {
   animated,
@@ -8,7 +9,7 @@ import {
   useChain
 } from "react-spring";
 
-const AdminPage=() => {
+const PreBuiltCheckbox=() => {
   const [isChecked,setIsChecked]=useState(false);
   const checkboxAnimationRef = useSpringRef();
   const checkboxAnimationStyle = useSpring({
@@ -33,32 +34,8 @@ const AdminPage=() => {
       : [checkmarkAnimationRef, checkboxAnimationRef],
     [0, 0.1]
   );
-  
-  const [clicked,setClicked]=useState(false);
-  const [windowWidth,setWindowWidth]=useState(window.innerWidth);
-
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  });
-
   return (
-    <div className={windowWidth<640?`grid sm:grid-cols-[6fr_4fr] grid-rows-1 min-h-screen`:`grid  lg:${clicked?'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen':'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'} `}>
-      <div className={windowWidth<640? `${clicked? '':'flex text-center justify-center min-w-full font-extrabold text-2xl '} bg-pink-400 `:`bg-pink-400 w-full`}>
-        Map
-      </div>
-      <div className={windowWidth<640? ` text-white fixed sm:static sm:block bg-blue-600 w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${clicked? 'translate-y-[33rem]':'translate-y-[-8rem]'}`:`static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white`} >
-        
-        <form>
-         <label className='align-center'>
+    <label className='align-center'>
       <input
         type="checkbox"
         onChange={() => {
@@ -90,11 +67,7 @@ const AdminPage=() => {
             </animated.svg>
               Don't you dare to check me!
     </label>
-        </form>
-
-      </div>
-    </div>
   )
 }
 
-export default AdminPage
+export default PreBuiltCheckbox
