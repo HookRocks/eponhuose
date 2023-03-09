@@ -9,7 +9,7 @@ import {
   useChain
 } from "react-spring";
 
-const PreBuiltCheckbox=() => {
+const PreBuiltCheckbox=({boxId, boxContent}) => {
   const [isChecked,setIsChecked]=useState(false);
   const checkboxAnimationRef = useSpringRef();
   const checkboxAnimationStyle = useSpring({
@@ -65,7 +65,7 @@ const PreBuiltCheckbox=() => {
           strokeDashoffset={checkmarkAnimationStyle.x}
         />
             </animated.svg>
-              Don't you dare to check me!
+              {boxContent}
     </label>
   )
 }
