@@ -24,7 +24,7 @@ const AdminPage=() => {
       <div className={windowWidth<640? `${clicked? '':'flex text-center justify-center min-w-full font-extrabold text-2xl '} bg-pink-400 `:`bg-pink-400 w-full`}>
         Map
       </div>
-      <div className={windowWidth<640? ` text-white fixed sm:static sm:block bg-blue-600 w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${clicked? 'translate-y-[33rem]':'translate-y-[-8rem]'}`:`static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white `} style={{"paddingLeft":"auto", "paddingRight":"auto"}} >
+      <div className={windowWidth<640? ` text-white fixed sm:static sm:block bg-blue-600 w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${clicked? 'translate-y-[33rem]':'translate-y-[-8rem]'}`:`static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white `} >
         
         <form>
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg text-center w-80'>
