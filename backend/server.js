@@ -4,15 +4,15 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const fs = require('fs');
-const UserRouter = require("./routers/user")
-//const ImagesRouter = require("./routers/images")
-const ProgramsRouter = require("./routers/programs")
-const EventRouter = require("./routers/event")
-const manageRouter= require("./routers/manager")
+const UserRouter = require("./routers/user");
+//const ImagesRouter = require("./routers/images");
+const ProgramsRouter = require("./routers/programs");
+const EventRouter = require("./routers/event");
+const manageRouter= require("./routers/manager");
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
-app.set('trust proxy', true)
+app.set('trust proxy', true);
 app.use(express.text({ limit: '26mb' }));
 
 app.post('/token', async (req, res) => {
