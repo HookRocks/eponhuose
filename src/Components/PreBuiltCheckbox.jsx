@@ -38,6 +38,8 @@ const PreBuiltCheckbox=({boxId, boxContent}) => {
     <label className='align-center'>
       <input
         type="checkbox"
+        name={boxId}
+        id={boxId}
         onChange={() => {
           setIsChecked(!isChecked);
               }}
