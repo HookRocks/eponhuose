@@ -4,19 +4,28 @@ import programInfo from '../modules/ProgramInfo.json';
 import swal from '@sweetalert/with-react';
 import AnimatedArrowButton from './AnimatedArrowButton'
 
-const swalBax=() => {
-  swal(<div><form onSubmit={()=>{console.log("A")}}>
-    <label for="Name">Name: </label><input id='Name' name='Name' type="text" placeholder='Name goes here' /><br /><br />
-    <label for="Email">Email: </label><input id='Email' name='Email' type="email" placeholder='Email goes here' />
-  </form></div>).then(okay => {
-    console.log("A")
-  })
-}
+
 
 const EventProgramInfo=({tabbedMode,givenProgramName}) => {
-  const [windowWidth,setWindowWidth]=useState(window.innerWidth);
+    const [windowWidth,setWindowWidth]=useState(window.innerWidth);
+  const [currentIndex,setCurrentIndex]=useState(0);
+  const [personName,setPersonName]=useState("");
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const swalBax=() => {
+     swal(<div><form onSubmit={()=>{alert("a")}}>
+    <label for="Name">Name: </label><input onChange={(e)=>{setPersonName(e.target.value)}} id='Name' name='Name' type="text" placeholder='Name goes here' value={personName}/><br /><br />
+    <label for="Email">Email: </label><input id='Email' name='Email' type="email" placeholder='Email goes here' />
+  </form></div>).then(okay => {
+  //   fetch('url', {
+  //   Method: 'POST',
+  //   Headers: {
+  //     Accept: 'application.json',
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: {},
+  // })
+  })
+  }
 
   const handlePrevClick = () => {
     if (currentIndex > 0) {
@@ -60,10 +69,12 @@ const EventProgramInfo=({tabbedMode,givenProgramName}) => {
           givenProgramName!=null? (<div className='w-full'>{programInfo[givenProgramName].POW.length>1?(<div className='text-center'><button onClick={(ev) => {ev.stopPropagation(); handlePrevClick()}} className="arrow relative w-12 h-12 text-orange-600 font-extrabold text-4xl"><div className="arrow-left">&lArr;</div></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onClick={(ev) => {ev.stopPropagation(); handleNextClick()}} className="arrow relative w-12 h-12 text-orange-600 font-extrabold text-4xl"><div className="arrow-right">&rArr;</div></button></div>):(<div className='mb-4'></div>)}<iframe src={programInfo[givenProgramName].POW[currentIndex]} className='w-full h-[36rem] sm:h-[40rem]' title="POW"/></div>):(<h1>Please Select a Class</h1>)
         }
         
-        <button onClick={(ev) => {ev.stopPropagation();swalBax()}}><a>Join Event</a></button>
+        <button onClick={(ev) => {ev.stopPropagation(); swalBax();}}><a>Join Event</a></button>
       </div>
     );
+    
   }
-}
 
+  
+}
 export default EventProgramInfo
