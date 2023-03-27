@@ -70,6 +70,12 @@ const addToEvent = async (Filter, userID) => { // add support for multiple event
     }
     return { success: false, msg: "user already in event" }
 }
+//adds 1 to number of people going to an event
+const visitEvent=async(req,res)=>{
+    const {programName,eventName}=req.body;
+    await connectDB(process.env.MONGO_URI);
+    await event.findOneAndUpdate({eventName},{$inc:{visitorCount:1}});
+    return {success:true,msg:"i dunno mate"};
+}
 
-
-module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList}
+module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList,visitEvent}

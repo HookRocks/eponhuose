@@ -25,6 +25,10 @@ const eventModel = new mongoose.Schema({
     eventPrograms: {
         type: Array,
         required: true
+    },
+    visitorCount: {
+        type:Number,
+        default: 0
     }
 })
 module.exports = mongoose.model("events", eventModel);
