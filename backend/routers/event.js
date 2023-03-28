@@ -1,14 +1,18 @@
 const express = require("express");
 require("dotenv").config();
 const app = express.Router()
-const { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, visitEvent} = require("../Modules/event")
+const { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, visitEvent, getEventList} = require("../Modules/event")
 const { getParticipantData } = require("../Modules/user")
-const { sendEmail } = require('../Modules/email')
+const { sendEmail } = require('../Modules/email');
+const connectDB = require("../connect");
 //should block the sender from sending without meeting certain requirements to be a host
 app.use("/", async (req, res, next) => {
     next();
 })
-
+app.post("/getEventList",async (req,res)=>{
+    const eventList=await getEventList();
+    res.status(200).send(eventList);
+})
 
 
 //creates a new event into the database
