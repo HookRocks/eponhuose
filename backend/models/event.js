@@ -3,11 +3,13 @@ const mongoose = require('mongoose')
 const eventModel = new mongoose.Schema({
     host: {
         type: String,
-        required: true
+        required: true,
+        default:'Roger'
     },
     hostEmail: {
         type: String,
-        required: true
+        required: true,
+        default:"rgrang816@west-mec.edu"
     },
     startDate: {
         type: Number
@@ -20,11 +22,11 @@ const eventModel = new mongoose.Schema({
     },
     participants: {
         type: Array,
-        required: true
+        default:[]
     },
     eventPrograms: {
         type: Array,
-        required: true
+        default:[true,true,true,true,true,true,true,true,true,true,true]
     },
     visitorCount: {
         type:Number,
