@@ -5,12 +5,14 @@ const { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEven
 const { getParticipantData } = require("../Modules/user")
 const { sendEmail } = require('../Modules/email');
 const connectDB = require("../connect");
+const e = require("cors");
 //should block the sender from sending without meeting certain requirements to be a host
 app.use("/", async (req, res, next) => {
     next();
 })
 app.post("/getEventList",async (req,res)=>{
-    const eventList=await getEventList();
+    var eventList=await getEventList();
+    console.log(eventList);
     res.status(200).send(eventList);
 })
 
@@ -57,10 +59,20 @@ app.post("/finishEvent", async (req, res) => {
     }
 
     const participantData = await getParticipantData(eventData.participants);
-    var participantFormat = participantData.map((participant) => `<li><p>${participant.name}</p><p>${participant.email}</p><p>${eventData.eventName}</p></li>`).join("")
+    var participants=participantData;
+    var participantFormat = participantData.map((participant) => `<li><p>${participant.name}</p><p>${participant.email}</p><p>${participant.visitedEvent}</p></li>`).join("")
+    console.log(participantFormat, participantData, eventData);
+    sendEmail("rgrang816@west-mec.org", "PILLAGE THE MINORITY", participantFormat+`total estimated visitors:${eventData.visitorCount}`);
+    //send emails to each participant to thank them for being there
+    participants.forEach((participant)=>{
+        sendEmail(participant.email,`West-MEC NE ${eventData.eventName}`,/*
+            put in the default email to send to the participants of the events
+        
+        */'t','t'/*put the string for the email body here, the content prior to this will be in whatever says SWAPOUT inside this string*/)
+    })
+    //send a message to each teacher with a list of the participants and visitors in their event/open house
 
-    console.log(participantFormat, participantData, eventData)
-    sendEmail("rgrang816@west-mec.org", "PILLAGE THE MINORITY", participantFormat);
+
 
     endEvent(body);
     console.log("ENDED EVENT:", body)

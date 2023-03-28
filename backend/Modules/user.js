@@ -29,16 +29,21 @@ const getUserByEmail = async (userEmail) => {
 
 
 const userJoin = async (Filter, userInfo) => {
-    const { userName, userEmail } = userInfo
+    const { userName, userEmail, eventName} = userInfo
 
     var userData = await getUserByEmail(userEmail)
     if (!userData) {
-        const newUser = new user({ name: userName, email: userEmail })
+        const newUser = new user({ name: userName, email: userEmail, eventName})
         await newUser.save();
         userData = newUser
     }
     console.log(userData)
     return await addToEvent(Filter, userData._id)
 }
-
+const joinProgram = async (req,res)=>{
+    const {userName,userEmail,programName}= req.body;
+    var userData=await getUserByEmail(userEmail);
+    if(!userData){return res.status(404).send({success:false,msg:"no user with given email"})}
+    await user.findOneAndUpdate({email:userEmail},{visitedEvent:programName});
+}
 module.exports = { getUserByEmail, userJoin, getUserList, getParticipantData }

@@ -12,12 +12,12 @@ var transporter = nodemailer.createTransport(
   })
 );
 
-const sendEmail = (target, subject, contents) => {
+const sendEmail = (target, subject, contents,base=baseEmail) => {
   var mailOptions = {
     from: 'rgrang816@west-mec.org',
     to: target,
     subject: subject,
-    html: baseEmail.replace('swapOut',contents),
+    html: base.replace('swapOut',contents),
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {

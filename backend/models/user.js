@@ -8,6 +8,10 @@ const userModel=new mongoose.Schema({
  email:{
     type:String,
     required:true
+ },
+ visitedEvent:{
+   type:String,
+   default:"UNDISCLOSED"
  }
 })
 module.exports = mongoose.model("users", userModel);
