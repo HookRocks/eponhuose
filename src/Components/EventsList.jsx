@@ -8,6 +8,7 @@ const EventsList=() => {
       method: "POST",
       body: {}
     }).then(eventList => {
+      console.log(eventList)
       eventList=eventList.json().then((e)=>{
         setEventList(e);
       });
@@ -18,7 +19,7 @@ const EventsList=() => {
       <h1>Events</h1>
       {console.log(events)}
       {
-        events.length?
+        events[0]!="E"?
         events.map((event) => {
           <Event eventName={event.eventName} eventStartDate={event.startDate} eventEndDate={event.endDate}/>
       }):(<h1>No events exist</h1>)

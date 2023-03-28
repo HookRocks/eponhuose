@@ -17,18 +17,17 @@ const connectDB = require("../connect");
 const e = require("cors");
 //should block the sender from sending without meeting certain requirements to be a host
 app.use("/", async (req, res, next) => {
-    next();
-})
-app.post("/getEventList",async (req,res)=>{
-    var eventList=await getEventList();
-    console.log(eventList);
-    res.status(200).send(eventList);
-})
-
+  next();
+});
+app.post("/getEventList", async (req, res) => {
+  var eventList = await getEventList();
+  console.log(eventList);
+  res.status(200).send(eventList);
+});
 
 //creates a new event into the database
 app.post("/createEvent", async (req, res) => {
-  const NewEvent = await createEvent(req.body); // idk use the return?
+  const NewEvent = await createEvent(await JSON.parse(req.body)); // idk use the return?
 
   console.log("CREATED THE NEW EVENT WITH DATA:", req.body);
   res.status(200).send({ message: "living failure" });
@@ -69,38 +68,33 @@ app.post("/finishEvent", async (req, res) => {
     return;
   }
 
-<<<<<<< HEAD
   const participantData = await getParticipantData(eventData.participants);
+  var participants = participantData;
   var participantFormat = participantData
     .map(
       (participant) =>
-        `<li><p>${participant.name}</p><p>${participant.email}</p><p>${eventData.eventName}</p></li>`
+        `<li><p>${participant.name}</p><p>${participant.email}</p><p>${participant.visitedEvent}</p></li>`
     )
     .join("");
-
   console.log(participantFormat, participantData, eventData);
   sendEmail(
     "rgrang816@west-mec.org",
     "PILLAGE THE MINORITY",
-    participantFormat
+    participantFormat + `total estimated visitors:${eventData.visitorCount}`
   );
-=======
-    const participantData = await getParticipantData(eventData.participants);
-    var participants=participantData;
-    var participantFormat = participantData.map((participant) => `<li><p>${participant.name}</p><p>${participant.email}</p><p>${participant.visitedEvent}</p></li>`).join("")
-    console.log(participantFormat, participantData, eventData);
-    sendEmail("rgrang816@west-mec.org", "PILLAGE THE MINORITY", participantFormat+`total estimated visitors:${eventData.visitorCount}`);
-    //send emails to each participant to thank them for being there
-    participants.forEach((participant)=>{
-        sendEmail(participant.email,`West-MEC NE ${eventData.eventName}`,/*
+  //send emails to each participant to thank them for being there
+  participants.forEach((participant) => {
+    sendEmail(
+      participant.email,
+      `West-MEC NE ${eventData.eventName}`,
+      /*
             put in the default email to send to the participants of the events
         
-        */'t','t'/*put the string for the email body here, the content prior to this will be in whatever says SWAPOUT inside this string*/)
-    })
-    //send a message to each teacher with a list of the participants and visitors in their event/open house
-
-
->>>>>>> 2f9cddad773aeec4162c97dc37d8b0f0503ef197
+        */ "t",
+      "t" /*put the string for the email body here, the content prior to this will be in whatever says SWAPOUT inside this string*/
+    );
+  });
+  //send a message to each teacher with a list of the participants and visitors in their event/open house
 
   endEvent(body);
   console.log("ENDED EVENT:", body);

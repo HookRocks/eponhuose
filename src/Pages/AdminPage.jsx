@@ -27,11 +27,11 @@ const AdminPage=() => {
 function createEventButton(){
     fetch("http://localhost:3001/event/createEvent",{
       method: "POST",
-      body: {
+      body: JSON.stringify({
          eventName: eventNameMade,
          startDate: startDateMade,
          endDate: endDateMade
-      }
+      })
     })
   }
 
