@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import EventProgramInfo from '../Components/EventProgramInfo'
 
+
 const Main=() => {
+  
+
   const [clicked,setClicked]=useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

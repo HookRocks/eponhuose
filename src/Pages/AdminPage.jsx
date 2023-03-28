@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import $ from 'jquery';
 import PreBuiltCheckbox from '../Components/PreBuiltCheckbox';
+import EventsList from '../Components/EventsList';
+import Event from '../Components/Event';
 
 const AdminPage=() => {
   function toggle(divId, sourceCheckbox) {
@@ -29,22 +31,24 @@ const AdminPage=() => {
   });
 
   return (
-    <div className={windowWidth<640?`grid sm:grid-cols-[6fr_4fr] grid-rows-1 min-h-screen`:`grid  lg:${clicked?'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen':'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'} `}>
-      <div className={windowWidth<640? `${clicked? '':'flex text-center justify-center min-w-full font-extrabold text-2xl '} bg-pink-400 `:`bg-pink-400 w-full`}>
+    <div className={windowWidth<640?``:`grid  lg:${clicked?'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen':'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'} `}>
+      <div className={windowWidth<640? `hidden `:`bg-pink-400 w-full`}>
         Map
       </div>
-      <div className={windowWidth<640? ` text-white fixed sm:static sm:block bg-blue-600 w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${clicked? 'translate-y-[33rem]':'translate-y-[-8rem]'}`:`static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white `} >
-        
-        <form action='/admin/submited' target='_self' method='get'>
+
+
+      <div className="static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white flex flex-col gap-6" >
+    <div>
+      <form action='/admin/submited' target='_self' method='get'>
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
-            <legend>Create Event</legend>
+            <legend className='text-xl'>Create Event</legend>
             <div className='flex align-start justify-start flex-col gap-4'>
-              <div><label>Event Name: </label><input type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' /></div>
-              <div><label>Start Date and Time: </label><input type="datetime-local" id="startTime" className='text-black' name="startTime"/></div>
-              <div><label>End Date and Time: </label><input type="datetime-local" id="endTime" className='text-black' name="endTime"/></div>
+              <div><label className='text-lg'>Event Name: </label><input type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' /></div>
+              <div><label className='text-lg'>Start Date and Time: </label><input type="datetime-local" id="startTime" className='text-black' name="startTime"/></div>
+              <div><label className='text-lg'>End Date and Time: </label><input type="datetime-local" id="endTime" className='text-black' name="endTime"/></div>
             </div>
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
-            <legend>Programs</legend>
+            <legend className='text-lg'>Programs</legend>
               <PreBuiltCheckbox boxId="select-all" onClick={() => {toggle("allClasses", this)}} boxContent="All Programs" className=""/>
             <div className='flex align-center justify-center gap-x-9 mt-2 ml-3'>
               <div id='allClasses' className='flex align-start justify-start flex-col'>
@@ -68,11 +72,13 @@ const AdminPage=() => {
             <input type="submit" value="Submit" />
             </fieldset>
         </form>
-
       </div>
       <div>
-      
+          {/* <EventsList /> */}
+           <Event eventName="Open House" eventStartDate="3/27/2023" eventEndDate="3/27/2023"/>
       </div>
+      </div>
+      
     </div>
   )
 }
