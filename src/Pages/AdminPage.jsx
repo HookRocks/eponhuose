@@ -5,6 +5,15 @@ import EventsList from '../Components/EventsList';
 import Event from '../Components/Event';
 
 const AdminPage=() => {
+  const [windowWidth,setWindowWidth]=useState(window.innerWidth);
+    const [clicked,setClicked]=useState("")
+  const [events,setEventList]=useState(["E"]);
+  const [eventNameMade,setEventName]=useState();
+  const [startDateMade,setStartDate]=useState();
+  const [endDateMade,setEndDate]=useState("");
+  const [programsMade,setPrograms]=useState([]);
+
+
   function toggle(divId, sourceCheckbox) {
     var divElement = document.getElementById(divId);
     var inputElements = divElement.getElementsByTagName('input');
@@ -14,8 +23,17 @@ const AdminPage=() => {
         inputElements[i].checked = sourceCheckbox.checked;
     }
 }
-  const [clicked,setClicked]=useState(false);
-  const [windowWidth,setWindowWidth]=useState(window.innerWidth);
+
+function createEventButton(){
+    fetch("http://localhost:3001/event/createEvent",{
+      method: "POST",
+      body: {
+         eventName: eventNameMade,
+         startDate: startDateMade,
+         endDate: endDateMade
+      }
+    })
+  }
 
 
   useEffect(() => {
@@ -39,14 +57,14 @@ const AdminPage=() => {
 
       <div className="static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white flex flex-col gap-6" >
     <div>
-      <form action='/admin/submited' target='_self' method='get'>
+      <form target='_self' method='get'>
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
             <legend className='text-xl'>Create Event</legend>
             <div className='flex align-start justify-start flex-col gap-4'>
-              <div><label className='text-lg'>Event Name: </label><input type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' /></div>
-              <div><label className='text-lg'>Start Date and Time: </label><input type="datetime-local" id="startTime" className='text-black' name="startTime"/></div>
-              <div><label className='text-lg'>End Date and Time: </label><input type="datetime-local" id="endTime" className='text-black' name="endTime"/></div>
-            </div>
+              <div><label className='text-lg'>Event Name: </label><input  onChange={(e)=>{setEventName(e.target.value)}} type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' value={eventNameMade}/></div>
+              <div><label className='text-lg'>Start Date and Time: </label><input  onChange={(e)=>{setStartDate(new Date(e.target.value).getTime())}} type="datetime-local" id="startTime" className='text-black' name="startTime"/></div>
+                <div><label className='text-lg'>End Date and Time: </label><input onChange={(e) => {let a=new Date(e.target.value); setEndDate(a.getTime())}} type="datetime-local" id="endTime" className='text-black' name="endTime"/></div>
+              </div>
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
             <legend className='text-lg'>Programs</legend>
               <PreBuiltCheckbox boxId="select-all" onClick={() => {toggle("allClasses", this)}} boxContent="All Programs" className=""/>
@@ -69,13 +87,12 @@ const AdminPage=() => {
               </div>
             </div>
           </fieldset>
-            <input type="submit" value="Submit" />
+              <input type="submit" vlaue="Submit" onClick={(ev) => {ev.stopPropagation(); createEventButton();}}/>
             </fieldset>
         </form>
       </div>
       <div>
-          {/* <EventsList /> */}
-           <Event eventName="Open House" eventStartDate="3/27/2023" eventEndDate="3/27/2023"/>
+          <EventsList />
       </div>
       </div>
       

@@ -1,76 +1,95 @@
 const express = require("express");
 require("dotenv").config();
-const app = express.Router()
-const { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, visitEvent, getEventList} = require("../Modules/event")
-const { getParticipantData } = require("../Modules/user")
-const { sendEmail } = require('../Modules/email');
+const app = express.Router();
+const {
+  addToEvent,
+  endEvent,
+  createEvent,
+  getEvent,
+  getParticipants,
+  updateEvent,
+  visitEvent,
+  getEventList,
+} = require("../Modules/event");
+const { getParticipantData } = require("../Modules/user");
+const { sendEmail } = require("../Modules/email");
 const connectDB = require("../connect");
 //should block the sender from sending without meeting certain requirements to be a host
 app.use("/", async (req, res, next) => {
-    next();
-})
-app.post("/getEventList",async (req,res)=>{
-    const eventList=await getEventList();
-    res.status(200).send(eventList);
-})
-
+  next();
+});
+app.post("/getEventList", async (req, res) => {
+  const eventList = await getEventList();
+  console.log(eventList);
+  res.status(200).send(eventList);
+});
 
 //creates a new event into the database
 app.post("/createEvent", async (req, res) => {
-    const NewEvent = await createEvent(req.body) // idk use the return?
+  const NewEvent = await createEvent(req.body); // idk use the return?
 
-    console.log("CREATED THE NEW EVENT WITH DATA:", req.body)
-    res.status(200).send({ message: "living failure" })
-})
+  console.log("CREATED THE NEW EVENT WITH DATA:", req.body);
+  res.status(200).send({ message: "living failure" });
+});
 
 //returns the current event and it's data
 app.post("/getEvent", async (req, res) => {
-    const body = req.body || {}
-    const Event = await getEvent(body)
+  const body = req.body || {};
+  const Event = await getEvent(body);
 
-    console.log("RETURNED EVENT:", Event)
-    res.status(200).send({ success: true, event: Event })
-})
+  console.log("RETURNED EVENT:", Event);
+  res.status(200).send({ success: true, event: Event });
+});
 
 app.post("/updateEvent", async (req, res) => {
-    const Filter = req.body.Filter
-    const Update = req.body.Update
+  const Filter = req.body.Filter;
+  const Update = req.body.Update;
 
-    if (!Filter || !Update) {
-        console.warn("Filter and/or update was not provided, structure your body like this: \n {Filter:{},Update:{}}")
-    }
+  if (!Filter || !Update) {
+    console.warn(
+      "Filter and/or update was not provided, structure your body like this: \n {Filter:{},Update:{}}"
+    );
+  }
 
-    const Returned = updateEvent(Filter, Update)
-    console.log("RETURNED EVENT:", Returned)
-    res.status(200).send({ success: true, Updated: Returned })
-})
+  const Returned = updateEvent(Filter, Update);
+  console.log("RETURNED EVENT:", Returned);
+  res.status(200).send({ success: true, Updated: Returned });
+});
 
 //removes the event after compiling the event data to send as an email to the event host
 app.post("/finishEvent", async (req, res) => {
-    const body = req.body || {}
+  const body = req.body || {};
 
-    const eventData = await getEvent(body);
-    if (!eventData) {
-        console.warn("event data was not found")
-        res.status(400).send({ success: false })
-        return
-    }
+  const eventData = await getEvent(body);
+  if (!eventData) {
+    console.warn("event data was not found");
+    res.status(400).send({ success: false });
+    return;
+  }
 
-    const participantData = await getParticipantData(eventData.participants);
-    var participantFormat = participantData.map((participant) => `<li><p>${participant.name}</p><p>${participant.email}</p><p>${eventData.eventName}</p></li>`).join("")
+  const participantData = await getParticipantData(eventData.participants);
+  var participantFormat = participantData
+    .map(
+      (participant) =>
+        `<li><p>${participant.name}</p><p>${participant.email}</p><p>${eventData.eventName}</p></li>`
+    )
+    .join("");
 
-    console.log(participantFormat, participantData, eventData)
-    sendEmail("rgrang816@west-mec.org", "PILLAGE THE MINORITY", participantFormat);
+  console.log(participantFormat, participantData, eventData);
+  sendEmail(
+    "rgrang816@west-mec.org",
+    "PILLAGE THE MINORITY",
+    participantFormat
+  );
 
-    endEvent(body);
-    console.log("ENDED EVENT:", body)
-    res.status(200).send({ success: true })
-})
-app.post('/visitEvent',async(req,res)=>{
-    const body= req.body || {};
-    await visitEvent(req,res);
-    res.status(200).send({success:true});
-})
+  endEvent(body);
+  console.log("ENDED EVENT:", body);
+  res.status(200).send({ success: true });
+});
+app.post("/visitEvent", async (req, res) => {
+  const body = req.body || {};
+  await visitEvent(req, res);
+  res.status(200).send({ success: true });
+});
 
-
-module.exports = app
+module.exports = app;
