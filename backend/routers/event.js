@@ -20,7 +20,7 @@ app.use("/", async (req, res, next) => {
   next();
 });
 app.post("/getEventList", async (req, res) => {
-  var eventList = await getEventList();
+  var eventList = await getEventList({});
   console.log(eventList);
   res.status(200).send(eventList);
 });
