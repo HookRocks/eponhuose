@@ -11,7 +11,7 @@ const AdminPage=() => {
   const [eventNameMade,setEventName]=useState();
   const [startDateMade,setStartDate]=useState();
   const [endDateMade,setEndDate]=useState("");
-  const [programsMade,setPrograms]=useState([]);
+  const [programsMade,setPrograms]=useState([false,false,false,false,false,false,false,false,false,false,false]);
 
 
   function toggle(divId, sourceCheckbox) {
@@ -30,7 +30,8 @@ function createEventButton(){
       body: JSON.stringify({
          eventName: eventNameMade,
          startDate: startDateMade,
-         endDate: endDateMade
+        endDate: endDateMade,
+         eventPrograms: programsMade,
       })
     })
   }
@@ -61,30 +62,30 @@ function createEventButton(){
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
             <legend className='text-xl'>Create Event</legend>
             <div className='flex align-start justify-start flex-col gap-4'>
-              <div><label className='text-lg'>Event Name: </label><input  onChange={(e)=>{setEventName(e.target.value)}} type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' value={eventNameMade}/></div>
-              <div><label className='text-lg'>Start Date and Time: </label><input  onChange={(e)=>{setStartDate(new Date(e.target.value).getTime())}} type="datetime-local" id="startTime" className='text-black' name="startTime"/></div>
-                <div><label className='text-lg'>End Date and Time: </label><input onChange={(e) => {let a=new Date(e.target.value); setEndDate(a.getTime())}} type="datetime-local" id="endTime" className='text-black' name="endTime"/></div>
+              <div><label className='text-lg'>Event Name: </label><input required onChange={(e)=>{setEventName(e.target.value)}} type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' value={eventNameMade}/></div>
+              <div><label className='text-lg'>Start Date and Time: </label><input required onChange={(e)=>{setStartDate(new Date(e.target.value).getTime())}} type="datetime-local" id="startTime" className='text-black' name="startTime"/></div>
+                <div><label className='text-lg'>End Date and Time: </label><input required onChange={(e) => {let a=new Date(e.target.value); setEndDate(a.getTime())}} type="datetime-local" id="endTime" className='text-black' name="endTime"/></div>
               </div>
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
             <legend className='text-lg'>Programs</legend>
-              <PreBuiltCheckbox boxId="select-all" onClick={() => {toggle("allClasses", this)}} boxContent="All Programs" className=""/>
+                <PreBuiltCheckbox boxId="select-all" onClick={() => {toggle("allClasses",this)}} boxContent="All Programs" className="" />
             <div className='flex align-center justify-center gap-x-9 mt-2 ml-3'>
               <div id='allClasses' className='flex align-start justify-start flex-col'>
-                <PreBuiltCheckbox boxId="Coding" boxContent="Coding" />
-                <PreBuiltCheckbox boxId="HVAC" boxContent="HVAC" />
-                <PreBuiltCheckbox boxId="ACTech" boxContent="AC Technology" />
-                <PreBuiltCheckbox boxId="ElectricTradeSpecial" boxContent="Electrical Trade Speciality" />
-                <PreBuiltCheckbox boxId="Pharmacy" boxContent="Pharmacy Science" />
-                <PreBuiltCheckbox boxId="VetScience" boxContent="Veterinary Science" />
+                    <PreBuiltCheckbox boxId="Coding" boxContent="Coding" onClick={() => {setPrograms([!programsMade[0],...programsMade]); console.log(programsMade)}} />
+                <PreBuiltCheckbox boxId="HVAC" boxContent="HVAC" onClick={() => {setPrograms([!programsMade[1],...programsMade]); console.log(programsMade)}}/>
+                <PreBuiltCheckbox boxId="ACTech" boxContent="AC Technology" onClick={() => {setPrograms([!programsMade[2],...programsMade]); console.log(programsMade)}}/>
+                <PreBuiltCheckbox boxId="ElectricTradeSpecial" boxContent="Electrical Trade Speciality" onClick={() => {setPrograms([!programsMade[3],...programsMade]); console.log(programsMade)}}/>
+                <PreBuiltCheckbox boxId="Pharmacy" boxContent="Pharmacy Science" onClick={() => {setPrograms([!programsMade[4],...programsMade]); console.log(programsMade)}}/>
+                <PreBuiltCheckbox boxId="VetScience" boxContent="Veterinary Science" onClick={() => {setPrograms([!programsMade[5],...programsMade]); console.log(programsMade)}}/>
               </div>
               <div  className='flex align-center justify-start flex-col'>
-                <PreBuiltCheckbox boxId="MA" boxContent="Medical Assisting" />
-                <PreBuiltCheckbox boxId="AutoTech" boxContent="Automotive Technology" />
-                <PreBuiltCheckbox boxId="Collision" boxContent="Collision Repair and Refinishing" />
-                <PreBuiltCheckbox boxId="Construction" boxContent="General Construction Technology" />
-                <PreBuiltCheckbox boxId="Diesel" boxContent="Diesel Technology" />
-
-              </div>
+                <PreBuiltCheckbox boxId="MA" boxContent="Medical Assisting" onClick={() => {setPrograms([!programsMade[6],...programsMade]); console.log(programsMade)}}/>
+                <PreBuiltCheckbox boxId="AutoTech" boxContent="Automotive Technology" onClick={() => {setPrograms([!programsMade[7],...programsMade]); console.log(programsMade)}}/>
+                <PreBuiltCheckbox boxId="Collision" boxContent="Collision Repair and Refinishing" onClick={() => {setPrograms([!programsMade[8],...programsMade]); console.log(programsMade)}}/>
+                <PreBuiltCheckbox boxId="Construction" boxContent="General Construction Technology" onClick={() => {setPrograms([!programsMade[9],...programsMade]); console.log(programsMade)}}/>
+                <PreBuiltCheckbox boxId="Diesel" boxContent="Diesel Technology" onClick={() => {setPrograms([!programsMade[10],...programsMade]); console.log(programsMade)}}/>
+                  </div>
+                  {console.log(programsMade)}
             </div>
           </fieldset>
               <input type="submit" vlaue="Submit" onClick={(ev) => {ev.stopPropagation(); createEventButton();}}/>
