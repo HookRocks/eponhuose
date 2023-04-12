@@ -27,6 +27,11 @@ const sendEmail = (target, subject, contents,base=baseEmail) => {
     }
   });
 };
+const sendBulkEmail = (targets,subject,contents,base=baseEmail) =>{
+  targets.forEach((target)=>{sendEmail(target,subject,contents,baseEmail)})
+}
+
+
 
 const baseEmail=`
 <html>
@@ -51,4 +56,6 @@ const baseEmail=`
 </html>`
 
 
-module.exports = { sendEmail };
+
+
+module.exports = { sendEmail,sendBulkEmail};

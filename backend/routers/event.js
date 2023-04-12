@@ -12,9 +12,12 @@ const {
   getEventList,
 } = require("../Modules/event");
 const { getParticipantData } = require("../Modules/user");
-const { sendEmail } = require("../Modules/email");
+const { sendEmail, sendBulkEmail } = require("../Modules/email");
 const connectDB = require("../connect");
 const e = require("cors");
+
+const classData=require("../../src/modules/ProgramInfo.json")
+
 //should block the sender from sending without meeting certain requirements to be a host
 app.use("/", async (req, res, next) => {
   next();
@@ -68,6 +71,7 @@ app.post("/finishEvent", async (req, res) => {
     return;
   }
 
+  //compile event participant info for the manager to view in an email
   const participantData = await getParticipantData(eventData.participants);
   var participants = participantData;
   var participantFormat = participantData
@@ -77,24 +81,25 @@ app.post("/finishEvent", async (req, res) => {
     )
     .join("");
   console.log(participantFormat, participantData, eventData);
+  //send email to event host/manager
   sendEmail(
     "rgrang816@west-mec.org",
     "PILLAGE THE MINORITY",
     participantFormat + `total estimated visitors:${eventData.visitorCount}`
   );
   //send emails to each participant to thank them for being there
-  participants.forEach((participant) => {
-    sendEmail(
-      participant.email,
-      `West-MEC NE ${eventData.eventName}`,
-      /*
-            put in the default email to send to the participants of the events
-        
-        */ "t",
-      "t" /*put the string for the email body here, the content prior to this will be in whatever says SWAPOUT inside this string*/
-    );
-  });
+  sendBulkEmail(participants.map((participant)=>participant.email),"test2","test2")
+  
+  
   //send a message to each teacher with a list of the participants and visitors in their event/open house
+  var teachersToEmail=[]
+  eventData.eventPrograms.forEach((val,i)=>{
+    if(val){
+      classData[i].instructorName.forEach((name,j)=>{
+        teachersToEmail.push({name,email:classData[i].instructorEmail[j]});
+  })}})
+  sendBulkEmail(teachersToEmail.map((teachers)=>teachers.email),"test","test");
+
 
   endEvent(body);
   console.log("ENDED EVENT:", body);
@@ -105,5 +110,10 @@ app.post("/visitEvent", async (req, res) => {
   await visitEvent(req, res);
   res.status(200).send({ success: true });
 });
+
+app.post('/deleteEvent',async(req,res)=>{
+  const body = req.body || {};
+  endEvent(body);
+})
 
 module.exports = app;
