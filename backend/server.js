@@ -9,6 +9,7 @@ const UserRouter = require("./routers/user");
 const ProgramsRouter = require("./routers/programs");
 const EventRouter = require("./routers/event");
 const manageRouter= require("./routers/manager");
+const { events } = require('./models/event');
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
@@ -39,3 +40,5 @@ app.use("/manager",manageRouter);
 app.listen(3001, () => {
   console.log(`server is running on port 3001`);
 });
+
+

@@ -12,7 +12,7 @@ const getEventList = async (args) => {
 //returns current event
 const getEvent = async (args) => {
     await connectDB(process.env.MONGO_URI)
-    if(args=="current"||args=={}||args==undefined){args={};args.startDate={$gte:Date.now()};args.endDate={$lte:Date.now()}}
+    if(args.startDate=="current"||args=={}||args==undefined){args={};args.startDate={$gte:Date.now()};args.endDate={$lte:Date.now()}}
 
     return await event.find(args).sort({startDate:-1})
 }
@@ -51,7 +51,7 @@ const updateEvent = async (filter, update) => {
 //should only call after the event is over and has sent needed info to the host
 const endEvent = async (args) => {
     await connectDB(process.env.MONGO_URI);
-    await event.deleteMany(args);
+    await event.deleteOne(args);
     return "loser"
 }
 
