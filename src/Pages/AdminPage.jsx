@@ -71,7 +71,7 @@ function createEventButton(){
                 <PreBuiltCheckbox boxId="select-all" onClick={() => {toggle("allClasses",this)}} boxContent="All Programs" className="" />
             <div className='flex align-center justify-center gap-x-9 mt-2 ml-3'>
               <div id='allClasses' className='flex align-start justify-start flex-col'>
-                    <PreBuiltCheckbox boxId="Coding" boxContent="Coding" onClick={() => {setPrograms([!programsMade[0],...programsMade]); console.log(programsMade)}} />
+                    <PreBuiltCheckbox boxId="Coding" boxContent="Coding" onClick={() => {setPrograms(programsMade.map((val)=>val==0?!val:val)); console.log(programsMade)}} />
                 <PreBuiltCheckbox boxId="HVAC" boxContent="HVAC" onClick={() => {setPrograms([!programsMade[1],...programsMade]); console.log(programsMade)}}/>
                 <PreBuiltCheckbox boxId="ACTech" boxContent="AC Technology" onClick={() => {setPrograms([!programsMade[2],...programsMade]); console.log(programsMade)}}/>
                 <PreBuiltCheckbox boxId="ElectricTradeSpecial" boxContent="Electrical Trade Speciality" onClick={() => {setPrograms([!programsMade[3],...programsMade]); console.log(programsMade)}}/>

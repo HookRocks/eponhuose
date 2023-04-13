@@ -21,7 +21,7 @@ const EventsList=() => {
       {
         events.length?events.map((event) => (<div>
           <EventComp eventID={event._id} eventName={event.eventName} eventStartDate={Number(event.startDate)} eventEndDate={Number(event.endDate)} />
-            </div>)):(<h1>There are  o events</h1>)
+            </div>)):(<h1>There are 0 events</h1>)
       
       }
     </div>
