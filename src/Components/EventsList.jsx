@@ -20,7 +20,7 @@ const EventsList=() => {
       {console.log(events)}
       {
         events.length?events.map((event) => (<div>
-          <EventComp eventName={event.eventName} eventStartDate={Number(event.startDate)} eventEndDate={Number(event.endDate)} />
+          <EventComp eventID={event._id} eventName={event.eventName} eventStartDate={Number(event.startDate)} eventEndDate={Number(event.endDate)} />
             </div>)):(<h1>There are  o events</h1>)
       
       }
