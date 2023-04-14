@@ -4,8 +4,11 @@ import PreBuiltCheckbox from '../Components/PreBuiltCheckbox';
 import EventsList from '../Components/EventsList';
 import Event from '../Components/Event';
 import {set} from 'mongoose';
+import EventOverTimeGraph from '../Components/EventOverTimeGraph';
 
 const AdminPage=() => {
+
+
   const [isAllProgChecked, setIsAllProgChecked] = useState(false)
   const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     const [clicked,setClicked]=useState("")
@@ -51,6 +54,38 @@ function createEventButton(){
   return (
     <div className={windowWidth<640?``:`grid  lg:${clicked?'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen':'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'} `}>
       <div className={windowWidth<640? `hidden `:`bg-pink-400 w-full`}>
+         {/*<EventOverTimeGraph chartData={[
+//   {
+//     id: 1,
+//     year: 2016,
+//     userGain: 80000,
+//     userLost: 823,
+//   },
+//   {
+//     id: 2,
+//     year: 2017,
+//     userGain: 45677,
+//     userLost: 345,
+//   },
+//   {
+//     id: 3,
+//     year: 2018,
+//     userGain: 78888,
+//     userLost: 555,
+//   },
+//   {
+//     id: 4,
+//     year: 2019,
+//     userGain: 90000,
+//     userLost: 4555,
+//   },
+//   {
+//     id: 5,
+//     year: 2020,
+//     userGain: 4300,
+//     userLost: 234,
+//   },
+         // ]} />*/}
         charts and info
       </div>
 
