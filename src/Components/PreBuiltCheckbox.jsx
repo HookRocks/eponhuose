@@ -9,8 +9,8 @@ import {
   useChain
 } from "react-spring";
 
-const PreBuiltCheckbox=({boxId, boxContent}) => {
-  const [isChecked,setIsChecked]=useState(false);
+const PreBuiltCheckbox=({boxId, boxContent, boxFunction,isCheckedAlready}) => {
+  const [isChecked,setIsChecked]=useState(isCheckedAlready);
   const checkboxAnimationRef = useSpringRef();
   const checkboxAnimationStyle = useSpring({
     backgroundColor: isChecked ? "#808" : "#fff",
@@ -39,9 +39,12 @@ const PreBuiltCheckbox=({boxId, boxContent}) => {
       <input
         type="checkbox"
         name={boxId}
+        value={isChecked}
         id={boxId}
         onChange={() => {
+          
           setIsChecked(!isChecked);
+          boxFunction();
               }}
               className="inline-block"
       />

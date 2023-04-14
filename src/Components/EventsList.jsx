@@ -19,8 +19,8 @@ const EventsList=() => {
       <h1>Events</h1>
       {console.log(events)}
       {
-        events.length?events.map((event) => (<div>
-          <EventComp eventID={event._id} eventName={event.eventName} eventStartDate={Number(event.startDate)} eventEndDate={Number(event.endDate)} />
+        events.length>0&&events[0]!="E"?events.map((event) => (<div>
+          <EventComp eventID={event._id} eventName={event.eventName} eventStartDate={Number(event.startDate)} key={event._id} eventEndDate={Number(event.endDate)} />
             </div>)):(<h1>There are 0 events</h1>)
       
       }
