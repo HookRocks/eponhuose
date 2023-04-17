@@ -7,6 +7,7 @@ import {
 import "./index.css";
 import Main from "./Pages/Main.jsx";
 import AdminPage from "./Pages/AdminPage";
+import MarkerContext from './Contexts/MarkerContext';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <MarkerContext.Provider>
+      <RouterProvider router={router} />
+    </MarkerContext.Provider>
   </React.StrictMode>
 );
