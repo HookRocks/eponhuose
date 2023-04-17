@@ -51,7 +51,7 @@ const updateEvent = async (filter, update) => {
 //should only call after the event is over and has sent needed info to the host
 const endEvent = async (args) => {
     await connectDB(process.env.MONGO_URI);
-    await event.deleteOne(args);
+    await event.deleteOne(JSON.parse(args));
     return "loser"
 }
 
