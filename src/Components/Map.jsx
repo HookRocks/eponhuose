@@ -9,7 +9,7 @@ function Map() {
     );
   }, []);
   return (
-    <>
+    <div>
       <div className='experience'>
         <canvas className='experience-canvas'></canvas>
       </div>
@@ -53,7 +53,7 @@ function Map() {
       <div className='loader__wrapper'>
         <p className='loader__wrapper__items'>Loaded Resource 0 / 35</p>
       </div>
-    </>
+    </div>
   );
 }
 
