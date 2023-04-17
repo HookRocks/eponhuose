@@ -1,19 +1,123 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.arrow{
-  transition-duration:0.125s;
+.arrow {
+  transition-duration: 0.125s;
 }
 /* Add these styles to animate the arrows on hover */
 .arrow:hover .arrow-left {
-   transform : translateX(-.65rem);
-   transition-duration: 0.125s;
-   font-size: 2.35rem;
-   transition-timing-function: linear;
+  transform: translateX(-0.65rem);
+  transition-duration: 0.125s;
+  font-size: 2.35rem;
+  transition-timing-function: linear;
 }
 .arrow:hover .arrow-right {
-   transform : translateX(.65rem);
-   transition-duration: 0.125s;
-   font-size: 2.35rem;
-   transition-timing-function: linear;
+  transform: translateX(0.65rem);
+  transition-duration: 0.125s;
+  font-size: 2.35rem;
+  transition-timing-function: linear;
+}
+.experience {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+.experience-canvas {
+  width: 100%;
+  height: 100%;
+}
+.loader__wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  font-size: clamp(2rem, 5vw, 5rem);
+  text-align: center;
+  color: #111;
+  font-family: system-ui;
+  font-weight: 600;
+  backdrop-filter: blur(9px) saturate(179%);
+  -webkit-backdrop-filter: blur(9px) saturate(179%);
+  background-color: rgba(255, 255, 255, 0.61);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  padding: 2rem;
+}
+
+.point {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  font-family: system-ui;
+  font-weight: 600;
+}
+
+.points__wrapper {
+  transition: 750ms ease opacity;
+}
+.buttons {
+  position: fixed;
+  bottom: -5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  z-index: 1000;
+  transition: 750ms cubic-bezier(0.35, 1.49, 0.85, 1.11) bottom;
+}
+
+.buttons > * {
+  width: 16rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(90deg, #5522fa 0, #0074e4 100%);
+  border-radius: 50px;
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.buttons > *:hover {
+  box-shadow: 0 0 0 0.15rem #5ceace;
+}
+.instructions {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-size: 2rem;
+  font-family: system-ui;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+  background: #e0f3fa;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.mice {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.25rem;
+}
+.learn-more {
+  font-size: 1.5rem;
+}
+.mouse-image {
+  width: 6rem;
+  height: 6rem;
+  display: block;
+  margin-top: 1rem;
 }
