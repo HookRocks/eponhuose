@@ -10,9 +10,10 @@ const {
   updateEvent,
   visitEvent,
   getEventList,
+  getEndedEvents
 } = require("../Modules/event");
 const { getParticipantData } = require("../Modules/user");
-const { sendEmail, sendBulkEmail } = require("../Modules/email");
+const { sendEmail, sendBulkEmail, sendTeacherEmail} = require("../Modules/email");
 const connectDB = require("../connect");
 const e = require("cors");
 
@@ -92,13 +93,29 @@ app.post("/finishEvent", async (req, res) => {
   
   
   //send a message to each teacher with a list of the participants and visitors in their event/open house
-  var teachersToEmail=[]
-  eventData.eventPrograms.forEach((val,i)=>{
-    if(val){
-      classData[i].instructorName.forEach((name,j)=>{
-        teachersToEmail.push({name,email:classData[i].instructorEmail[j]});
-  })}})
-  sendBulkEmail(teachersToEmail.map((teachers)=>teachers.email),"test","test");
+  // Create an array of instructor emails and corresponding program names
+  const teachersToEmail = [];
+  eventData.eventPrograms.forEach((val, i) => {
+    if (val) {
+      classData[i].instructorName.forEach((name, j) => {
+        teachersToEmail.push({
+          name,
+          email: classData[i].instructorEmail[j],
+          programName: classData[i].programName
+        });
+      });
+    }
+  });
+
+  // Loop through the instructor emails and send the email to each one
+  teachersToEmail.forEach(teacher => {
+    // Filter the participants array to only include those who visited the teacher's program
+    const programParticipants = participants.filter(participant => participant.visitedEvent === eventData.eventName && participant.visitedProgram === teacher.programName);
+    // Generate the email content using the program name and participant list
+    const emailContent = sendTeacherEmail(teacher.programName, programParticipants);
+    // Send the email using the generated content
+    sendEmail(teacher.email, teacher.name, emailContent);
+  });
 
 
   endEvent(body);
@@ -114,6 +131,10 @@ app.post("/visitEvent", async (req, res) => {
 app.post('/deleteEvent',async(req,res)=>{
   const body = req.body || {};
   endEvent(body);
+})
+
+app.post("/getEndedEvents",async(req,res)=>{
+  return await getEndedEvents(req,res);
 })
 
 module.exports = app;

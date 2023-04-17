@@ -1,7 +1,7 @@
 const connectDB = require("../connect")
 require('dotenv').config()
 const event = require('../models/event')
-
+const endedEvent=require("../models/endedEvent")
 //returns all events
 const getEventList = async (args) => {
     await connectDB(process.env.MONGO_URI);
@@ -51,7 +51,11 @@ const updateEvent = async (filter, update) => {
 //should only call after the event is over and has sent needed info to the host
 const endEvent = async (args) => {
     await connectDB(process.env.MONGO_URI);
-    await event.deleteOne(JSON.parse(args));
+    const removedEvent=event.findOne(JSON.parse(args));
+    if(removedEvent){
+        await endedEvent(removedEvent).save()
+        await event.deleteOne(JSON.parse(args));
+    }
     return "loser"
 }
 
@@ -72,10 +76,19 @@ const addToEvent = async (Filter, userID) => { // add support for multiple event
 }
 //adds 1 to number of people going to an event
 const visitEvent=async(req,res)=>{
-    const {programName,eventName}=req.body;
+    const {programName,eventName}=JSON.parse(req.body);
     await connectDB(process.env.MONGO_URI);
     await event.findOneAndUpdate({eventName},{$inc:{visitorCount:1}});
     return {success:true,msg:"i dunno mate"};
 }
+//returns n most recent events
+const returnNumber=10;
+const getEndedEvents=async(req,res)=>{
+    await connectDB(process.env.MONGO_URI);
+    //sorts by most recent
+    const returnList=await endedEvent.find({}).sort({_id:-1}).limit(returnNumber)
+    return returnList;
+}
 
-module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList,visitEvent}
+
+module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList,visitEvent,getEndedEvents}

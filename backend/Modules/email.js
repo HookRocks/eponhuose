@@ -56,6 +56,38 @@ const baseEmail=`
 </html>`
 
 
+// Define a function to create the email content
+function sendTeacherEmail(programName, participants) {
+  // Start with a header
+  let emailContent = `<p>Hello [Instructor Name],</p>
+    <p>Below is a list of participants who attended your [Program Name] program:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>`;
+  // Loop through the participants
+  participants.forEach(participant => {
+    // If the participant visited the program matching programName, add their details to the email
+    if (participant.visitedProgram === programName) {
+      emailContent += `
+        <tr>
+          <td>${participant.name}</td>
+          <td>${participant.email}</td>
+        </tr>`;
+    }
+  });
+  // Add a footer
+  emailContent += `
+      </tbody>
+    </table>
+    <p>Thank you!</p>`;
+  // Return the completed email content
+  return emailContent;
+}
 
 
-module.exports = { sendEmail,sendBulkEmail};
+module.exports = { sendEmail,sendBulkEmail,sendTeacherEmail};

@@ -12,6 +12,10 @@ const userModel=new mongoose.Schema({
  visitedEvent:{
    type:String,
    default:"UNDISCLOSED"
+ },
+ visitedProgram:{
+   type:String,
+   default:"UNDISCLOSED"
  }
 })
 module.exports = mongoose.model("users", userModel);

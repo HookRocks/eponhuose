@@ -65,7 +65,7 @@ function createEventButton(){
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
             <legend className='text-xl'>Create Event</legend>
             <div className='flex align-start justify-start flex-col gap-4'>
-                <div><label className='text-lg'>Event Name: </label><input required onChange={(e) => {setEventName(e.target.value); console.log("a")}} type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' value={eventNameMade}/></div>
+                <div><label className='text-lg'>Event Name: </label><input required onChange={(e) => {setEventName(e.target.value);}} type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' value={eventNameMade}/></div>
               <div><label className='text-lg'>Start Date and Time: </label><input required onChange={(e)=>{setStartDate(new Date(e.target.value).getTime())}} type="datetime-local" id="startTime" className='text-black' name="startTime"/></div>
                 <div><label className='text-lg'>End Date and Time: </label><input required onChange={(e) => {let a=new Date(e.target.value); setEndDate(a.getTime())}} type="datetime-local" id="endTime" className='text-black' name="endTime"/></div>
               </div>
