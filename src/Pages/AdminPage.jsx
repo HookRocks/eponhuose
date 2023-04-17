@@ -54,38 +54,7 @@ function createEventButton(){
   return (
     <div className={windowWidth<640?``:`grid  lg:${clicked?'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen':'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'} `}>
       <div className={windowWidth<640? `hidden `:`bg-pink-400 w-full`}>
-         {/*<EventOverTimeGraph chartData={[
-//   {
-//     id: 1,
-//     year: 2016,
-//     userGain: 80000,
-//     userLost: 823,
-//   },
-//   {
-//     id: 2,
-//     year: 2017,
-//     userGain: 45677,
-//     userLost: 345,
-//   },
-//   {
-//     id: 3,
-//     year: 2018,
-//     userGain: 78888,
-//     userLost: 555,
-//   },
-//   {
-//     id: 4,
-//     year: 2019,
-//     userGain: 90000,
-//     userLost: 4555,
-//   },
-//   {
-//     id: 5,
-//     year: 2020,
-//     userGain: 4300,
-//     userLost: 234,
-//   },
-         // ]} />*/}
+        <EventOverTimeGraph />
         charts and info
       </div>
 
@@ -96,7 +65,7 @@ function createEventButton(){
           <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
             <legend className='text-xl'>Create Event</legend>
             <div className='flex align-start justify-start flex-col gap-4'>
-                <div><label className='text-lg'>Event Name: </label><input required onClick={(e) => {setEventName(e.target.value); console.log("a")}} type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' value={eventNameMade}/></div>
+                <div><label className='text-lg'>Event Name: </label><input required onChange={(e) => {setEventName(e.target.value); console.log("a")}} type="text" name="eventName" className='text-black' id="eventName" placeholder='Event Name' value={eventNameMade}/></div>
               <div><label className='text-lg'>Start Date and Time: </label><input required onChange={(e)=>{setStartDate(new Date(e.target.value).getTime())}} type="datetime-local" id="startTime" className='text-black' name="startTime"/></div>
                 <div><label className='text-lg'>End Date and Time: </label><input required onChange={(e) => {let a=new Date(e.target.value); setEndDate(a.getTime())}} type="datetime-local" id="endTime" className='text-black' name="endTime"/></div>
               </div>
