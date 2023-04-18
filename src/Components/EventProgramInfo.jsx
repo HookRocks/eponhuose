@@ -82,20 +82,20 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
     return (
       <div className='flex align-middle items-center justify-center min-h-full font-extrabold text-2xl'>
         <h1 className={windowWidth < 640 ? `` : `transform rotate-[270deg]`}>
-          EventProgramInfo
+          Program Information
         </h1>
       </div>
     );
   } else {
     return (
       <div className=' h-full text-center align-center justify-center'>
-        {givenProgramName != null ? (
+        {givenProgramName != null || givenProgramName != '' ? (
           <h1 className='font-bold text-xl'>{givenProgramName}</h1>
         ) : (
           <b>program list</b>
         )}
         <p>
-          {givenProgramName != null ? (
+          {givenProgramName != null || givenProgramName != '' ? (
             <h1 className='font-bold'>
               {programInfo[givenProgramName].instructorName.join(', ')}
             </h1>
@@ -104,7 +104,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           )}
         </p>
         <p className='font-bold'>Open House Event 3/27/2023 - 3/27/2023</p>
-        {givenProgramName != null ? (
+        {givenProgramName != null || givenProgramName != '' ? (
           <div className='w-full'>
             {programInfo[givenProgramName].POW.length > 1 ? (
               <div className='text-center'>

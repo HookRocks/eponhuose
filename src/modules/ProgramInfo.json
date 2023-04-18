@@ -48,7 +48,7 @@
       ]
     },
     "Automotive Technology":{
-      "programName": "Automotive Technology",
+      "programName": "Auto Tech",
       "POW": ["../assets/23-24-Auto-Tech-Info-Sheet.pdf"],
       "instructorName": ["Mr.Schumaker","Mr.Golding"],
       "classLocation": "Lab 2nd Floor",
@@ -70,7 +70,7 @@
         }
       ]
     },
-    "Collision Repair and Refinishing":{
+    "Collision Repair":{
       "programName": "Collision Repair and Refinishing",
       "POW": ["../assets/23-24-Collision Info Sheet.pdf"],
       "instructorName": ["Mr.Paur","Mr.Melian"],
@@ -93,7 +93,7 @@
 				}
       ]
     },
-    "Electrical Trade Speciality":{
+    "Electrical":{
       "programName": "Electrical Trade Speciality",
       "POW":["../assets/23-24-Electrical-Info-Sheet.pdf"],
       "instructorName": ["Mr.Brooke"],
@@ -111,7 +111,7 @@
         }
       ]
     },
-    "General Construction Technology":{
+    "Construction":{
       "programName": "General Construction Technology",
       "POW":["../assets/23-24 General Construction Tech.pdf"],
       "instructorName": ["Mr.Ellis"],
@@ -149,7 +149,7 @@
         }
       ]
     },
-    "Medium / Heavy Diesel Technology":{
+    " Diesel":{
       "programName": "Medium / Heavy Diesel Technology",
       "POW":["../assets/23-24-MH-Diesel-Info-Sheet.pdf"],
       "instructorName": ["Mr.Soja"],
@@ -165,7 +165,7 @@
         }
       ]
     },
-    "Pharmacy Science":{
+    "Pharmacy":{
       "programName": "Pharmacy Science",
       "instructorName": ["Mrs.Stewart"],
       "POW":["../assets/23-24-Pharmacy Info Sheet.pdf"],
@@ -181,7 +181,7 @@
         }
       ]
     },
-    "Veterinary Science":{
+    "Vet":{
       "programName": "Veterinary Science",
       "instructorName": ["Mrs.Peterson", "Mrs.Adams","Mrs.Schuman"],
       "POW":["../assets/23-24-Vet-2YR-Info-Sheet.pdf","../assets/23-24-Vet-1YR-Info-Sheet.pdf"],
