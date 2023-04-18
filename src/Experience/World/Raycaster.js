@@ -15,6 +15,7 @@ export default class Raycaster {
     this.raycaster = new THREE.Raycaster();
     this.pointer = new THREE.Vector2();
     this.lastMarker = null;
+
     window.addEventListener('pointermove', (e) => this.onPointerMove(e));
     window.addEventListener('mousedown', () => this.onMouseDown());
   }
@@ -126,6 +127,10 @@ export default class Raycaster {
   onMouseDown() {
     const marker = this.locateMarker();
     if (marker && !this.world.isAnimating) {
+      this.experience.context.dispatch({
+        type: 'Marker Select',
+        payload: marker.name,
+      });
       this.controls.updateCurve(marker.toPosition, marker.slowDownTime);
       this.handleDisplayBuildings(marker);
       marker.emissiveSpot.toggleEmissiveArea(true, marker.name);

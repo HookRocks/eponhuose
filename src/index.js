@@ -1,29 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import "./index.css";
-import Main from "./Pages/Main.jsx";
-import AdminPage from "./Pages/AdminPage";
-import MarkerContext from './Contexts/MarkerContext';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './index.css';
+import Main from './Pages/Main.jsx';
+import AdminPage from './Pages/AdminPage';
+import { MarkerProvider } from './Contexts/MarkerContext';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Main />,
   },
   {
-    path: "/admin",
-    element: <AdminPage />
-  }
+    path: '/admin',
+    element: <AdminPage />,
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <MarkerContext.Provider>
+    <MarkerProvider>
       <RouterProvider router={router} />
-    </MarkerContext.Provider>
+    </MarkerProvider>
   </React.StrictMode>
 );

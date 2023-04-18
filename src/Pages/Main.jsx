@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import EventProgramInfo from '../Components/EventProgramInfo';
 import Map from '../Components/Map';
+import { MarkerContext } from '../Contexts/MarkerContext';
 
-
-const Main=() => {
+const Main = () => {
   // const programNAme
   const [clicked, setClicked] = useState(true);
+  const markerContext = useContext(MarkerContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -41,11 +42,11 @@ const Main=() => {
               } bg-pink-400 `
             : `bg-pink-400 w-full`
         }
-        onClick={() => setClicked(true)}>
+        onClick={() => setClicked(!clicked)}>
         <Map />
       </div>
       <div
-        onClick={() => setClicked(true)}
+        onClick={() => setClicked(!clicked)}
         className={
           windowWidth < 640
             ? ` text-black fixed sm:static sm:block bg-blue-300 w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${
@@ -56,7 +57,7 @@ const Main=() => {
         <EventProgramInfo
           className='border-2 border-black border-solid'
           tabbedMode={clicked ? true : false}
-          givenProgramName='Coding'
+          givenProgramName={markerContext.markerStates}
         />
       </div>
     </div>

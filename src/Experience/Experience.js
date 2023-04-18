@@ -10,12 +10,13 @@ import assets from './Utils/assets';
 
 export default class Experience {
   static instance;
-  constructor(canvas) {
+  constructor(canvas, markerContext) {
     if (Experience.instance) {
       return Experience.instance;
     }
     Experience.instance = this;
     this.canvas = canvas;
+    this.context = markerContext;
     this.sizes = new Sizes();
     this.scene = new THREE.Scene();
     this.time = new Time();

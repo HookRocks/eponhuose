@@ -1,13 +1,19 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { MarkerContext } from '../Contexts/MarkerContext';
 import Experience from '../Experience/Experience';
 
 function Map() {
+  const markerContext = useContext(MarkerContext);
   useEffect(() => {
     const experience = new Experience(
-      document.querySelector('.experience-canvas')
+      document.querySelector('.experience-canvas'),
+      markerContext
     );
   }, []);
+  useEffect(() => {
+    console.log(markerContext);
+  }, [markerContext]);
   return (
     <div>
       <div className='experience'>
