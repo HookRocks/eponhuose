@@ -41,8 +41,7 @@ const Main = () => {
                   : 'flex text-center justify-center min-w-full font-extrabold text-2xl '
               } bg-pink-400 `
             : `bg-pink-400 w-full`
-        }
-        onClick={() => setClicked(!clicked)}>
+        }>
         <Map />
       </div>
       <div
