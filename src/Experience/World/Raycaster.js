@@ -131,6 +131,7 @@ export default class Raycaster {
         type: 'Marker Select',
         payload: marker.name,
       });
+      this.experience.context.dispatch({ type: 'Clicked', payload: false });
       this.controls.updateCurve(marker.toPosition, marker.slowDownTime);
       this.handleDisplayBuildings(marker);
       marker.emissiveSpot.toggleEmissiveArea(true, marker.name);
