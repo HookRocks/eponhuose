@@ -4,7 +4,10 @@ export const MarkerContext = createContext(null);
 const markerStatesReducer = (state, action) => {
   switch (action.type) {
     case 'Marker Select': {
-      return action.payload;
+      return { ...state, marker: action.payload };
+    }
+    case 'Clicked': {
+      return { ...state, clicked: action.payload };
     }
     default: {
       throw Error('Unknown Action');
@@ -12,7 +15,10 @@ const markerStatesReducer = (state, action) => {
   }
 };
 export function MarkerProvider({ children }) {
-  const [markerStates, dispatch] = useReducer(markerStatesReducer, '');
+  const [markerStates, dispatch] = useReducer(markerStatesReducer, {
+    marker: '',
+    clicked: true,
+  });
   return (
     <MarkerContext.Provider value={{ markerStates, dispatch }}>
       {children}

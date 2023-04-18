@@ -5,7 +5,6 @@ import { MarkerContext } from '../Contexts/MarkerContext';
 
 const Main = () => {
   // const programNAme
-  const [clicked, setClicked] = useState(true);
   const markerContext = useContext(MarkerContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -27,7 +26,7 @@ const Main = () => {
         windowWidth < 640
           ? `grid sm:grid-cols-[6fr_4fr] grid-rows-1 min-h-screen`
           : `grid  lg:${
-              clicked
+              markerContext.markerStates.clicked
                 ? 'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen'
                 : 'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'
             } `
@@ -36,27 +35,28 @@ const Main = () => {
         className={
           windowWidth < 640
             ? `${
-                clicked
+                markerContext.markerStates.clicked
                   ? ''
                   : 'flex text-center justify-center min-w-full font-extrabold text-2xl '
               } bg-pink-400 `
-            : `bg-pink-400 w-full`
+            : `bg-pink-400`
         }>
         <Map />
       </div>
       <div
-        onClick={() => setClicked(!clicked)}
         className={
           windowWidth < 640
             ? ` text-black fixed sm:static sm:block bg-blue-300 w-full min-h-screen w-auto top-1/4 p-4 duration-500 transition ${
-                clicked ? 'translate-y-[33rem]' : 'translate-y-[-8rem]'
+                markerContext.markerStates.clicked
+                  ? 'translate-y-[33rem]'
+                  : 'translate-y-[-8rem]'
               }`
             : `static bg-blue-300 min-h-screen w-full p-4 duration-500 transform text-black`
         }>
         <EventProgramInfo
           className='border-2 border-black border-solid'
-          tabbedMode={clicked ? true : false}
-          givenProgramName={markerContext.markerStates}
+          tabbedMode={markerContext.markerStates.clicked}
+          givenProgramName={markerContext.markerStates.marker}
         />
       </div>
     </div>
