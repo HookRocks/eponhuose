@@ -47,8 +47,8 @@
         }
       ]
     },
-    "Automotive Technology":{
-      "programName": "Auto Tech",
+    "Auto Tech":{
+      "programName": "Automotive Technology",
       "POW": ["../assets/23-24-Auto-Tech-Info-Sheet.pdf"],
       "instructorName": ["Mr.Schumaker","Mr.Golding"],
       "classLocation": "Lab 2nd Floor",
@@ -149,7 +149,7 @@
         }
       ]
     },
-    " Diesel":{
+    "Diesel":{
       "programName": "Medium / Heavy Diesel Technology",
       "POW":["../assets/23-24-MH-Diesel-Info-Sheet.pdf"],
       "instructorName": ["Mr.Soja"],
@@ -165,7 +165,7 @@
         }
       ]
     },
-    "Pharmacy":{
+    "Pharmacy Science":{
       "programName": "Pharmacy Science",
       "instructorName": ["Mrs.Stewart"],
       "POW":["../assets/23-24-Pharmacy Info Sheet.pdf"],
