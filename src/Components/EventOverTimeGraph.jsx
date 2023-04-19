@@ -4,7 +4,12 @@ import '../../node_modules/react-vis/dist/style.css';
 import {XYPlot, LineMarkSeries, HorizontalGridLines, Hint, XAxis, YAxis} from 'react-vis';
 
 const EventOverTimeGraph=({chartData}) => {
+  const [value,setValue]=useState();
   const [data,setData]=useState([]);
+
+  // const setHoverValue=(point) => {
+  //   setValue({x: point.x, y: point.y})
+  // }
   useEffect(() => {
     console.log(chartData)
     setData(chartData.map((chart,i) => {return {x: i,y: chart.visitorCount} }))
@@ -14,7 +19,8 @@ const EventOverTimeGraph=({chartData}) => {
           {console.log(chartData)}
       <YAxis tickValues={[0,1,2,3,4,5,6,7,8,9,10]} color="black"/>
       <HorizontalGridLines />
-      <LineMarkSeries data={data} color="black" tooltip="hi"/>
+      <LineMarkSeries data={data} color="black" tooltip="hi" />
+      {data.map((chart,i) => {return <Hint value={data[i]}/>})}
     </XYPlot>
   )
 };

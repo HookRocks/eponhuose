@@ -49,7 +49,7 @@ const AdminPage = () => {
     if (programsMade[11] != allChosen) {
       setPrograms(programsMade.map(() => allChosen));
     }
-    console.log('abc');
+    console.log(programsMade);
   }, [programsMade]);
 
   function createEventButton() {
@@ -88,7 +88,7 @@ const AdminPage = () => {
             } `
       }>
       <div className={windowWidth < 640 ? `hidden ` : `bg-pink-400 w-full`}>
-        <EventOverTimeGraph chartData={[{visitorCount: 1},{visitorCount: 2},{visitorCount: 3},{visitorCount: 4}]} />
+        <EventOverTimeGraph chartData={[{visitorCount: 0},{visitorCount: 2},{visitorCount: 1},{visitorCount: 4}]} />
       </div>
 
       <div className='static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white flex flex-col gap-6'>
@@ -147,7 +147,12 @@ const AdminPage = () => {
                   boxId='select-all'
                   boxFunction={() => {
                     setIsAllProgChecked(!isAllProgChecked);
-                    setPrograms(programsMade.map(() => !programsMade[11]));
+                    setPrograms(programsMade.map((val,ind) => ind==11? !val:val));
+                    if(programsMade[11]) {
+                      setPrograms([true,true,true,true,true,true,true,true,true,true,true,true])
+                    } else {
+                      setPrograms([false,false,false,false,false,false,false,false,false,false,false,false])
+                    }
                   }}
                   boxContent='All Programs'
                   className=''
