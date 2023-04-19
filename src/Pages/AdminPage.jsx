@@ -5,13 +5,14 @@ import EventsList from '../Components/EventsList';
 import Event from '../Components/Event';
 import {set} from 'mongoose';
 import EventOverTimeGraph from '../Components/EventOverTimeGraph';
+import Data from '../modules/Data'
 // import EventOverTimeGraph from '../Components/EventOverTimeGraph';
 
 const AdminPage = () => {
   const [isAllProgChecked, setIsAllProgChecked] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [clicked, setClicked] = useState('');
-  const [events, setEventList] = useState(['E']);
+  const [events, setEventList] = useState([]);
   const [eventNameMade, setEventName] = useState();
   const [startDateMade, setStartDate] = useState();
   const [endDateMade, setEndDate] = useState('');
@@ -30,17 +31,17 @@ const AdminPage = () => {
     false,
   ]);
 
-  if(events[0]=="E"){
-    fetch("http://localhost:3001/event/getEventList",{
-      method: "POST",
-      body: {}
-    }).then(eventList => {
-      console.log(eventList)
-      eventList=eventList.json().then((e)=>{
-        setEventList(e);
-      });
-    })
-    }
+  useEffect(() => {
+      fetch("http://localhost:3001/event/getEndedEvents",{
+        method: "POST",
+        body: {}
+      }).then(eventList => {
+        console.log(eventList)
+        eventList=eventList.json().then((e) => {
+          setEventList(e);
+        });
+      })
+  }, []);
 
   const AllProgramFunc = useEffect(() => {
     var allChosen =
@@ -87,8 +88,7 @@ const AdminPage = () => {
             } `
       }>
       <div className={windowWidth < 640 ? `hidden ` : `bg-pink-400 w-full`}>
-        <EventOverTimeGraph chartData={events} />
-        charts and info
+        <EventOverTimeGraph chartData={[{visitorCount: 1},{visitorCount: 2},{visitorCount: 3},{visitorCount: 4}]} />
       </div>
 
       <div className='static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white flex flex-col gap-6'>
