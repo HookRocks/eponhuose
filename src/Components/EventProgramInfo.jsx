@@ -155,7 +155,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             ev.stopPropagation();
             swalBax();
           }}>
-          <a>Program VIsited</a>
+          <a>Program Visited</a>
         </button>
       </div>
     );

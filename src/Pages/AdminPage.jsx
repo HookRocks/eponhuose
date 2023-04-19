@@ -3,7 +3,8 @@ import $ from 'jquery';
 import PreBuiltCheckbox from '../Components/PreBuiltCheckbox';
 import EventsList from '../Components/EventsList';
 import Event from '../Components/Event';
-import { set } from 'mongoose';
+import {set} from 'mongoose';
+import EventOverTimeGraph from '../Components/EventOverTimeGraph';
 // import EventOverTimeGraph from '../Components/EventOverTimeGraph';
 
 const AdminPage = () => {
@@ -28,6 +29,18 @@ const AdminPage = () => {
     false,
     false,
   ]);
+
+  if(events[0]=="E"){
+    fetch("http://localhost:3001/event/getEventList",{
+      method: "POST",
+      body: {}
+    }).then(eventList => {
+      console.log(eventList)
+      eventList=eventList.json().then((e)=>{
+        setEventList(e);
+      });
+    })
+    }
 
   const AllProgramFunc = useEffect(() => {
     var allChosen =
@@ -74,7 +87,7 @@ const AdminPage = () => {
             } `
       }>
       <div className={windowWidth < 640 ? `hidden ` : `bg-pink-400 w-full`}>
-        {/* <EventOverTimeGraph /> */}
+        <EventOverTimeGraph chartData={events} />
         charts and info
       </div>
 
