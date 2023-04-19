@@ -73,7 +73,7 @@ const AdminPage = () => {
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
-  });
+  },[]);
 
   return (
     <div

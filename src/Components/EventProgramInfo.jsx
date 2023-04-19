@@ -10,6 +10,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [personName, setPersonName] = useState('');
   const [personEmail,setPersonEmail]=useState('');
   const [event,setEvent]=useState();
+  useEffect(()=>{
    fetch("http://localhost:3001/event/getEventList",{
       method: "POST",
       body: {}
@@ -20,7 +21,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       });
       console.log(event)
     })
-
+  },[])
   const swalBax = () => {
     swal(
       <div>
