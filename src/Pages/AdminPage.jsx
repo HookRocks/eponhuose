@@ -3,7 +3,7 @@ import $ from 'jquery';
 import PreBuiltCheckbox from '../Components/PreBuiltCheckbox';
 import EventsList from '../Components/EventsList';
 import Event from '../Components/Event';
-import {set} from 'mongoose';
+import { set } from 'mongoose';
 import EventOverTimeGraph from '../Components/EventOverTimeGraph';
 import Data from '../modules/Data'
 // import EventOverTimeGraph from '../Components/EventOverTimeGraph';
@@ -32,16 +32,22 @@ const AdminPage = () => {
   ]);
 
   useEffect(() => {
-      fetch("http://localhost:3001/event/getEndedEvents",{
-        method: "POST",
-        body: {}
-      }).then(eventList => {
-        console.log(eventList)
-        eventList=eventList.json().then((e) => {
-          setEventList(e);
-        });
-      })
+    fetch("http://localhost:3001/event/getEndedEvents", {
+      method: "POST",
+      body: {}
+    }).then(eventList => {
+      console.log(eventList, "among us")
+      eventList.json().then((e) => {
+        console.log(e)
+        setEventList(e);
+      });
+    })
   }, []);
+
+  useEffect(() => {
+    console.log(events, "sussy impos")
+  }, [events]);
+
 
   const AllProgramFunc = useEffect(() => {
     var allChosen =
@@ -74,24 +80,24 @@ const AdminPage = () => {
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
-  },[]);
+  }, []);
 
   return (
     <div
       className={
         windowWidth < 640
           ? ``
-          : `grid  lg:${
-              clicked
-                ? 'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen'
-                : 'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'
-            } `
+          : `grid  lg:${clicked
+            ? 'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen'
+            : 'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'
+          } `
       }>
-      <div className={windowWidth < 640 ? `hidden ` : `bg-pink-400 w-full`}>
-        <EventOverTimeGraph chartData={[{visitorCount: 1},{visitorCount: 2},{visitorCount: 3},{visitorCount: 4}]/*should be eventList*/} />
+      <div className={windowWidth < 640 ? `hidden ` : `bg-neutral-900 w-full`}>
+        {console.log(events, 'eeeeee')}
+        <EventOverTimeGraph chartData={events/*should be eventList*/} />
       </div>
 
-      <div className='static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white flex flex-col gap-6'>
+      <div className='static bg-neutral-700 min-h-screen w-full p-4 duration-500 transform text-white flex flex-col gap-6'>
         <div>
           <form target='_self' method='get'>
             <fieldset className='border border-solid border-gray-300 p-3 rounded-lg'>
