@@ -134,7 +134,7 @@ app.post('/deleteEvent',async(req,res)=>{
 })
 
 app.post("/getEndedEvents",async(req,res)=>{
-  return await getEndedEvents(req,res);
+  res.send(await getEndedEvents(req,res));
 })
 
 module.exports = app;

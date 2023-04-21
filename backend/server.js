@@ -10,7 +10,8 @@ const ProgramsRouter = require("./routers/programs");
 const EventRouter = require("./routers/event");
 const manageRouter= require("./routers/manager");
 const { events } = require('./models/event');
-const Timers=require("timers")
+const Timers=require("timers");
+const { clearEndedEvents } = require('./Modules/event');
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
@@ -39,6 +40,9 @@ app.use("/manager",manageRouter);
 
 
 
+
+
+clearEndedEvents();
 
 
 

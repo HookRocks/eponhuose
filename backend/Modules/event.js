@@ -91,11 +91,18 @@ const getEndedEvents=async(req,res)=>{
 }
 
 
+//clears any events that should be ended and creates a timeout to run again at the next start of an hour
+const Timers=require("timers")
 const clearEndedEvents=async ()=>{
     var endTime=Date.now();
     await connectDB(process.env.MONGO_URI)
-    const endingList=await event.find({endDate:{$lte:endTime}})
+    const endingList=await event.find({endDate:{$lte:endTime}});
+    endingList.forEach((event)=>{
+        endEvent(JSON.stringify(event))
+    })
+    Timers.setTimeout(clearEndedEvents,(3600000-(Date.now()%3600000)))
 }
+
 
 
 module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList,visitEvent,getEndedEvents,clearEndedEvents}
