@@ -88,7 +88,7 @@ const AdminPage = () => {
             } `
       }>
       <div className={windowWidth < 640 ? `hidden ` : `bg-pink-400 w-full`}>
-        <EventOverTimeGraph chartData={[{visitorCount: 1},{visitorCount: 2},{visitorCount: 3},{visitorCount: 4}]} />
+        <EventOverTimeGraph chartData={[{visitorCount: 1},{visitorCount: 2},{visitorCount: 3},{visitorCount: 4}]/*should be eventList*/} />
       </div>
 
       <div className='static bg-blue-600 min-h-screen w-full p-4 duration-500 transform text-white flex flex-col gap-6'>
