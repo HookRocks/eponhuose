@@ -5,6 +5,9 @@ export default [
   { name: 'b1f2', type: 'glbModel', path: '/models/B1F2.glb' },
   { name: 'auto', type: 'glbModel', path: '/models/automotive.glb' },
   { name: 'vet', type: 'glbModel', path: '/models/veterinary.glb' },
+  // { name: 'trees', type: 'glbModel', path: '/models/trees.glb' },
+  // { name: 'bushes', type: 'glbModel', path: '/models/bushes.glb' },
+  // { name: 'largesign', type: 'glbModel', path: '/models/largesign.glb' },
   {
     name: 'autoCollision',
     type: 'glbModel',

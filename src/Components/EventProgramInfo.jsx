@@ -8,8 +8,20 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [personName, setPersonName] = useState('');
-  const [personEmail, setPersonEmail] = useState('');
-
+  const [personEmail,setPersonEmail]=useState('');
+  const [event,setEvent]=useState();
+  useEffect(()=>{
+   fetch("http://localhost:3001/event/getEventList",{
+      method: "POST",
+      body: {}
+    }).then(eventList => {
+      console.log(eventList)
+      eventList=eventList.json().then((e)=>{
+        setEvent(e);
+      });
+      console.log(event)
+    })
+  },[])
   const swalBax = () => {
     swal(
       <div>
