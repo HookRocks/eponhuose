@@ -11,6 +11,7 @@ import Auto from './Auto';
 import AutoCollision from './AutoCollision';
 import Materials from '../Materials/Materials';
 import Vet from './Vet';
+import Cars from './Cars';
 export default class World {
   constructor() {
     this.experience = new Experience();
@@ -30,6 +31,7 @@ export default class World {
       this.b1f2 = new B1F2();
       this.auto = new Auto();
       this.vet = new Vet();
+      this.cars = new Cars();
       this.autoCollision = new AutoCollision();
       this.marker = new Marker();
       this.raycaster = new Raycaster();
