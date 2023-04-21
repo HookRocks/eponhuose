@@ -91,4 +91,11 @@ const getEndedEvents=async(req,res)=>{
 }
 
 
-module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList,visitEvent,getEndedEvents}
+const clearEndedEvents=async ()=>{
+    var endTime=Date.now();
+    await connectDB(process.env.MONGO_URI)
+    const endingList=await event.find({endDate:{$lte:endTime}})
+}
+
+
+module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList,visitEvent,getEndedEvents,clearEndedEvents}
