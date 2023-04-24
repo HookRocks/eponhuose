@@ -21,7 +21,7 @@ const EventOverTimeGraph = ({ chartData }) => {
 
     //console.log(maxValue, minValue)
     for (let i = 0; i < 11; i++) {
-      var val = (((maxValue - minValue) / 10.) * i) + minValue
+      var val = (((maxValue - minValue) / 10) * i) + minValue
       console.log(val)
       increments.push(val)
     }
@@ -35,7 +35,7 @@ const EventOverTimeGraph = ({ chartData }) => {
   //this is the range for hovering a point on the graph
   const hoverRange = 32;
   return (
-    <XYPlot height={600} width={plotWidth} onMouseMove={(e) => {
+    <XYPlot height={600} width={plotWidth} className="m-auto my-[6.5rem]" onMouseMove={(e) => {
       //this makes sure you are in the right node to reach the points
       if (e.target.className.baseVal != "rv-xy-plot__inner") { return; }
       //this is the root for the points in svg
@@ -45,18 +45,17 @@ const EventOverTimeGraph = ({ chartData }) => {
       for (var i = 0; i < a.length; i++) {
         var bounds = a[i].getBoundingClientRect()
         if ((bounds.x - e.clientX) * (bounds.x - e.clientX) + (bounds.y - e.clientY) * (bounds.y - e.clientY) < hoverRange * hoverRange) {
-          hoveredNode = { point: i, xPos: bounds.x, yPos: bounds.y };
+          hoveredNode = { point: i, xPos: bounds.x, yPos: bounds.y, count: data[i].y };
         }
       }
       SetDot(hoveredNode)
       if (hoveredNode) { console.log(hoveredNode) }
 
     }}>
-      {console.log(<YAxis tickValues={increment} color="white" scaleFontSize="32" />)}
       <YAxis tickValues={increment} color="white" style={{ fontSize: 20, color: "#ffffff", strokeWidth: 2, stroke: 0 }} />
       <HorizontalGridLines style={{ strokeWidth: 2 }} />
-      <LineMarkSeries data={data} color="black" tooltip="hi" style={{ strokeWidth: 3 }} />
-      <p className="text-center text-white">hi squidward</p>
+      <LineMarkSeries data={data} color="gray" tooltip="hi" style={{ strokeWidth: 3 }} />
+      <p className="text-center text-white">{HoveredDot.count}</p>
     </XYPlot>
   )
 };
