@@ -52,7 +52,8 @@ const EventOverTimeGraph = ({ chartData }) => {
       if (hoveredNode) { console.log(hoveredNode) }
 
     }}>
-      <YAxis tickValues={increment} color="white" style={{ fontSize: 20, color: "#ffffff", strokeWidth: 2, stroke: 0 }} />
+      <YAxis tickValues={increment} color="white" style={{fontSize: 20,color: "#ffffff",strokeWidth: 2,stroke: 0}} />
+      <XAxis tickValues={increment} color="white" style={{fontSize: 20, color: "#ffffff",strokeWidth: 2, stroke: 0}} />
       <HorizontalGridLines style={{ strokeWidth: 2 }} />
       <LineMarkSeries data={data} color="gray" tooltip="hi" style={{ strokeWidth: 3 }} />
       <p className="text-center text-white">{HoveredDot.count}</p>
