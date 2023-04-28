@@ -24,7 +24,7 @@
       "classLocation": "Lab 1st Floor",
       "classTimes": [
         {
-					"year": "1st Year",
+          "year": "1st Year",
           "startTime": "07:30AM",
           "endTime": "10:30AM"
         }
@@ -32,6 +32,7 @@
     },
     "HVAC":{
       "programName": "HVAC",
+      "POW": ["../assets/23-24-Air-Info-Sheet.pdf"],
       "instructorName": ["Mr.Brooke"],
       "classLocation": "Lab 1st Floor",
       "classTimes": [
@@ -48,7 +49,7 @@
       ]
     },
     "Auto Tech":{
-      "programName": "Automotive Technology",
+      "programName": "Auto Tech",
       "POW": ["../assets/23-24-Auto-Tech-Info-Sheet.pdf"],
       "instructorName": ["Mr.Schumaker","Mr.Golding"],
       "classLocation": "Lab 2nd Floor",
@@ -165,7 +166,7 @@
         }
       ]
     },
-    "Pharmacy Science":{
+    "Pharmacy":{
       "programName": "Pharmacy Science",
       "instructorName": ["Mrs.Stewart"],
       "POW":["../assets/23-24-Pharmacy Info Sheet.pdf"],

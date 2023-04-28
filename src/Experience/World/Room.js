@@ -8,6 +8,10 @@ export default class Room {
     this.resources = this.experience.resources;
     this.room = this.resources.items.room;
     this.roomScene = this.room.scene;
+
+    this.trees = this.resources.items.trees;
+    this.bushes = this.resources.items.bushes;
+    this.largesign = this.resources.items.largesign;
     this.materials = this.experience.world.materials;
     this.setModel();
   }
@@ -102,7 +106,12 @@ export default class Room {
     //   this.guiObject.s2,
     //   this.guiObject.s3
     // );
-    this.scene.add(this.roomScene);
+    this.scene.add(
+      this.roomScene,
+      this.trees.scene,
+      this.bushes.scene,
+      this.largesign.scene
+    );
   }
 
   resize() {}

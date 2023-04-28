@@ -12,7 +12,8 @@ function Map() {
     );
   }, []);
   useEffect(() => {
-    console.log(markerContext);
+    const resizeEvent = new Event('resizeEvent');
+    document.dispatchEvent(resizeEvent);
   }, [markerContext]);
   return (
     <div>
