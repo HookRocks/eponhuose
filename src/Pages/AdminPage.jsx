@@ -61,7 +61,7 @@ const AdminPage = () => {
     if (programsMade[11] != allChosen) {
       setPrograms(programsMade.map(() => allChosen));
     }
-    console.log('abc');
+    console.log(programsMade);
   }, [programsMade]);
 
   function createEventButton() {
@@ -164,7 +164,12 @@ const AdminPage = () => {
                   boxId='select-all'
                   boxFunction={() => {
                     setIsAllProgChecked(!isAllProgChecked);
-                    setPrograms(programsMade.map(() => !programsMade[11]));
+                    setPrograms(programsMade.map((val,ind) => ind==11? !val:val));
+                    if(programsMade[11]) {
+                      setPrograms([true,true,true,true,true,true,true,true,true,true,true,true])
+                    } else {
+                      setPrograms([false,false,false,false,false,false,false,false,false,false,false,false])
+                    }
                   }}
                   boxContent='All Programs'
                   className=''
