@@ -19,11 +19,18 @@ const e = require("cors");
 
 const classData=require("../../src/modules/ProgramInfo.json")
 
+
+//checks auth 
+const checkAuth=(req)=>{
+  return req.get("auth")==process.env.ADMIN_PASSWORD
+}
+
 //should block the sender from sending without meeting certain requirements to be a host
 app.use("/", async (req, res, next) => {
   next();
 });
 app.post("/getEventList", async (req, res) => {
+  
   var eventList = await getEventList({});
   console.log(eventList);
   res.status(200).send(eventList);
@@ -31,6 +38,7 @@ app.post("/getEventList", async (req, res) => {
 
 //creates a new event into the database
 app.post("/createEvent", async (req, res) => {
+  if(!checkAuth(req)){return res.status(200).send([])}
   const NewEvent = await createEvent(await JSON.parse(req.body)); // idk use the return?
 
   console.log("CREATED THE NEW EVENT WITH DATA:", req.body);
@@ -47,6 +55,7 @@ app.post("/getEvent", async (req, res) => {
 });
 
 app.post("/updateEvent", async (req, res) => {
+  if(!checkAuth(req)){return res.status(200).send([])}
   const Filter = req.body.Filter;
   const Update = req.body.Update;
 
@@ -63,6 +72,7 @@ app.post("/updateEvent", async (req, res) => {
 
 //removes the event after compiling the event data to send as an email to the event host
 app.post("/finishEvent", async (req, res) => {
+  if(!checkAuth(req)){return res.status(200).send([])}
   const body = req.body || {};
 
   const eventData = await getEvent(body);
@@ -84,7 +94,7 @@ app.post("/finishEvent", async (req, res) => {
   console.log(participantFormat, participantData, eventData);
   //send email to event host/manager
   sendEmail(
-    "rgrang816@west-mec.org",
+    process.env.HOST_EMAIL,
     "PILLAGE THE MINORITY",
     participantFormat + `total estimated visitors:${eventData.visitorCount}`
   );
@@ -129,11 +139,13 @@ app.post("/visitEvent", async (req, res) => {
 });
 
 app.post('/deleteEvent',async(req,res)=>{
+  if(!checkAuth(req)){return res.status(200).send([])}
   const body = req.body || {};
   endEvent(body);
 })
 
 app.post("/getEndedEvents",async(req,res)=>{
+  if(!checkAuth(req)){return res.status(200).send([])}
   const out=await getEndedEvents(req,res)
   res.send(out);
 })

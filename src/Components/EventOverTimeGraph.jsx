@@ -4,13 +4,14 @@ import '../../node_modules/react-vis/dist/style.css';
 import { XYPlot, LineMarkSeries, HorizontalGridLines, Hint, XAxis, YAxis } from 'react-vis';
 import { ImageUtils } from "three";
 
-const EventOverTimeGraph = ({ chartData }) => {
+const EventOverTimeGraph = ({ chartData=[] }) => {
+  console.log(chartData,"EAEA")
   const [data, setData] = useState([]);
   const [increment, setIncrement] = useState([]);
   const [HoveredDot, SetDot] = useState({})
   useEffect(() => {
     if (chartData.length < 1) { return }
-    var sus = chartData.map((chart, i) => { return { x: i, y: chart.visitorCount } })
+    var sus = chartData.map((chart, i) => { return { x: i, y: chart.visitorCount,data:chart } })
     var increments = []
     var susshallow = sus
 
@@ -45,7 +46,7 @@ const EventOverTimeGraph = ({ chartData }) => {
       for (var i = 0; i < a.length; i++) {
         var bounds = a[i].getBoundingClientRect()
         if ((bounds.x - e.clientX) * (bounds.x - e.clientX) + (bounds.y - e.clientY) * (bounds.y - e.clientY) < hoverRange * hoverRange) {
-          hoveredNode = { point: i, xPos: bounds.x, yPos: bounds.y, count: data[i].y };
+          hoveredNode = { point: i, xPos: bounds.x, yPos: bounds.y, vdata: data[i] };
         }
       }
       SetDot(hoveredNode)
@@ -55,7 +56,8 @@ const EventOverTimeGraph = ({ chartData }) => {
       <YAxis tickValues={increment} color="white" style={{ fontSize: 20, color: "#ffffff", strokeWidth: 2, stroke: 0 }} />
       <HorizontalGridLines style={{ strokeWidth: 2 }} />
       <LineMarkSeries data={data} color="gray" tooltip="hi" style={{ strokeWidth: 3 }} />
-      <p className="text-center text-white">{HoveredDot.count}</p>
+      <p className="text-center text-white">{HoveredDot?.vdata?.data.eventName
+      }</p>
     </XYPlot>
   )
 };
