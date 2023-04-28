@@ -11,7 +11,7 @@ export default class Cars {
 
     // this.setModel();
 
-    // document.addEventListener('click', () => this.addCar());
+    document.addEventListener('click', () => this.addCar());
     this.backLeftSpots = {
       spots: new Array(8).fill(new Array(3)),
       startingX: -3.67,
@@ -67,18 +67,27 @@ export default class Cars {
   }
 
   addCar() {
-    const randomNumber = Math.floor(Math.random() * this.allCars.length);
-    const car = this.allCars[randomNumber].clone();
+    const randomSpotNumber = Math.floor(Math.random() * this.spots.length);
+    const randomSpot = this.spots[randomSpotNumber];
+    let randomCarSpotX;
+    let randomCarSpotY;
+    do {
+      randomCarSpotX = Math.floor(Math.random() * randomSpot.spots[0].length);
+      randomCarSpotY = Math.floor(Math.random() * randomSpot.spots.length);
+      console.log(randomCarSpotY, randomCarSpotX);
+    } while (randomSpot.spots[randomCarSpotY][randomCarSpotX] == 'Car!');
+    console.log('-----------------------------');
+    this.spots[randomSpotNumber].spots[randomCarSpotY][randomCarSpotX] = 'Car!';
+    const car =
+      this.allCars[Math.floor(Math.random() * this.allCars.length)].clone();
     this.scene.add(car);
     car.scale.x /= 2;
     car.scale.y /= 2;
     car.scale.z /= 2;
-    const startingX = -3.67;
-    const xIncrement = 1.134;
-    const startingZ = 1.94;
-    const zIncrement = 0.2;
-    const randomX = startingX + Math.floor(Math.random() * 7) * xIncrement;
-    const randomZ = startingZ + Math.floor(Math.random() * 5) * zIncrement;
+    const randomX =
+      randomSpot.startingX + randomCarSpotY * randomSpot.xIncrement;
+    const randomZ =
+      randomSpot.startingZ + randomCarSpotX * randomSpot.zIncrement;
     car.position.x = randomX;
     car.position.z = randomZ;
   }

@@ -60,6 +60,9 @@
 }
 .buttons {
   position: fixed;
+  width: max-content;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: -5rem;
   left: 0;
   right: 0;
