@@ -69,6 +69,9 @@
   display: flex;
   gap: 2rem;
   justify-content: center;
+    width: max-content;
+  transform: translate(-50%);
+  margin-left: 50%;
   z-index: 1000;
   transition: 750ms cubic-bezier(0.35, 1.49, 0.85, 1.11) bottom;
 }
@@ -77,6 +80,7 @@
   width: 16rem;
   border: none;
   cursor: pointer;
+
   box-shadow: none;
   padding: 1rem;
   font-size: 1.25rem;
