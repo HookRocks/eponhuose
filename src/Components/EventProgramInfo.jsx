@@ -59,16 +59,12 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       </div>
     ).then((okay) => {
       if(event.length > 0 && event[0] != "E"){
-      fetch('/users/join', {
-        Method: 'POST',
-        Headers: {
-          Accept: 'application.json',
-          'Content-Type': 'application/json'
-        },
-        body: {
+      fetch('http://localhost:3001/users/join', {
+        method: 'POST',
+        body: JSON.stringify({
           Filter: event[0]._id,
           userData: {userName: personName, userEmail: personEmail}
-        },
+        }),
       })
         }else {
           console.error("there is no event to send")
