@@ -20,10 +20,6 @@ const eventModel = new mongoose.Schema({
     eventName: {
         type: String
     },
-    participants: {
-        type:Number,
-        default: 0
-    },
     eventPrograms: {
         type: Array,
         default:[true,true,true,true,true,true,true,true,true,true,true]
