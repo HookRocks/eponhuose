@@ -45,14 +45,15 @@ const EventOverTimeGraph = ({ chartData=[] }) => {
       var a = e.target.children[3].children[1].children
       //null if not close enough to any points
       var hoveredNode = {}
+      if(a){
       for (var i = 0; i < a.length; i++) {
         var bounds = a[i].getBoundingClientRect()
-        if ((bounds.x - e.clientX) * (bounds.x - e.clientX) + (bounds.y - e.clientY) * (bounds.y - e.clientY) > hoverRange * hoverRange) {
+        if ((bounds.x - e.clientX) * (bounds.x - e.clientX) + (bounds.y - e.clientY) * (bounds.y - e.clientY) < hoverRange * hoverRange) {
           hoveredNode = { point: i, xPos: bounds.x, yPos: bounds.y, data: chartData[i] }
           
         }
       }
-      
+    }
       SetDot(hoveredNode)
       if (hoveredNode) { console.log(hoveredNode) }
       
@@ -62,10 +63,10 @@ const EventOverTimeGraph = ({ chartData=[] }) => {
       <HorizontalGridLines style={{ strokeWidth: 2 }} />
       <LineMarkSeries data={data} color="gray" tooltip="hi" style={{ strokeWidth: 3 }} />
       
-      <p className="text-center text-white">{
+      <p className="text-center text-white">
+      <h1>{HoveredDot?.data?.eventName}</h1>
       
-      HoveredDot?.data?.visitorCount
-      }</p>
+      </p>
     </XYPlot>
   )
 };

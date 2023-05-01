@@ -14,7 +14,7 @@ const getEventList = async (args) => {
 //returns current event
 const getEvent = async (args) => {
     await connectDB(process.env.MONGO_URI)
-    if(args.startDate=="current"||args=={}||args==undefined){args={};args.startDate={$gte:Date.now()};args.endDate={$lte:Date.now()}}
+    if(args.startDate=="current"||args=={}||args==undefined){args={};args.startDate={$lte:Date.now()};args.endDate={$gte:Date.now()}}
 
     return await event.find(args).sort({startDate:-1})
 }

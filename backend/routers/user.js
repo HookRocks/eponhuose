@@ -6,7 +6,7 @@ const { getUserByEmail, userJoin } = require('../Modules/user')
 
 
 app.post("/join", async (req, res) => {
-    const { Filter, userData } = req.body
+    const { Filter, userData } = JSON.parse(req.body)
     const output = await userJoin(Filter, userData);
     res.send(output)
 })
