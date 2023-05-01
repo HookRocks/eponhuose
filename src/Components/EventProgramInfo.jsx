@@ -7,8 +7,8 @@ import AnimatedArrowButton from './AnimatedArrowButton';
 const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [personName, setPersonName] = useState('');
-  const [personEmail,setPersonEmail]=useState('');
+  const [userName, setUserName] = useState('');
+  const [userEmail,setUserEmail]=useState('');
   const [event,setEvent]=useState();
   useEffect(()=>{
    fetch("http://localhost:3001/event/getEventList",{
@@ -22,56 +22,6 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       console.log(event)
     })
   },[])
-  const swalBax = () => {
-    swal(
-      <div>
-        <form
-          onSubmit={() => {
-            alert('a');
-          }}>
-          <label for='Name'>Name: </label>
-          <input
-            onChange={(e) => {
-              setPersonName(e.target.value);
-            }}
-            id='Name'
-            required
-            name='Name'
-            type='text'
-            placeholder='Name goes here'
-            value={personName}
-          />
-          <br />
-          <br />
-          <label for='Email'>Email: </label>
-          <input
-            onChange={(e) => {
-              setPersonEmail(e.target.value);
-            }}
-            required
-            id='Email'
-            name='Email'
-            type='email'
-            placeholder='Email goes here'
-            value={personEmail}
-          />
-        </form>
-      </div>
-    ).then((okay) => {
-      if(event.length > 0 && event[0] != "E"){
-      fetch('http://localhost:3001/users/join', {
-        method: 'POST',
-        body: JSON.stringify({
-          Filter: {_id: event[0]._id},
-          userData: {userName: personName, userEmail: personEmail}
-        }),
-      })
-        }else {
-          console.error("there is no event to send")
-      }
-    });
-  };
-
   const handlePrevClick = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
@@ -161,7 +111,12 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
           onClick={(ev) => {
             ev.stopPropagation();
-            swalBax();
+            fetch('http://localhost:3001/users/visit', {
+        method: 'POST',
+        body: JSON.stringify({
+          Filter: {_id: event[0]._id}
+        }),
+      })
           }}>
           <a>Program Visited</a>
         </button>
