@@ -59,7 +59,12 @@ const endEvent = async (args) => {
     if(removedEvent){
         //need to finish this
         var ev=new endedEvent({
-            eventName:removedEvent.eventName
+            eventName:removedEvent.eventName,
+            endDate:removedEvent.endDate,
+            startDate:removedEvent.startDate,
+            participants:(removedEvent.participants?removedEvent.participants.length:0),
+            eventPrograms:removedEvent.eventPrograms,
+            visitorCount:removedEvent.visitorCount
         })
         await ev.save()
         await event.deleteOne(JSON.parse(args));
