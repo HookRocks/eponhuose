@@ -38,7 +38,7 @@ const EventOverTimeGraph = ({ chartData=[] }) => {
   //this is the range for hovering a point on the graph
   const hoverRange = 32;
   return (
-    <XYPlot height={600} width={plotWidth} className="m-auto my-[6.5rem]" onMouseMove={(e) => {
+    <XYPlot height={600} width={600} className="m-auto my-[6.5rem]" onMouseMove={(e) => {
       //this makes sure you are in the right node to reach the points
       if (e.target.className.baseVal != "rv-xy-plot__inner") { return; }
       //this is the root for the points in svg
@@ -58,15 +58,12 @@ const EventOverTimeGraph = ({ chartData=[] }) => {
       if (hoveredNode) { console.log(hoveredNode) }
       
     }}>
-      <YAxis tickValues={increment} color="white" style={{fontSize: 20,color: "#ffffff",strokeWidth: 2,stroke: 0}} />
-      <XAxis tickValues={increment} color="white" style={{fontSize: 20, color: "#ffffff",strokeWidth: 2, stroke: 0}} />
+      <YAxis tickValues={increment} color="white" style={{fontSize: 20,color: "#ffffff",strokeWidth: 2,stroke: 1}} />
+      <XAxis tickValues={increment} color="white" style={{fontSize: 20, color: "#ffffff",strokeWidth: 2, stroke: 1}} />
       <HorizontalGridLines style={{ strokeWidth: 2 }} />
       <LineMarkSeries data={data} color="gray" tooltip="hi" style={{ strokeWidth: 3 }} />
       
-      <p className="text-center text-white">
-      <h1>{HoveredDot?.data?.eventName}</h1>
       
-      </p>
     </XYPlot>
   )
 };
