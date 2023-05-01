@@ -62,7 +62,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       fetch('http://localhost:3001/users/join', {
         method: 'POST',
         body: JSON.stringify({
-          Filter: event[0]._id,
+          Filter: {_id: event[0]._id},
           userData: {userName: personName, userEmail: personEmail}
         }),
       })
