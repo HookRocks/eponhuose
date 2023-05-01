@@ -35,6 +35,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
               setPersonName(e.target.value);
             }}
             id='Name'
+            required
             name='Name'
             type='text'
             placeholder='Name goes here'
@@ -47,6 +48,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             onChange={(e) => {
               setPersonEmail(e.target.value);
             }}
+            required
             id='Email'
             name='Email'
             type='email'
@@ -56,14 +58,21 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
         </form>
       </div>
     ).then((okay) => {
-      //   fetch('url', {
-      //   Method: 'POST',
-      //   Headers: {
-      //     Accept: 'application.json',
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: {},
-      // })
+      if(event.length > 0 && event[0] != "E"){
+      fetch('/users/join', {
+        Method: 'POST',
+        Headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json'
+        },
+        body: {
+          Filter: event[0]._id,
+          userData: {userName: personName, userEmail: personEmail}
+        },
+      })
+        }else {
+          console.error("there is no event to send")
+      }
     });
   };
 
@@ -115,7 +124,8 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             <b>All Teachers and staff</b>
           )}
         </p>
-        <p className='font-bold'>Open House Event 3/27/2023 - 3/27/2023</p>
+        {event.length > 0 && event[0] != "E"? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
+       
         {givenProgramName != null || givenProgramName != '' ? (
           <div className='w-full'>
             {programInfo[givenProgramName].POW.length > 1 ? (
@@ -152,6 +162,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
         )}
 
         <button
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
           onClick={(ev) => {
             ev.stopPropagation();
             swalBax();
