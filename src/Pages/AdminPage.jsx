@@ -30,11 +30,17 @@ const AdminPage = () => {
     false,
     false,
   ]);
-
+  
+  if(!sessionStorage.getItem("auth")){
+    sessionStorage.setItem("auth",prompt("Enter Admin Password:"))
+  }
   useEffect(() => {
     fetch("http://localhost:3001/event/getEndedEvents", {
       method: "POST",
-      body: {}
+      body: {},
+      headers:{
+        auth:sessionStorage.getItem("auth")
+      }
     }).then(eventList => {
       console.log(eventList, "among us")
       eventList.json().then((e) => {
@@ -65,8 +71,11 @@ const AdminPage = () => {
         eventName: eventNameMade,
         startDate: startDateMade,
         endDate: endDateMade,
-        eventPrograms: programsMade,
+        eventPrograms: programsMade
       }),
+      headers:{
+        auth:sessionStorage.getItem("auth")
+      }
     });
   }
 
@@ -81,7 +90,9 @@ const AdminPage = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
-
+  if(!sessionStorage.getItem("auth")){
+    sessionStorage.setItem("auth",prompt("ENTER ADMIN PASSWORD"))
+  }
   return (
     <div
       className={

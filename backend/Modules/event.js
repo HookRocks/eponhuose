@@ -2,6 +2,8 @@ const connectDB = require("../connect")
 require('dotenv').config()
 const event = require('../models/event')
 const endedEvent=require("../models/endedEvent")
+
+
 //returns all events
 const getEventList = async (args) => {
     await connectDB(process.env.MONGO_URI);
@@ -23,6 +25,7 @@ const getParticipants = async () => {
 
 //creates event to store relevant data for the host to be sent later
 const createEvent = async (EventData) => {
+    
     // const eventData = {
     //     host,
     //     email,
@@ -52,8 +55,18 @@ const updateEvent = async (filter, update) => {
 const endEvent = async (args) => {
     await connectDB(process.env.MONGO_URI);
     const removedEvent=event.findOne(JSON.parse(args));
+    console.log(removedEvent)
     if(removedEvent){
-        await endedEvent(removedEvent).save()
+        //need to finish this
+        var ev=new endedEvent({
+            eventName:removedEvent.eventName,
+            endDate:removedEvent.endDate,
+            startDate:removedEvent.startDate,
+            participants:(removedEvent.participants?removedEvent.participants.length:0),
+            eventPrograms:removedEvent.eventPrograms,
+            visitorCount:removedEvent.visitorCount
+        })
+        await ev.save()
         await event.deleteOne(JSON.parse(args));
     }
     return "loser"
@@ -94,6 +107,7 @@ const getEndedEvents=async(req,res)=>{
 //clears any events that should be ended and creates a timeout to run again at the next start of an hour
 const Timers=require("timers")
 const clearEndedEvents=async ()=>{
+    
     var endTime=Date.now();
     await connectDB(process.env.MONGO_URI)
     const endingList=await event.find({endDate:{$lte:endTime}});

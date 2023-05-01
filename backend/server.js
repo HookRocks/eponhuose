@@ -28,6 +28,7 @@ app.post('/token', async (req, res) => {
 });
 
 app.use('/', async (req, res, next) => {
+  
   next();
 });
 app.use('/users', UserRouter);

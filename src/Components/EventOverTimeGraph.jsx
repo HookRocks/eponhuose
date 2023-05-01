@@ -4,13 +4,15 @@ import '../../node_modules/react-vis/dist/style.css';
 import { XYPlot, LineMarkSeries, HorizontalGridLines, Hint, XAxis, YAxis } from 'react-vis';
 import { ImageUtils } from "three";
 
-const EventOverTimeGraph = ({ chartData }) => {
+const EventOverTimeGraph = ({ chartData=[] }) => {
+  
   const [data, setData] = useState([]);
   const [increment, setIncrement] = useState([]);
   const [HoveredDot, SetDot] = useState({})
   useEffect(() => {
     if (chartData.length < 1) { return }
-    var sus = chartData.map((chart, i) => { return { x: i, y: chart.visitorCount } })
+    
+    var sus = chartData.map((chart, i) => {console.log(chart);return { x: i, y: chart.visitorCount } })
     var increments = []
     var susshallow = sus
 
@@ -22,7 +24,7 @@ const EventOverTimeGraph = ({ chartData }) => {
     //console.log(maxValue, minValue)
     for (let i = 0; i < 11; i++) {
       var val = (((maxValue - minValue) / 10) * i) + minValue
-      console.log(val)
+      
       increments.push(val)
     }
     setIncrement(increments)
@@ -30,6 +32,7 @@ const EventOverTimeGraph = ({ chartData }) => {
     setData(sus)
 
   }, [chartData])
+  useEffect(()=>{},[HoveredDot])
   //width of the plot
   var plotWidth = 600;
   //this is the range for hovering a point on the graph
@@ -39,24 +42,30 @@ const EventOverTimeGraph = ({ chartData }) => {
       //this makes sure you are in the right node to reach the points
       if (e.target.className.baseVal != "rv-xy-plot__inner") { return; }
       //this is the root for the points in svg
-      var a = e.target.children[2].children[1].children
+      var a = e.target.children[3].children[1].children
       //null if not close enough to any points
       var hoveredNode = {}
       for (var i = 0; i < a.length; i++) {
         var bounds = a[i].getBoundingClientRect()
-        if ((bounds.x - e.clientX) * (bounds.x - e.clientX) + (bounds.y - e.clientY) * (bounds.y - e.clientY) < hoverRange * hoverRange) {
-          hoveredNode = { point: i, xPos: bounds.x, yPos: bounds.y, count: data[i].y };
+        if ((bounds.x - e.clientX) * (bounds.x - e.clientX) + (bounds.y - e.clientY) * (bounds.y - e.clientY) > hoverRange * hoverRange) {
+          hoveredNode = { point: i, xPos: bounds.x, yPos: bounds.y, data: chartData[i] }
+          
         }
       }
+      
       SetDot(hoveredNode)
       if (hoveredNode) { console.log(hoveredNode) }
-
+      
     }}>
       <YAxis tickValues={increment} color="white" style={{fontSize: 20,color: "#ffffff",strokeWidth: 2,stroke: 0}} />
       <XAxis tickValues={increment} color="white" style={{fontSize: 20, color: "#ffffff",strokeWidth: 2, stroke: 0}} />
       <HorizontalGridLines style={{ strokeWidth: 2 }} />
       <LineMarkSeries data={data} color="gray" tooltip="hi" style={{ strokeWidth: 3 }} />
-      <p className="text-center text-white">{HoveredDot.count}</p>
+      
+      <p className="text-center text-white">{
+      
+      HoveredDot?.data?.visitorCount
+      }</p>
     </XYPlot>
   )
 };

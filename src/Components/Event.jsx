@@ -12,7 +12,10 @@ const EventComp = ({ eventName, eventStartDate, eventEndDate, eventID }) => {
       method: "POST",
       body: JSON.stringify({
         _id: eventId,
-      })
+      }),
+      headers:{
+        auth:sessionStorage.getItem("auth")
+      }
     })
   }
   return (
