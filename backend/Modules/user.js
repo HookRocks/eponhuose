@@ -29,11 +29,12 @@ const getUserByEmail = async (userEmail) => {
 
 
 const userJoin = async (Filter, userInfo) => {
-    const { userName, userEmail, eventName} = userInfo
+    const { userName, userEmail} = {"userName":"test","userEmail":"test"}
+    console.log(userInfo)
 
     var userData = await getUserByEmail(userEmail)
     if (!userData) {
-        const newUser = new user({ name: userName, email: userEmail, eventName})
+        const newUser = new user({ name: userName, email: userEmail})
         await newUser.save();
         userData = newUser
     }

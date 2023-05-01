@@ -34,7 +34,7 @@ const createEvent = async (EventData) => {
     //     eventName: (eventName != null ? eventName : startDate),
     //     participants: []
     // }
-
+    EventData.participants=[]
     await connectDB(process.env.MONGO_URI);
     try {
         const NewEvent = new event(EventData)
@@ -72,26 +72,12 @@ const endEvent = async (args) => {
     return "loser"
 }
 
-//adds user to event participants if not already in it
-const addToEvent = async (Filter, userID) => { // add support for multiple events
-    await connectDB(process.env.MONGO_URI);
-    const eventData = await getEvent(Filter);
 
-    if (!eventData) return { success: false, msg: "no active event to join" }
-
-    if (!eventData.participants.includes(userID)) {
-        eventData.participants.push(userID)
-        await event.findByIdAndUpdate(eventData._id, { participants: eventData.participants })
-        console.log(eventData.participants)
-        return { success: true, msg: "added user to event" }
-    }
-    return { success: false, msg: "user already in event" }
-}
 //adds 1 to number of people going to an event
 const visitEvent=async(req,res)=>{
-    const {programName,eventName}=JSON.parse(req.body);
+    const {Filter}=JSON.parse(req.body);
     await connectDB(process.env.MONGO_URI);
-    await event.findOneAndUpdate({eventName},{$inc:{visitorCount:1}});
+    await event.findOneAndUpdate(Filter,{$inc:{visitorCount:1}});
     return {success:true,msg:"i dunno mate"};
 }
 //returns n most recent events
