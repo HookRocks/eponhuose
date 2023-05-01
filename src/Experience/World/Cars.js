@@ -1,5 +1,4 @@
 import Experience from '../Experience';
-
 export default class Cars {
   constructor() {
     this.experience = new Experience();
@@ -31,8 +30,8 @@ export default class Cars {
       spots: this.fillAndShuffleArray(),
       startingX: -3.67,
       startingZ: 2.6,
-      xIncrement: 1.134,
-      zIncrement: 0.2,
+      xIncrement: 1.14,
+      zIncrement: 0.175,
     };
     this.frontLeftSpots = {
       spots: this.fillAndShuffleArray(),
@@ -48,36 +47,26 @@ export default class Cars {
       xIncrement: 1.134,
       zIncrement: 0.2,
     };
+    this.eastSpots = {
+      spots: this.fillAndShuffleArray(15, 5),
+      startingX: -7.7,
+      startingZ: -6.8,
+      xIncrement: 0.25,
+      zIncrement: 0.4,
+    };
     this.spots = [
       this.frontLeftSpots,
       this.frontRightSpots,
       this.backLeftSpots,
       this.backRightSpots,
+      this.eastSpots,
     ];
   }
 
-  setModel() {
-    console.log(this.allCars);
-    const c = this.allCars[0];
-    this.scene.add(c);
-    //1.97
-    //-3.67
-    c.position.x = -2.536;
-    c.position.y = 0.125;
-    c.position.z = 1.94;
-    c.scale.x /= 2;
-    c.scale.y /= 2;
-    c.scale.z /= 2;
-    // c.scale.set(0.5, 0.5, 0.5);
-
-    // this.scene.add(this.allCars[1]);
-    // this.scene.add(this.allCars[2]);
-  }
-
-  fillAndShuffleArray() {
+  fillAndShuffleArray(x = 8, y = 3) {
     let array = [];
-    for (let a = 0; a < 8; a++) {
-      for (let b = 0; b < 3; b++) {
+    for (let a = 0; a < x; a++) {
+      for (let b = 0; b < y; b++) {
         array.push(`${a} ${b}`);
       }
     }
@@ -105,6 +94,9 @@ export default class Cars {
       const randomZ = randomSpot.startingZ + yPos * randomSpot.zIncrement;
       car.position.x = randomX;
       car.position.z = randomZ;
+      if (randomSpotNumber == 4) {
+        car.rotation.z = 0;
+      }
     }
   }
 }
