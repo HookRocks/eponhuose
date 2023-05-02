@@ -55,7 +55,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
     );
   } else {
     return (
-      <div className=' h-full text-center align-center justify-center'>
+      <div className={`h-full text-center align-center justify-center ${windowWidth<640?' z-50':' z-0'} `}>
         {givenProgramName != null || givenProgramName != '' ? (
           <div><h1 className='font-bold text-xl'>{givenProgramName}</h1></div>
         ) : (

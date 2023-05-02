@@ -59,10 +59,11 @@ const EventOverTimeGraph = ({ chartData=[] }) => {
       
     }}>
       <YAxis tickValues={increment} color="white" style={{fontSize: 20,color: "#ffffff",strokeWidth: 2,stroke: 1}} />
-      <XAxis tickValues={increment} color="white" style={{fontSize: 20, color: "#ffffff",strokeWidth: 2, stroke: 1}} />
       <HorizontalGridLines style={{ strokeWidth: 2 }} />
       <LineMarkSeries data={data} color="gray" tooltip="hi" style={{ strokeWidth: 3 }} />
-      
+      <p className="text-center text-white">
+         <h1>{HoveredDot?.data?.eventName}</h1>
+      </p>
       
     </XYPlot>
   )
