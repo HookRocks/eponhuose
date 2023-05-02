@@ -17,7 +17,7 @@
         }
       ]
     },
-    "Air Conditioning Technology":{
+    "HVAC":{
       "programName": "Air Conditioning Technology",
       "POW": ["../assets/23-24-Air-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Air-Conditioning.pdf"],
       "instructorName": ["Mr.Brooke"],
