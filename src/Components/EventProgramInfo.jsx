@@ -70,7 +70,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             <b>All Teachers and staff</b>
           )}
         </p>
-        {event.length > 0 && event[0] != "E"? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
+        {event && event[0] != "E"? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
        
         {givenProgramName != null || givenProgramName != '' ? (
           <div className='w-full'>
@@ -118,7 +118,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
         }),
       })
           }}>
-          <a>Program Visited</a>
+          <a>Visit event</a>
         </button>
       </div>
     );

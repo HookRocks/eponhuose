@@ -63,8 +63,8 @@ const EventOverTimeGraph = ({ chartData=[] }) => {
       <HorizontalGridLines style={{ strokeWidth: 2 }} />
       <LineMarkSeries data={data} color="gray" tooltip="hi" style={{ strokeWidth: 3 }} />
       
-      <p className="text-center text-white">
-      <h1>{HoveredDot?.data?.eventName}</h1>
+      <p>
+      <h1 className="text-center text-white">{HoveredDot?.data?.eventName}</h1>
       
       </p>
     </XYPlot>
