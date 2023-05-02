@@ -1,10 +1,10 @@
 import React from 'react';
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { MarkerContext } from '../Contexts/MarkerContext';
 import Experience from '../Experience/Experience';
 
 function Map() {
-  const markerContext = useContext(MarkerContext);
+  const markerContext=useContext(MarkerContext);
   useEffect(() => {
     const experience = new Experience(
       document.querySelector('.experience-canvas'),
@@ -14,7 +14,22 @@ function Map() {
   useEffect(() => {
     const resizeEvent = new Event('resizeEvent');
     document.dispatchEvent(resizeEvent);
-  }, [markerContext]);
+  },[markerContext]);
+  
+   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  });
+
   return (
     <div>
       <div className='experience'>
@@ -28,7 +43,7 @@ function Map() {
           <i className='fa-solid fa-rotate-left'></i>
         </button>
       </div>
-      <div className='instructions'>
+      {windowWidth < 640?(<div></div>):(<div className='instructions'>
         <div className='mice'>
           <div className='mouse-wrapper'>
             Rotate
@@ -56,7 +71,7 @@ function Map() {
           </div>
         </div>
         <h2 className='learn-more'>Click on a Marker to Learn More</h2>
-      </div>
+      </div>)}
       <div className='loader__wrapper'>
         <p className='loader__wrapper__items'>Loaded Resource 0 / 35</p>
       </div>
