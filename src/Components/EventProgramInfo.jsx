@@ -57,7 +57,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
     return (
       <div className=' h-full text-center align-center justify-center'>
         {givenProgramName != null || givenProgramName != '' ? (
-          <h1 className='font-bold text-xl'>{givenProgramName}</h1>
+          <div><h1 className='font-bold text-xl'>{givenProgramName}</h1></div>
         ) : (
           <b>program list</b>
         )}
@@ -70,7 +70,20 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             <b>All Teachers and staff</b>
           )}
         </p>
-        {event && event[0] != "E"? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
+        {event&&event[0]!="E"? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
+        {windowWidth<640?( <button
+          className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
+          onClick={(ev) => {
+            ev.stopPropagation();
+            fetch('http://localhost:3001/users/visit', {
+        method: 'POST',
+        body: JSON.stringify({
+          Filter: {_id: event[0]._id}
+        }),
+      })
+          }}>
+          <a>Visit event</a>
+        </button>):(<div></div>)}
        
         {givenProgramName != null || givenProgramName != '' ? (
           <div className='w-full'>
@@ -106,8 +119,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
         ) : (
           <h1>Please Select a Class</h1>
         )}
-
-        <button
+          {windowWidth>640?( <button
           className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
           onClick={(ev) => {
             ev.stopPropagation();
@@ -119,7 +131,8 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       })
           }}>
           <a>Visit event</a>
-        </button>
+        </button>):(<div></div>)}
+       
       </div>
     );
   }
