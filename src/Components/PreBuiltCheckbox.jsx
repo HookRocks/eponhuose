@@ -13,8 +13,8 @@ const PreBuiltCheckbox=({boxId, boxContent, boxFunction,isCheckedAlready}) => {
   const [isChecked,setIsChecked]=useState(isCheckedAlready);
   const checkboxAnimationRef = useSpringRef();
   const checkboxAnimationStyle = useSpring({
-    backgroundColor: isChecked ? "#808" : "#fff",
-    borderColor: isChecked ? "#808" : "#ddd",
+    backgroundColor: isChecked ? "#f5a018" : "#fff",
+    borderColor: isChecked ? "#f5a018" : "#ddd",
     config: config.gentle,
     ref: checkboxAnimationRef
   });

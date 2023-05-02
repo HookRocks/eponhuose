@@ -47,7 +47,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   });
   if (tabbedMode) {
     return (
-      <div className='flex align-middle items-center justify-center min-h-full font-extrabold text-2xl'>
+      <div className='flex align-middle items-center justify-center min-h-full font-extrabold text-2xl bg-[#131312]'>
         <h1 className={windowWidth < 640 ? `` : `transform rotate-[270deg]`}>
           Program Information
         </h1>
@@ -108,7 +108,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
         )}
 
         <button
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
           onClick={(ev) => {
             ev.stopPropagation();
             fetch('http://localhost:3001/users/visit', {

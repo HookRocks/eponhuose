@@ -62,7 +62,6 @@ const endEvent = async (args) => {
             eventName:removedEvent.eventName,
             endDate:removedEvent.endDate,
             startDate:removedEvent.startDate,
-            participants:(removedEvent.participants?removedEvent.participants.length:0),
             eventPrograms:removedEvent.eventPrograms,
             visitorCount:removedEvent.visitorCount
         })
@@ -105,4 +104,4 @@ const clearEndedEvents=async ()=>{
 
 
 
-module.exports = { addToEvent, endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList,visitEvent,getEndedEvents,clearEndedEvents}
+module.exports = { endEvent, createEvent, getEvent, getParticipants, updateEvent, getEventList,visitEvent,getEndedEvents,clearEndedEvents}
