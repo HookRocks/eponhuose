@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import programInfo from '../modules/ProgramInfo.json';
 import swal from '@sweetalert/with-react';
 import AnimatedArrowButton from './AnimatedArrowButton';
+import {MdArrowBackIos, MdArrowForwardIos} from 'react-icons/md'
 
 const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -12,6 +13,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [event,setEvent]=useState();
 
   const joinEvent=() => {
+    console.log(event)
     if(localStorage.getItem('eventVisited')==event[0]._id) {
       return alert("You have already joined this event")
     }
@@ -107,8 +109,8 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
                     ev.stopPropagation();
                     handlePrevClick();
                   }}
-                  className='arrow relative w-12 h-12 text-orange-600 font-extrabold text-4xl'>
-                  <div className='arrow-left'>&lArr;</div>
+                  className=' px-10 py-0.5 mt-2 mb-0.5 text-white text-center font-extrabold text-3xl rounded-3xl text-center bg-[#f5a018] hover:bg-[#c18019]'>
+                  <div><MdArrowBackIos/></div>
                 </button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button
@@ -116,8 +118,8 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
                     ev.stopPropagation();
                     handleNextClick();
                   }}
-                  className='arrow relative w-12 h-12 text-orange-600 font-extrabold text-4xl'>
-                  <div className='arrow-right'>&rArr;</div>
+                  className='px-10 py-0.5 mt-2 mb-0.5 text-white text-center font-extrabold text-3xl rounded-3xl bg-[#f5a018] hover:bg-[#c18019'>
+                  <div><MdArrowForwardIos/></div>
                 </button>
               </div>
             ) : (
