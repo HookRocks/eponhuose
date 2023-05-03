@@ -37,9 +37,9 @@ const Main = () => {
             ? `${
                 markerContext.markerStates.clicked
                   ? ''
-                  : 'text-center min-w-full font-extrabold text-2xl'
-              } bg-[#cb7c15]  `
-            : `bg-[#cb7c15]`
+                  : 'grid text-center min-w-full font-extrabold text-2xl'
+              } bg-[#cb7c15] grid`
+            : `bg-[#cb7c15] grid`
         }>
         <Map />
       </div>

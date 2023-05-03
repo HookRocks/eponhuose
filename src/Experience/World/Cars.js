@@ -61,6 +61,16 @@ export default class Cars {
       this.backRightSpots,
       this.eastSpots,
     ];
+
+    //  this.startingCarCount = localStorage.getItem('Visitor Count');
+    //  if (this.startingCarCount) {
+    //    for (let i = 0; i < Number(this.startingCarCount); i++) {
+    //      this.addCar();
+    //    }
+    //  }
+    for (let i = 0; i < 20; i++) {
+      this.addCar();
+    }
   }
 
   fillAndShuffleArray(x = 8, y = 3) {

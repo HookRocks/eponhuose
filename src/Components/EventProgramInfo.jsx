@@ -15,6 +15,9 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
 
   const joinEvent = () => {
     console.log(event);
+    if (event) {
+      localStorage.setItem('Visitor Count', event[0].visitorCount);
+    }
     if (localStorage.getItem('eventVisited') == event[0]._id) {
       return alert('You have already joined this event');
     }
@@ -36,7 +39,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       eventList = eventList.json().then((e) => {
         setEvent(e);
       });
-      console.log(event);
+      console.log(eventList);
     });
   }, []);
   const handlePrevClick = () => {
