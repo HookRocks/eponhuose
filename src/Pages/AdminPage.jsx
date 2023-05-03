@@ -5,7 +5,7 @@ import EventsList from '../Components/EventsList';
 import Event from '../Components/Event';
 import { set } from 'mongoose';
 import EventOverTimeGraph from '../Components/EventOverTimeGraph';
-import Data from '../modules/Data'
+import Data from '../modules/Data';
 // import EventOverTimeGraph from '../Components/EventOverTimeGraph';
 
 const AdminPage = () => {
@@ -30,30 +30,29 @@ const AdminPage = () => {
     false,
     false,
   ]);
-  
-  if(!sessionStorage.getItem("auth")){
-    sessionStorage.setItem("auth",prompt("Enter Admin Password:"))
+
+  if (!sessionStorage.getItem('auth')) {
+    sessionStorage.setItem('auth', prompt('Enter Admin Password:'));
   }
   useEffect(() => {
     fetch(`${process.env.BACKEND_URL}event/getEndedEvents`, {
-      method: "POST",
+      method: 'POST',
       body: {},
-      headers:{
-        auth:sessionStorage.getItem("auth")
-      }
-    }).then(eventList => {
-      console.log(eventList, "among us")
+      headers: {
+        auth: sessionStorage.getItem('auth'),
+      },
+    }).then((eventList) => {
+      console.log(eventList, 'among us');
       eventList.json().then((e) => {
-        console.log(e)
+        console.log(e);
         setEventList(e);
       });
-    })
+    });
   }, []);
 
   useEffect(() => {
-    console.log(events, "sussy impos")
+    console.log(events, 'sussy impos');
   }, [events]);
-
 
   const AllProgramFunc = useEffect(() => {
     var allChosen =
@@ -71,11 +70,11 @@ const AdminPage = () => {
         eventName: eventNameMade,
         startDate: startDateMade,
         endDate: endDateMade,
-        eventPrograms: programsMade
+        eventPrograms: programsMade,
       }),
-      headers:{
-        auth:sessionStorage.getItem("auth")
-      }
+      headers: {
+        auth: sessionStorage.getItem('auth'),
+      },
     });
   }
 
@@ -90,22 +89,23 @@ const AdminPage = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
-  if(!sessionStorage.getItem("auth")){
-    sessionStorage.setItem("auth",prompt("ENTER ADMIN PASSWORD"))
+  if (!sessionStorage.getItem('auth')) {
+    sessionStorage.setItem('auth', prompt('ENTER ADMIN PASSWORD'));
   }
   return (
     <div
       className={
         windowWidth < 640
           ? ``
-          : `grid  lg:${clicked
-            ? 'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen'
-            : 'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'
-          } `
+          : `grid lg:${
+              clicked
+                ? 'grid-cols-[9fr_1fr] grid-rows-1 min-h-screen'
+                : 'grid-cols-[6fr_4fr] grid-rows-1 min-h-screen'
+            } `
       }>
       <div className={windowWidth < 640 ? `hidden ` : `bg-neutral-900 w-full`}>
         {console.log(events, 'eeeeee')}
-        <EventOverTimeGraph chartData={events/*should be eventList*/} />
+        <EventOverTimeGraph chartData={events /*should be eventList*/} />
       </div>
 
       <div className='static bg-neutral-700 min-h-screen w-full p-4 duration-500 transform text-white flex flex-col gap-6'>
@@ -164,11 +164,39 @@ const AdminPage = () => {
                   boxId='select-all'
                   boxFunction={() => {
                     setIsAllProgChecked(!isAllProgChecked);
-                    setPrograms(programsMade.map((val,ind) => ind==11? !val:val));
-                    if(programsMade[11]) {
-                      setPrograms([true,true,true,true,true,true,true,true,true,true,true,true])
+                    setPrograms(
+                      programsMade.map((val, ind) => (ind == 11 ? !val : val))
+                    );
+                    if (programsMade[11]) {
+                      setPrograms([
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                      ]);
                     } else {
-                      setPrograms([false,false,false,false,false,false,false,false,false,false,false,false])
+                      setPrograms([
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                      ]);
                     }
                   }}
                   boxContent='All Programs'
