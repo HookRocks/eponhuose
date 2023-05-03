@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import programInfo from '../modules/ProgramInfo.json';
 import swal from '@sweetalert/with-react';
 import AnimatedArrowButton from './AnimatedArrowButton';
@@ -11,6 +11,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [event, setEvent] = useState();
+  const carEvent = useMemo(() => new Event('Car'));
 
   const joinEvent = () => {
     console.log(event);
@@ -30,7 +31,8 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       method: 'POST',
       body: {},
     }).then((eventList) => {
-      console.log(eventList);
+      console.log(carEvent);
+      document.dispatchEvent(carEvent);
       eventList = eventList.json().then((e) => {
         setEvent(e);
       });
@@ -105,7 +107,6 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
             onClick={(ev) => {
               ev.stopPropagation();
-              document.dispatchEvent(new Event('Car'));
               fetch('http://localhost:3001/users/visit', {
                 method: 'POST',
                 body: JSON.stringify({
