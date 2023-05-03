@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Main from './Pages/Main.jsx';
 import AdminPage from './Pages/AdminPage';
-import { MarkerProvider } from './Contexts/MarkerContext';
+import {MarkerProvider} from './Contexts/MarkerContext';
+
 
 const router = createBrowserRouter([
   {

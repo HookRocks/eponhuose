@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import programInfo from '../modules/ProgramInfo.json';
 import swal from '@sweetalert/with-react';
 import AnimatedArrowButton from './AnimatedArrowButton';
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
+import {MdArrowBackIos,MdArrowForwardIos} from 'react-icons/md';
 
 const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -21,22 +21,21 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
     if (localStorage.getItem('eventVisited') == event[0]._id) {
       return alert('You have already joined this event');
     }
-    localStorage.setItem('eventVisited', event[0]._id);
-    fetch('http://localhost:3001/users/visit', {
-      method: 'POST',
-      body: JSON.stringify({
-        Filter: { _id: event[0]._id },
-      }),
-    });
-  };
-  useEffect(() => {
-    fetch('http://localhost:3001/event/getEventList', {
-      method: 'POST',
-      body: {},
-    }).then((eventList) => {
-      console.log(carEvent);
-      document.dispatchEvent(carEvent);
-      eventList = eventList.json().then((e) => {
+      localStorage.setItem('eventVisited',event[0]._id)
+      fetch(`${process.env.BACKEND_URL}users/visit`, {
+        method: 'POST',
+        body: JSON.stringify({
+          Filter: {_id: event[0]._id}
+        }),
+      })
+  }
+  useEffect(()=>{
+   fetch(`${process.env.BACKEND_URL}event/getEventList`,{
+      method: "POST",
+      body: {}
+    }).then(eventList => {
+      console.log(eventList)
+      eventList=eventList.json().then((e)=>{
         setEvent(e);
       });
       console.log(eventList);
@@ -100,29 +99,21 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             <b>All Teachers and staff</b>
           )}
         </div>
-        {event && event[0] != 'E' ? (
-          <p className='font-bold'>{event[0].eventName}</p>
-        ) : (
-          <p>No Event Scheduled</p>
-        )}
-        {windowWidth < 640 ? (
-          <button
-            className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
-            onClick={(ev) => {
-              ev.stopPropagation();
-              fetch('http://localhost:3001/users/visit', {
-                method: 'POST',
-                body: JSON.stringify({
-                  Filter: { _id: event[0]._id },
-                }),
-              });
-            }}>
-            <p>Visit event</p>
-          </button>
-        ) : (
-          <div></div>
-        )}
-
+        {event&&event[0]!="E"? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
+        {windowWidth<640?( <button
+          className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
+          onClick={(ev) => {
+            ev.stopPropagation();
+            fetch(`${process.env.BACKEND_URL}users/visit`, {
+        method: 'POST',
+        body: JSON.stringify({
+          Filter: {_id: event[0]._id}
+        }),
+      })
+          }}>
+          <p>Visit event</p>
+        </button>):(<div></div>)}
+       
         {givenProgramName != null || givenProgramName != '' ? (
           <div className='w-full'>
             {programInfo[givenProgramName].POW.length > 1 ? (
@@ -165,6 +156,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           <button
             className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
             onClick={(ev) => {
+              console.log(process.env.BACKEND_URL)
               ev.stopPropagation();
               joinEvent();
             }}>

@@ -5,7 +5,7 @@ const EventsList = () => {
   const [events, setEventList] = useState(["E"]);
   useEffect(() => {
     if (events[0] == "E") {
-      fetch("http://localhost:3001/event/getEventList", {
+      fetch(`${process.env.BACKEND_URL}event/getEventList`, {
         method: "POST",
         body: {}
       }).then(eventList => {

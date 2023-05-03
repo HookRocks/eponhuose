@@ -35,7 +35,7 @@ const AdminPage = () => {
     sessionStorage.setItem('auth', prompt('Enter Admin Password:'));
   }
   useEffect(() => {
-    fetch('http://localhost:3001/event/getEndedEvents', {
+    fetch(`${process.env.BACKEND_URL}event/getEndedEvents`, {
       method: 'POST',
       body: {},
       headers: {
@@ -64,7 +64,7 @@ const AdminPage = () => {
   }, [programsMade]);
 
   function createEventButton() {
-    fetch('http://localhost:3001/event/createEvent', {
+    fetch(`${process.env.BACKEND_URL}event/createEvent`, {
       method: 'POST',
       body: JSON.stringify({
         eventName: eventNameMade,
