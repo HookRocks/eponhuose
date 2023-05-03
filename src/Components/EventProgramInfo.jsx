@@ -74,7 +74,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
         ) : (
           <b>program list</b>
         )}
-        <p>
+        <div>
           {givenProgramName != null || givenProgramName != '' ? (
             <h1 className='font-bold'>
               {programInfo[givenProgramName].instructorName.join(', ')}
@@ -82,7 +82,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           ) : (
             <b>All Teachers and staff</b>
           )}
-        </p>
+        </div>
         {event&&event[0]!="E"? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
         {windowWidth<640?( <button
           className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
@@ -95,7 +95,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
         }),
       })
           }}>
-          <a>Visit event</a>
+          <p>Visit event</p>
         </button>):(<div></div>)}
        
         {givenProgramName != null || givenProgramName != '' ? (

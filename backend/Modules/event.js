@@ -77,6 +77,7 @@ const visitEvent=async(req,res)=>{
     const {Filter}=JSON.parse(req.body);
     await connectDB(process.env.MONGO_URI);
     await event.findOneAndUpdate(Filter,{$inc:{visitorCount:1}});
+    console.log("event Visited")
     return {success:true,msg:"i dunno mate"};
 }
 //returns n most recent events
