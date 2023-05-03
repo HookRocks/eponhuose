@@ -10,6 +10,19 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [userName, setUserName] = useState('');
   const [userEmail,setUserEmail]=useState('');
   const [event,setEvent]=useState();
+
+  const joinEvent=() => {
+    if(localStorage.getItem('eventVisited')==event[0]._id) {
+      return alert("You have already joined this event")
+    }
+      localStorage.setItem('eventVisited',event[0]._id)
+      fetch('http://localhost:3001/users/visit', {
+        method: 'POST',
+        body: JSON.stringify({
+          Filter: {_id: event[0]._id}
+        }),
+      })
+  }
   useEffect(()=>{
    fetch("http://localhost:3001/event/getEventList",{
       method: "POST",
@@ -123,12 +136,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
           onClick={(ev) => {
             ev.stopPropagation();
-            fetch('http://localhost:3001/users/visit', {
-        method: 'POST',
-        body: JSON.stringify({
-          Filter: {_id: event[0]._id}
-        }),
-      })
+            joinEvent();
           }}>
           <a>Visit event</a>
         </button>):(<div></div>)}
