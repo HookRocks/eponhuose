@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import programInfo from '../modules/ProgramInfo.json';
 import swal from '@sweetalert/with-react';
 import AnimatedArrowButton from './AnimatedArrowButton';
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
+import {MdArrowBackIos,MdArrowForwardIos} from 'react-icons/md';
 
 const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -153,6 +153,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           <button
             className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
             onClick={(ev) => {
+              console.log(process.env.BACKEND_URL)
               ev.stopPropagation();
               joinEvent();
             }}>

@@ -35,7 +35,7 @@ const AdminPage = () => {
     sessionStorage.setItem('auth', prompt('Enter Admin Password:'));
   }
   useEffect(() => {
-    fetch(`${process.env.BACKEND_URL}event/getEndedEvents`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}event/getEndedEvents`, {
       method: 'POST',
       body: {},
       headers: {
