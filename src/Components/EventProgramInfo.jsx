@@ -105,6 +105,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
             onClick={(ev) => {
               ev.stopPropagation();
+              document.dispatchEvent(new Event('Car'));
               fetch('http://localhost:3001/users/visit', {
                 method: 'POST',
                 body: JSON.stringify({
