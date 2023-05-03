@@ -18,7 +18,7 @@ export default class Cars {
 
     // this.setModel();
 
-    document.addEventListener('click', () => this.addCar());
+    document.addEventListener('Car', () => this.addCar());
     this.backLeftSpots = {
       spots: this.fillAndShuffleArray(),
       startingX: -3.67,

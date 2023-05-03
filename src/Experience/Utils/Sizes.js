@@ -10,6 +10,7 @@ export default class Sizes extends EventEmitter {
     this.pixelRatio = Math.min(window.devicePixelRatio, 2);
     document.addEventListener('resizeEvent', () => {
       this.currentSize = this.currentSize == 0.9 ? 0.6 : 0.9;
+      if (window.innerWidth < 1024) this.currentSize = 1;
       this.resize(this.currentSize);
     });
     window.addEventListener('resize', () => {
