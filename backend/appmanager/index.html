@@ -10,7 +10,7 @@
     event management page
     <script>
         const req=async()=>{
-        var request=await fetch("http://localhost:3001/manager/listEvents")
+        var request=await fetch(`${process.env.BACKEND_URL}manager/listEvents`)
         const events=await request.json();
         for(const event in events){
             var obj=document.createElement('li');

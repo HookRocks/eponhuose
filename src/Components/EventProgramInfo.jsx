@@ -18,7 +18,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       return alert("You have already joined this event")
     }
       localStorage.setItem('eventVisited',event[0]._id)
-      fetch('http://localhost:3001/users/visit', {
+      fetch(`${process.env.BACKEND_URL}users/visit`, {
         method: 'POST',
         body: JSON.stringify({
           Filter: {_id: event[0]._id}
@@ -26,7 +26,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       })
   }
   useEffect(()=>{
-   fetch("http://localhost:3001/event/getEventList",{
+   fetch(`${process.env.BACKEND_URL}event/getEventList`,{
       method: "POST",
       body: {}
     }).then(eventList => {
@@ -90,7 +90,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
           onClick={(ev) => {
             ev.stopPropagation();
-            fetch('http://localhost:3001/users/visit', {
+            fetch(`${process.env.BACKEND_URL}users/visit`, {
         method: 'POST',
         body: JSON.stringify({
           Filter: {_id: event[0]._id}

@@ -35,14 +35,22 @@ function Map() {
       <div className='experience'>
         <canvas className='experience-canvas'></canvas>
       </div>
-      <div className='buttons'>
+      {windowWidth <640?(      <div className='buttons'>
         <button className='back'>
           <i className='fa-solid fa-arrow-left'></i>
         </button>
         <button className='repeat'>
           <i className='fa-solid fa-rotate-left'></i>
         </button>
-      </div>
+      </div>):(      <div className='buttons'>
+        <button className='back'>
+          <i className='fa-solid fa-arrow-left'></i>
+        </button>
+        <button className='repeat'>
+          <i className='fa-solid fa-rotate-left'></i>
+        </button>
+      </div>)}
+
       {windowWidth < 640?(<div></div>):(<div className='instructions'>
         <div className='mice'>
           <div className='mouse-wrapper'>
