@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import programInfo from '../modules/ProgramInfo.json';
 import swal from '@sweetalert/with-react';
 import AnimatedArrowButton from './AnimatedArrowButton';
+import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
 const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -10,6 +11,20 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [event, setEvent] = useState();
+
+  const joinEvent = () => {
+    console.log(event);
+    if (localStorage.getItem('eventVisited') == event[0]._id) {
+      return alert('You have already joined this event');
+    }
+    localStorage.setItem('eventVisited', event[0]._id);
+    fetch('http://localhost:3001/users/visit', {
+      method: 'POST',
+      body: JSON.stringify({
+        Filter: { _id: event[0]._id },
+      }),
+    });
+  };
   useEffect(() => {
     fetch('http://localhost:3001/event/getEventList', {
       method: 'POST',
@@ -71,7 +86,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
         ) : (
           <b>program list</b>
         )}
-        <p>
+        <div>
           {givenProgramName != null || givenProgramName != '' ? (
             <h1 className='font-bold'>
               {programInfo[givenProgramName].instructorName.join(', ')}
@@ -79,7 +94,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           ) : (
             <b>All Teachers and staff</b>
           )}
-        </p>
+        </div>
         {event && event[0] != 'E' ? (
           <p className='font-bold'>{event[0].eventName}</p>
         ) : (
@@ -90,7 +105,6 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
             onClick={(ev) => {
               ev.stopPropagation();
-              document.dispatchEvent(new Event('Car'));
               fetch('http://localhost:3001/users/visit', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -98,7 +112,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
                 }),
               });
             }}>
-            <a>Visit event</a>
+            <p>Visit event</p>
           </button>
         ) : (
           <div></div>
@@ -113,8 +127,10 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
                     ev.stopPropagation();
                     handlePrevClick();
                   }}
-                  className='arrow relative w-12 h-12 text-orange-600 font-extrabold text-4xl'>
-                  <div className='arrow-left'>&lArr;</div>
+                  className=' px-10 py-0.5 mt-2 mb-0.5 text-white text-center font-extrabold text-3xl rounded-3xl text-center bg-[#f5a018] hover:bg-[#c18019]'>
+                  <div>
+                    <MdArrowBackIos />
+                  </div>
                 </button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button
@@ -122,8 +138,10 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
                     ev.stopPropagation();
                     handleNextClick();
                   }}
-                  className='arrow relative w-12 h-12 text-orange-600 font-extrabold text-4xl'>
-                  <div className='arrow-right'>&rArr;</div>
+                  className='px-10 py-0.5 mt-2 mb-0.5 text-white text-center font-extrabold text-3xl rounded-3xl bg-[#f5a018] hover:bg-[#c18019'>
+                  <div>
+                    <MdArrowForwardIos />
+                  </div>
                 </button>
               </div>
             ) : (
@@ -143,12 +161,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
             onClick={(ev) => {
               ev.stopPropagation();
-              fetch('http://localhost:3001/users/visit', {
-                method: 'POST',
-                body: JSON.stringify({
-                  Filter: { _id: event[0]._id },
-                }),
-              });
+              joinEvent();
             }}>
             <a>Visit event</a>
           </button>
