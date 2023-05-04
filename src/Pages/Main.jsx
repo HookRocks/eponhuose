@@ -36,7 +36,7 @@ const Main = () => {
           windowWidth < 640
             ? `${
                 markerContext.markerStates.clicked
-                  ? ''
+                  ? 'grid'
                   : 'grid text-center min-w-full font-extrabold text-2xl'
               } bg-[#cb7c15] grid`
             : `bg-[#cb7c15] grid`
