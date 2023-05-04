@@ -13,6 +13,7 @@ function Map() {
   }, []);
   useEffect(() => {
     const resizeEvent = new Event('resizeEvent');
+    
     document.dispatchEvent(resizeEvent);
   },[markerContext]);
   
