@@ -99,7 +99,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
             <b>All Teachers and staff</b>
           )}
         </div>
-        {event&&event[0]!="E"? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
+        {event&&event[0]!="E"&&event[0]? (<p className='font-bold'>{event[0].eventName}</p>):(<p>No Event Scheduled</p>)}
         {windowWidth<640?( <button
           className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
           onClick={(ev) => {
