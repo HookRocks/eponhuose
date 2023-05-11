@@ -14,8 +14,9 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   const carEvent = useMemo(() => new Event('Car'));
 
   const joinEvent = () => {
+    if(!event||!event[0]){return}
     console.log(event);
-    if (event) {
+    if (event&&event[0]) {
       localStorage.setItem('Visitor Count', event[0].visitorCount);
     }
     if (localStorage.getItem('eventVisited') == event[0]._id) {

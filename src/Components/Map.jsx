@@ -32,7 +32,7 @@ function Map() {
   });
 
   return (
-    <div>
+    <div className="grid">
       <div className='experience'>
         <canvas className='experience-canvas'></canvas>
       </div>
