@@ -27,6 +27,12 @@ export default class Camera {
   }
 
   resize() {
+    var side=document.getElementById("Side").getBoundingClientRect()
+    console.log(side)
+    this.sizes.width=window.innerWidth=side.x
+    this.sizes.height=window.innerHeight
+
+
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(this.sizes.pixelRatio);
   }
