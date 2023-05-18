@@ -28,15 +28,11 @@ export default class Controls {
     this.repeatButton = document.querySelector('.repeat');
 
     this.backButton.addEventListener('click', () => {
-      document.setTimeout(()=>{
-        const resizeEvent = new Event('resizeEvent');
-    
-        document.dispatchEvent(resizeEvent);
-      },100)
       this.buttons.style.bottom = '-5rem';
       if (this.curveObject) this.scene.remove(this.curveObject);
       this.experience.world.isAnimating = false;
       this.experience.context.dispatch({ type: 'Clicked', payload: true });
+
       gsap.to(this.camera.perspectiveCamera.position, {
         x: -0.1,
         y: 9.51,
