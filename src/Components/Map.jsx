@@ -10,6 +10,9 @@ function Map() {
       document.querySelector('.experience-canvas'),
       markerContext
     );
+    const resizeEvent = new Event('resizeEvent');
+    
+    document.dispatchEvent(resizeEvent);
   }, []);
   useEffect(() => {
     const resizeEvent = new Event('resizeEvent');
@@ -25,9 +28,7 @@ function Map() {
     };
 
     window.addEventListener('resize', handleWindowResize);
-    const resizeEvent = new Event('resizeEvent');
-    
-    document.dispatchEvent(resizeEvent);
+
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
