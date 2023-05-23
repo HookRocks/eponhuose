@@ -20,7 +20,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
-  <React.StrictMode>
     <MarkerProvider>
     <BrowserRouter>
       <Routes>
@@ -29,5 +28,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Routes>
     </BrowserRouter>
     </MarkerProvider>
-  </React.StrictMode>
 );
