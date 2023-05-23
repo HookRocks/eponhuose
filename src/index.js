@@ -5,7 +5,7 @@ import './index.css';
 import Main from './Pages/Main.jsx';
 import AdminPage from './Pages/AdminPage';
 import {MarkerProvider} from './Contexts/MarkerContext';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 const router = createBrowserRouter([
   {
@@ -13,19 +13,15 @@ const router = createBrowserRouter([
     element: <Main />,
   },
   {
-    path: '/Admin',
+    path: '/admin',
     element: <AdminPage />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  
+  <React.StrictMode>
     <MarkerProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="Admin" element={<AdminPage />} />
-      </Routes>
-    </BrowserRouter>
+      <RouterProvider router={router} />
     </MarkerProvider>
+  </React.StrictMode>
 );
