@@ -12,7 +12,6 @@ const Main = () => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
     window.addEventListener('resize', handleWindowResize);
 
     return () => {
@@ -54,7 +53,6 @@ const Main = () => {
             : `static bg-[#4e57c1] min-h-screen w-full p-4 duration-500 transform text-white`
         }>
         <EventProgramInfo
-          id="Side"
           className='border-2 border-black border-solid'
           tabbedMode={markerContext.markerStates.clicked}
           givenProgramName={markerContext.markerStates.marker}

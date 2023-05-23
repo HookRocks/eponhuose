@@ -67,7 +67,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
   });
   if (tabbedMode) {
     return (
-      <div
+      <div id="Side"
         className={`${
           windowWidth < 640
             ? 'text-center grid'
@@ -80,7 +80,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
     );
   } else {
     return (
-      <div
+      <div id="Side"
         className={`h-full text-center align-center justify-center ${
           windowWidth < 640 ? ' z-50' : ' z-0'
         } `}>

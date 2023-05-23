@@ -15,9 +15,11 @@ function Map() {
     document.dispatchEvent(resizeEvent);
   }, []);
   useEffect(() => {
+    setTimeout(()=>{
     const resizeEvent = new Event('resizeEvent');
     
     document.dispatchEvent(resizeEvent);
+  })
   },[markerContext]);
   
    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
