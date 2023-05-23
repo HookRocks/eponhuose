@@ -27,6 +27,7 @@ export default class Camera {
   }
 
   resize() {
+    setTimeout(()=>{
     var side=document.getElementById("Side").getBoundingClientRect()
     console.log(side)
 
@@ -36,6 +37,7 @@ export default class Camera {
     
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(this.sizes.pixelRatio);
+  })
   }
 
   update() {
