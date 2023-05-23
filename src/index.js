@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="admin" element={<AdminPage />} />
+        <Route path="Admin" element={<AdminPage />} />
       </Routes>
     </BrowserRouter>
     </MarkerProvider>
