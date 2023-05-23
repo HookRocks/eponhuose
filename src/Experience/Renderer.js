@@ -29,12 +29,10 @@ export default class Camera {
   resize() {
     setTimeout(()=>{
     var side=document.getElementById("Side").getBoundingClientRect()
-    console.log(side)
 
     this.sizes.width=side.x>4?side.x:window.innerWidth
     this.sizes.height=window.innerHeight
     this.sizes.aspect=this.sizes.width/this.sizes.height
-    
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(this.sizes.pixelRatio);
   })
