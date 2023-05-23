@@ -1,70 +1,121 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# West-MEC NE OpenHouse/Map
+A map of the West-Mec NE campus with information on the programs and any active events for them.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Documentation
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Map functionality
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Experience folder contains all the middleware and modules used to run the map/ThreeJS
+Map Materials models and textures are contained in the public folder
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Changing Program/Teacher Info
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+teacher and program information is in the file
+- src/modules/ProgramInfo.json
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+(
+    do not change the order of the programs
+    doing so will affect which checkbox connects to what program in the admin page
+)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Changing the POW(Program of Work)
+The POW is found in the public/assets folder
+when changing the POW, keep the name the same as prior to change, or also change it in the ProgramInfo.json
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### BACKEND
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Backend routers, modules, and models are named to be as direct as possible.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### USER Module/Router
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Handles the participants and visitors and allows you to keep track of them via email/name
 
-## Learn More
+#### EVENT Module/Router
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Handles the creation, editing, removal, and ending of events.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+the events are checked every hour for removal, so any time interval less than that is unneccesary
 
-### Code Splitting
+ended events are stored in a separate collection from other events.
+ended event data is used in the ADMIN PAGE to provide statistics of the event that ended
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+#### LOGIN Module
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Handles signing in an Admin via the password, and will then attach them to a variable for the current connected admin, so only one person can attempt to change things at a time.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### EMAIL Module
 
-### Advanced Configuration
+Mostly unused, primary functionalioty is to send emails to the given HOST_EMAIL from the .env to provide the data of the events that have ended.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Has Support and infrastructure to handle sending emails to all teachers that exist and all participants who provided an email(DEPRECATED)
 
-### Deployment
+### FRONTEND
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### MAIN PAGE
 
-### `npm run build` fails to minify
+Provides the user with a map to view the campus, along with markers which when clicked will show the program info and POW.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### ADMIN PAGE
+
+Will prompt the user to input the admin password, which is set in the backend ENV. will not provide anything from the backend if said password is incorrect. allows the admin to view currently created events, ongoing events. and a graph of the statistics of previous events. Admin can delete any ongoing or future events currently queued to happen.
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+
+#### BACKEND
+
+
+`ADMIN_PASSWORD` Password for the admin
+
+`HOST_EMAIL` email any messages will be sent from, needs to be registered through google to allow
+
+`MONGO_URI` the database collection uri
+
+`NODEMAILER_PASS` the provided key google gives to allow you to send emails through code
+
+
+#### FRONTEND
+
+NONE
+## Deployment
+
+To deploy you will need to set up the env file for onrender
+
+front and backend are two separate parts of the site and need to be hosted as such
+
+
+host backend first, set the backend url in the .env for frontend once it is running
+
+backend needs to be named eponBack to work
+
+(change build folder to backend when building the backend server)
+before building
+
+- npm i --force
+
+- npm run build (frontend)
+
+- node ./backend/server.js (backend)
+
+to save space on server set src and public to ignored for backend and backend ignored on frontend.
+
+
+## Authors
+
+- [@RogerGrange](https://github.com/RogerRandomDev)
+- [@TrentonBlock](https://github.com/RagingFury6)
+- [@Logan]()
+- [@Dylan]()
+- [@Victor]()
+
+

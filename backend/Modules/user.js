@@ -45,4 +45,7 @@ const joinProgram = async (req,res)=>{
     if(!userData){return res.status(404).send({success:false,msg:"no user with given email"})}
     await user.findOneAndUpdate({email:userEmail},{visitedEvent:programName});
 }
+
+ 
+
 module.exports = { getUserByEmail, userJoin, getUserList, getParticipantData }
