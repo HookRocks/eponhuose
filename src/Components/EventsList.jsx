@@ -5,7 +5,7 @@ const EventsList = () => {
   const [events, setEventList] = useState(["E"]);
   useEffect(() => {
     if (events[0] == "E") {
-      fetch(`https://eponback.onrender.com/event/getEventList`, {
+      fetch(`https://eponback-k6b6.onrender.com/event/getEventList`, {
         method: "POST",
         body: {}
       }).then(eventList => {

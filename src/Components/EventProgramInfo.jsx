@@ -23,7 +23,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       return alert('You have already joined this event');
     }
       localStorage.setItem('eventVisited',event[0]._id)
-      fetch(`https://eponback.onrender.com/users/visit`, {
+      fetch(`https://eponback-k6b6.onrender.com/users/visit`, {
         method: 'POST',
         body: JSON.stringify({
           Filter: {_id: event[0]._id}
@@ -31,7 +31,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
       })
   }
   useEffect(()=>{
-   fetch(`https://eponback.onrender.com/event/getEventList`,{
+   fetch(`https://eponback-k6b6.onrender.com/event/getEventList`,{
       method: "POST",
       body: {}
     }).then(eventList => {
@@ -105,7 +105,7 @@ const EventProgramInfo = ({ tabbedMode, givenProgramName }) => {
           className='bg-[#f5a018] hover:bg-[#c18019] text-white font-bold py-2 px-4 rounded mt-3'
           onClick={(ev) => {
             ev.stopPropagation();
-            fetch(`https://eponback.onrender.com/users/visit`, {
+            fetch(`https://eponback-k6b6.onrender.com/users/visit`, {
         method: 'POST',
         body: JSON.stringify({
           Filter: {_id: event[0]._id}

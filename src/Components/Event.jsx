@@ -8,7 +8,7 @@ const EventComp = ({ eventName, eventStartDate, eventEndDate, eventID }) => {
   let endDateString = b.toLocaleString("en-US", { dateStyle: "short", timeStyle: "short", hour12: "true" });
 
   function deleteEventButton(eventId) {
-    fetch(`https://eponback.onrender.com/event/deleteEvent`, {
+    fetch(`https://eponback-k6b6.onrender.com/event/deleteEvent`, {
       method: "POST",
       body: JSON.stringify({
         _id: eventId,

@@ -35,7 +35,7 @@ const AdminPage = () => {
     sessionStorage.setItem('auth', prompt('Enter Admin Password:'));
   }
   useEffect(() => {
-    fetch(`https://eponback.onrender.com/event/getEndedEvents`, {
+    fetch(`https://eponback-k6b6.onrender.com/event/getEndedEvents`, {
       method: 'POST',
       body: {},
       headers: {
@@ -64,7 +64,7 @@ const AdminPage = () => {
   }, [programsMade]);
 
   function createEventButton() {
-    fetch(`https://eponback.onrender.com/event/createEvent`, {
+    fetch(`https://eponback-k6b6.onrender.com/event/createEvent`, {
       method: 'POST',
       body: JSON.stringify({
         eventName: eventNameMade,
