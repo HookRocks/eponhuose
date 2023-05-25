@@ -1,7 +1,7 @@
 {
     "Coding":{
       "programName": "Coding",
-      "POW": ["../assets/23-24-Coding-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Coding.pdf"],
+      "POW": ["../assets/Coding-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Coding.pdf"],
       "instructorName": ["Mr.Bernard"],
       "classLocation": "Main Building 2nd Floor",
       "classTimes": [
@@ -19,7 +19,7 @@
     },
     "HVAC":{
       "programName": "Air Conditioning Technology",
-      "POW": ["../assets/23-24-Air-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Air-Conditioning.pdf"],
+      "POW": ["../assets/Air-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Air-Conditioning.pdf"],
       "instructorName": ["Mr.Brooke"],
       "classLocation": "Lab 1st Floor",
       "classTimes": [
@@ -32,7 +32,7 @@
     },
     "Auto Tech":{
       "programName": "Auto Tech",
-      "POW": ["../assets/23-24-Auto-Tech-Info-Sheet.pdf","../assets/West-MEC-Career-Trees_Auto-Tech.pdf"],
+      "POW": ["../assets/Auto-Tech-Info-Sheet.pdf","../assets/West-MEC-Career-Trees_Auto-Tech.pdf"],
       "instructorName": ["Mr.Schumaker","Mr.Golding"],
       "classLocation": "Lab 2nd Floor",
       "classTimes": [
@@ -55,7 +55,7 @@
     },
     "Collision Repair":{
       "programName": "Collision Repair and Refinishing",
-      "POW": ["../assets/23-24-Collision Info Sheet.pdf", "../assets/West-MEC-Career-Trees_Collision.pdf"],
+      "POW": ["../assets/Collision Info Sheet.pdf", "../assets/West-MEC-Career-Trees_Collision.pdf"],
       "instructorName": ["Mr.Paur","Mr.Melian"],
       "classLocation": "Lab 2nd Floor",
       "classTimes": [
@@ -78,7 +78,7 @@
     },
     "Electrical":{
       "programName": "Electrical Trade Speciality",
-      "POW":["../assets/23-24-Electrical-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Electrical.pdf"],
+      "POW":["../assets/Electrical-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Electrical.pdf"],
       "instructorName": ["Mr.Brooke"],
       "classLocation": "Lab 1st Floor",
       "classTimes": [
@@ -115,7 +115,7 @@
     "Medical Assisting":{
       "programName": "Medical Assisting",
       "instructorName": ["Mrs.Michaels", "Mrs.Winzeler","Mrs.Romero"],
-      "POW":["../assets/23-24-Med-Assisting-2YR-Info-Sheet.pdf","../assets/23-24-Med-Assisting-1YR-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Medical-Assistingy.pdf"],
+      "POW":["../assets/Med-Assisting-2YR-Info-Sheet.pdf","../assets/Med-Assisting-1YR-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Medical-Assistingy.pdf"],
       "classLocation": "Main Building 2nd Floor",
       "classTimes": [
         {
@@ -134,7 +134,7 @@
     },
     "Diesel":{
       "programName": "Medium / Heavy Diesel Technology",
-      "POW":["../assets/23-24-MH-Diesel-Info-Sheet.pdf", "West-MEC-Career-Trees_MH-Diesel.pdf"],
+      "POW":["../assets/MH-Diesel-Info-Sheet.pdf", "West-MEC-Career-Trees_MH-Diesel.pdf"],
       "instructorName": ["Mr.Soja"],
       "classLocation": "Lab 2nd Floor",
       "classTimes": [
@@ -151,7 +151,7 @@
     "Pharmacy":{
       "programName": "Pharmacy Science",
       "instructorName": ["Mrs.Stewart"],
-      "POW":["../assets/23-24-Pharmacy Info Sheet.pdf", "../assets/West-MEC-Career-Trees_Pharmacy.pdf"],
+      "POW":["../assets/Pharmacy Info Sheet.pdf", "../assets/West-MEC-Career-Trees_Pharmacy.pdf"],
       "classLocation": "Main Building 1st Floor",
       "classTimes": [
         {
@@ -167,7 +167,7 @@
     "Vet":{
       "programName": "Veterinary Science",
       "instructorName": ["Mrs.Peterson", "Mrs.Adams","Mrs.Schuman"],
-      "POW":["../assets/23-24-Vet-2YR-Info-Sheet.pdf","../assets/23-24-Vet-1YR-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Vet.pdf"],
+      "POW":["../assets/Vet-2YR-Info-Sheet.pdf","../assets/Vet-1YR-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Vet.pdf"],
       "classLocation": "Vet Building",
       "classTimes": [
         {
