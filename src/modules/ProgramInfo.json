@@ -33,7 +33,7 @@
     "Auto Tech":{
       "programName": "Auto Tech",
       "POW": ["../assets/Auto-Tech-Info-Sheet.pdf","../assets/West-MEC-Career-Trees_Auto-Tech.pdf"],
-      "instructorName": ["Mr.Schumaker","Mr.Golding"],
+      "instructorName": ["Mr. Wethington","Mr.Golding"],
       "classLocation": "Lab 2nd Floor",
       "classTimes": [
         {
@@ -56,7 +56,7 @@
     "Collision Repair":{
       "programName": "Collision Repair and Refinishing",
       "POW": ["../assets/Collision Info Sheet.pdf", "../assets/West-MEC-Career-Trees_Collision.pdf"],
-      "instructorName": ["Mr.Paur","Mr.Melian"],
+      "instructorName": ["Mr.Melian"],
       "classLocation": "Lab 2nd Floor",
       "classTimes": [
         {
@@ -114,7 +114,7 @@
     },
     "Medical Assisting":{
       "programName": "Medical Assisting",
-      "instructorName": ["Mrs.Michaels", "Mrs.Winzeler","Mrs.Romero"],
+      "instructorName": ["Ms.Michaels", "Mrs.Winzeler","Mrs.Romero"],
       "POW":["../assets/Med-Assisting-2YR-Info-Sheet.pdf","../assets/Med-Assisting-1YR-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Medical-Assistingy.pdf"],
       "classLocation": "Main Building 2nd Floor",
       "classTimes": [
@@ -150,7 +150,7 @@
     },
     "Pharmacy":{
       "programName": "Pharmacy Science",
-      "instructorName": ["Mrs.Stewart"],
+      "instructorName": ["Ms.Stewart"],
       "POW":["../assets/Pharmacy Info Sheet.pdf", "../assets/West-MEC-Career-Trees_Pharmacy.pdf"],
       "classLocation": "Main Building 1st Floor",
       "classTimes": [
@@ -166,7 +166,7 @@
     },
     "Vet":{
       "programName": "Veterinary Science",
-      "instructorName": ["Mrs.Peterson", "Mrs.Adams","Mrs.Schuman"],
+      "instructorName": ["Mrs.Peterson", "Mrs.Adams"],
       "POW":["../assets/Vet-2YR-Info-Sheet.pdf","../assets/Vet-1YR-Info-Sheet.pdf", "../assets/West-MEC-Career-Trees_Vet.pdf"],
       "classLocation": "Vet Building",
       "classTimes": [
