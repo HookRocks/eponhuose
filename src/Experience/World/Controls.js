@@ -197,6 +197,7 @@ export default class Controls {
     this.curveObject = new THREE.Line(this.geometry, this.material);
     this.progress = 0;
     this.animationEnabled = true;
+    
     this.experience.world.isAnimating = true;
     // this.scene.add(this.curveObject);
     // document.querySelector('.points__wrapper').style.opacity = 0;
@@ -234,6 +235,11 @@ export default class Controls {
       // this.progress += 0.001;
       this.camera.perspectiveCamera.position.copy(this.dummyVector);
       this.camera.controls.target = this.lookAtPosition;
+      if(this.experience.sizes.width<640){
+        this.buttons.style.bottom = '2rem';
+        this.animationEnabled=false; 
+        this.progress=1;
+      }
     } else if (this.progress > 1 && this.animationEnabled) {
       this.animationEnabled = false;
       // do final things

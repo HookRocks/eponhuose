@@ -30,7 +30,7 @@ export default class Camera {
     setTimeout(()=>{
     var side=document.getElementById("Side").getBoundingClientRect()
 
-    this.sizes.width=side.x>4?side.x:window.innerWidth
+    this.sizes.width=window.innerWidth
     this.sizes.height=window.innerHeight
     this.sizes.aspect=this.sizes.width/this.sizes.height
     this.renderer.setSize(this.sizes.width, this.sizes.height);
