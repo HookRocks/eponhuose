@@ -13,6 +13,7 @@ export default class Room {
     this.bushes = this.resources.items.bushes;
     this.largesign = this.resources.items.largesign;
     this.materials = this.experience.world.materials;
+    this.duck = this.resources.items.notaduck;
     this.setModel();
   }
   setModel() {
@@ -107,6 +108,7 @@ export default class Room {
     //   this.guiObject.s3
     // );
     this.scene.add(
+      this.duck.scene,
       this.roomScene,
       this.trees.scene,
       this.bushes.scene,

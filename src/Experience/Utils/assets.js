@@ -9,6 +9,7 @@ export default [
   { name: 'bushes', type: 'glbModel', path: '/public/models/bushes.glb' },
   { name: 'largesign', type: 'glbModel', path: '/public/models/largesign.glb' },
   { name: 'cars', type: 'glbModel', path: '/public/models/cars.glb' },
+  { name: 'notaduck', type: 'glbModel', path: '/models/notaduck.glb' },
   {
     name: 'autoCollision',
     type: 'glbModel',
